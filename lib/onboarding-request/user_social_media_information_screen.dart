@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/onboarding-request/widget/onboarding_stepper_widget.dart';
 
-class UserDetailsScreen extends StatelessWidget {
-  const UserDetailsScreen({Key? key}) : super(key: key);
+import 'widget/onboarding_stepper_widget.dart';
+
+class UserSocialMediaInformationScreen extends StatelessWidget {
+  const UserSocialMediaInformationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +11,7 @@ class UserDetailsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Text(
-          'Your Name',
+          'Your Link',
           style: TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.w700,

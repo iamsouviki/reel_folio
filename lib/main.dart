@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/onboarding-request/user_details_screen.dart';
+import 'package:reel_folio/onboarding-request/widget/onboarding_stepper_widget.dart';
 
 import 'util/size_config.dart';
 
@@ -21,7 +22,7 @@ class ReelFolioApp extends StatelessWidget {
               //theme: ThemeData(fontFamily: 'Sora'),
               debugShowCheckedModeBanner: false,
               //onGenerateRoute: SpessleRoute.generateRoute,
-              home: UserDetailsScreen(),
+              home: OnBoardingScreen(),
             );
           },
         );
