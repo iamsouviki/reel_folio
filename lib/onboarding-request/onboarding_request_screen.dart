@@ -8,9 +8,7 @@ import '../util/progress_stepper.dart';
 import 'widget/user_details_widget.dart';
 import 'widget/user_social_media_information_widget.dart';
 
-
 class OnBoardingRequestScreen extends ConsumerWidget {
-
   const OnBoardingRequestScreen({
     Key? key,
   }) : super(key: key);
@@ -22,52 +20,56 @@ class OnBoardingRequestScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef widgetRef) {
-
     final stepValue = widgetRef.watch(onBoardingStepManger);
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: SafeArea(
-        top: true,
-        child: Padding(
+    return SafeArea(
+      top: true,
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: screenWidth! * 12 / 375,
           ),
           child: Column(
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back),
-                  ),
-                  const Spacer(
-                    flex: 2,
+                    onPressed: () {
+                      widgetRef.read(onBoardingStepManger.notifier).state = stepValue-1;
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                   ProgressStepper(
                     width: 100,
-                    stepCount: 3,
+                    stepCount: 2,
                     currentStep: stepValue,
                   ),
-                  const Spacer(
-                    flex: 3,
-                  ),
+                  Text('Help',style: TextStyle(
+                    fontSize: screenWidth! * 14 / 375,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),)
                 ],
               ),
               const AspectRatio(
                 aspectRatio: 375 / 26,
                 child: SizedBox(),
               ),
-              _screens[stepValue-1],
+              _screens[stepValue - 1],
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          widgetRef.read(onBoardingStepManger.notifier).state = stepValue+1;
-        },
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            widgetRef.read(onBoardingStepManger.notifier).state = stepValue + 1;
+          },
+        ),
       ),
     );
   }

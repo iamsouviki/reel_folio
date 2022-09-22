@@ -38,7 +38,7 @@ class UserSocialMediaInformationWidget extends StatelessWidget {
             fontSize: 22,
           ),
           decoration: InputDecoration(
-            hintText: 'www.vimeo.com/myvideo',
+            hintText: '    www.vimeo.com/myvideo',
             hintStyle: TextStyle(
               color: Color(0xFF474747),
               fontWeight: FontWeight.w400,
