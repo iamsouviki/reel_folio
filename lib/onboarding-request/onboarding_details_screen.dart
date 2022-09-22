@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reel_folio/onboarding-request/widget/user_bio_widget.dart';
 
 import '../util/floating_action_button_widget.dart';
 import '../util/progress_stepper.dart';
@@ -12,13 +13,22 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
   const OnBoardingDetailsScreen({Key? key}) : super(key: key);
 
   final List<Widget> _screens = const [
+    //name
     UserNameWidget(),
+    //phone
     UserContactNumberWidget(),
+    //pin
+    //primary skill
+    //other skill
+    //profile picture
+    //cover picture
+    //birthday
+    //bio
+    UserBioWidget(),
   ];
 
   @override
-  Widget build(BuildContext context,WidgetRef widgetRef) {
-
+  Widget build(BuildContext context, WidgetRef widgetRef) {
     final stepValue = widgetRef.watch(onBoardingStepManger);
 
     return SafeArea(
@@ -47,8 +57,9 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
                       ),
                     ),
                     ProgressStepper(
-                      width: 100,
-                      stepCount: 2,
+                      width: 200,
+                      stepCount: 9,
+                      padding: 5,
                       currentStep: stepValue,
                     ),
                     Text(
@@ -67,7 +78,7 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth! * 35  / 375,
+                    horizontal: screenWidth! * 35 / 375,
                   ),
                   child: _screens[stepValue - 1],
                 ),
@@ -77,11 +88,10 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
         ),
         floatingActionButton: FloatingActionButtonWidget(
           onTap: () {
-            if(stepValue != 2){
-              widgetRef.read(onBoardingStepManger.notifier).state = stepValue + 1;
-            }else{
-
-            }
+            if (stepValue != 9) {
+              widgetRef.read(onBoardingStepManger.notifier).state =
+                  stepValue + 1;
+            } else {}
           },
         ),
       ),
