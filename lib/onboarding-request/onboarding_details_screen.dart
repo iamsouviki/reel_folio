@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reel_folio/onboarding-request/widget/user_bio_widget.dart';
+import 'package:reel_folio/onboarding-request/widget/user_dob_widget.dart';
 
 import '../util/floating_action_button_widget.dart';
 import '../util/progress_stepper.dart';
@@ -23,6 +24,7 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
     //profile picture
     //cover picture
     //birthday
+    UserDOBWidget(),
     //bio
     UserBioWidget(),
   ];
