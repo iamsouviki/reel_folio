@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/onboarding-request/user_details_screen.dart';
-import 'package:reel_folio/onboarding-request/widget/onboarding_stepper_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'onboarding-request/onboarding_request_screen.dart';
 import 'util/size_config.dart';
 
 void main() {
-  runApp(const ReelFolioApp());
+  runApp(const ProviderScope(child: ReelFolioApp()));
 }
 
 class ReelFolioApp extends StatelessWidget {
@@ -22,7 +22,7 @@ class ReelFolioApp extends StatelessWidget {
               //theme: ThemeData(fontFamily: 'Sora'),
               debugShowCheckedModeBanner: false,
               //onGenerateRoute: SpessleRoute.generateRoute,
-              home: OnBoardingScreen(),
+              home: OnBoardingRequestScreen(),
             );
           },
         );
