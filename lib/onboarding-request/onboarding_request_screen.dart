@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reel_folio/onboarding-request/manager/onboarding_step_manager.dart';
+import 'package:reel_folio/util/reel_folio_icon.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 import '../util/progress_stepper.dart';
@@ -30,45 +31,67 @@ class OnBoardingRequestScreen extends ConsumerWidget {
           padding: EdgeInsets.symmetric(
             horizontal: screenWidth! * 12 / 375,
           ),
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      widgetRef.read(onBoardingStepManger.notifier).state = stepValue-1;
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        widgetRef.read(onBoardingStepManger.notifier).state =
+                            stepValue - 1;
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  ProgressStepper(
-                    width: 100,
-                    stepCount: 2,
-                    currentStep: stepValue,
-                  ),
-                  Text('Help',style: TextStyle(
-                    fontSize: screenWidth! * 14 / 375,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
-                  ),)
-                ],
-              ),
-              const AspectRatio(
-                aspectRatio: 375 / 26,
-                child: SizedBox(),
-              ),
-              _screens[stepValue - 1],
-            ],
+                    ProgressStepper(
+                      width: 100,
+                      stepCount: 2,
+                      currentStep: stepValue,
+                    ),
+                    Text(
+                      'Help',
+                      style: TextStyle(
+                        fontSize: screenWidth! * 14 / 375,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+                const AspectRatio(
+                  aspectRatio: 375 / 150,
+                  child: SizedBox(),
+                ),
+                _screens[stepValue - 1],
+              ],
+            ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            widgetRef.read(onBoardingStepManger.notifier).state = stepValue + 1;
-          },
+        floatingActionButton: Container(
+          height: screenWidth! * 50 / 375,
+          width: screenWidth! * 58 / 375,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.white,
+              width: 2,
+            ),
+          ),
+          child: Center(
+            child: ImageIcon(
+              color: Colors.white,
+              size: screenWidth! * 30 / 375,
+              const AssetImage(
+                ReelFolioIcon.iconArrowForward,
+              ),
+            ),
+          ),
         ),
       ),
     );
