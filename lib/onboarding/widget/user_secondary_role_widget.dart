@@ -138,7 +138,7 @@ class _ListWidgetState extends State<ListWidget> {
     'Editor',
   ];
 
-  final ValueNotifier _selectedItem = ValueNotifier<String>('');
+  final ValueNotifier<List<String>> _selectedItem = ValueNotifier<List<String>>(['']);
 
   final ValueNotifier _selectedIndex = ValueNotifier<int>(10);
 
@@ -211,18 +211,24 @@ class _ListWidgetState extends State<ListWidget> {
                           ...items.map(
                                 (e) => GestureDetector(
                               onTap: () {
-                                _selectedItem.value = e;
-                                widget.onValueChanged(e);
+                                if(_selectedItem.value.contains(e)){
+                                  _selectedItem.value = List.from(_selectedItem.value)..remove(e);
+                                }else{
+                                  _selectedItem.value = List.from(_selectedItem.value)..add(e);
+                                }
+
+                                //widget.onValueChanged('');
                               },
                               child: ValueListenableBuilder(
                                 valueListenable: _selectedItem,
-                                builder: (BuildContext context, value,
+                                builder: (BuildContext context, List<String> value,
                                     Widget? child) {
+                                  print(value.toString());
                                   return Container(
                                     height: 40,
                                     width: screenWidth! / 3,
                                     decoration: BoxDecoration(
-                                      color: value == e
+                                      color: value.contains(e)
                                           ? Colors.white
                                           : Colors.black,
                                       borderRadius:
@@ -236,7 +242,7 @@ class _ListWidgetState extends State<ListWidget> {
                                       child: Text(
                                         e,
                                         style: TextStyle(
-                                          color: value == e
+                                          color: value.contains(e)
                                               ? Colors.black
                                               : Colors.white,
                                         ),
