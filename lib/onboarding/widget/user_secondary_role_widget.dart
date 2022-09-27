@@ -5,7 +5,7 @@ import '../../util/size_config.dart';
 class UserSecondaryRoleWidget extends StatelessWidget {
   UserSecondaryRoleWidget({Key? key}) : super(key: key);
 
-  final ValueNotifier<String> primaryRoleNotifier = ValueNotifier<String>('');
+  final ValueNotifier<List<String>> primaryRoleNotifier = ValueNotifier<List<String>>(['']);
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +50,20 @@ class UserSecondaryRoleWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: ValueListenableBuilder(
                       valueListenable: primaryRoleNotifier,
-                      builder: (BuildContext context, String value,
+                      builder: (BuildContext context, List<String> list,
                           Widget? child) {
+
                         return Text(
-                          value.isEmpty
+                          textAlign: TextAlign.left,
+                          list.isEmpty
                               ? 'i.e. Director, Foley Artist, Producer, \nColorist etc.'
-                              : value,
+                              : list.join(' '),
                           style: TextStyle(
                             fontSize: screenWidth! * 14 / 375,
-                            color: value.isEmpty
+                            color: list.isEmpty
                                 ? const Color(0xFF474747)
                                 : Colors.white,
                           ),
@@ -115,7 +117,7 @@ class TextCancelButtonWidget extends StatelessWidget {
 }
 
 class ListWidget extends StatefulWidget {
-  final ValueChanged<String> onValueChanged;
+  final ValueChanged<List<String>> onValueChanged;
 
   const ListWidget({Key? key, required this.onValueChanged}) : super(key: key);
 
@@ -213,11 +215,13 @@ class _ListWidgetState extends State<ListWidget> {
                               onTap: () {
                                 if(_selectedItem.value.contains(e)){
                                   _selectedItem.value = List.from(_selectedItem.value)..remove(e);
-                                }else{
-                                  _selectedItem.value = List.from(_selectedItem.value)..add(e);
+                                  widget.onValueChanged(_selectedItem.value);
+                                }else {
+                                  _selectedItem.value =
+                                  List.from(_selectedItem.value)
+                                    ..add(e);
+                                  widget.onValueChanged(_selectedItem.value);
                                 }
-
-                                //widget.onValueChanged('');
                               },
                               child: ValueListenableBuilder(
                                 valueListenable: _selectedItem,
