@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reel_folio/route/reel_folio_route.dart';
 
-import 'onboarding-request/onboarding_request_screen.dart';
 import 'util/size_config.dart';
 
 void main() {

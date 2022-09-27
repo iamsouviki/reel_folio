@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/onboarding-request/onboarding_details_screen.dart';
 import 'package:reel_folio/route/route_path.dart';
-
-import '../onboarding-request/onboarding_request_screen.dart';
+import '../onboarding/onboarding_details_screen.dart';
+import '../onboarding/onboarding_request_screen.dart';
 
 abstract class ReelFolioRoute {
   static String? currentRouteName;
