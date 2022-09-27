@@ -13,24 +13,24 @@ import 'widget/user_name_widget.dart';
 import 'widget/user_primary_role_widget.dart';
 
 class OnBoardingDetailsScreen extends ConsumerWidget {
-  const OnBoardingDetailsScreen({Key? key}) : super(key: key);
+  OnBoardingDetailsScreen({Key? key}) : super(key: key);
 
-  final List<Widget> _screens = const [
+  final List<Widget> _screens = [
     //name
-    UserNameWidget(),
+    const UserNameWidget(),
     //phone
-    UserContactNumberWidget(),
+    const UserContactNumberWidget(),
     //pin
     //primary skill
-    UserPrimaryRoleWidget(),
+    const UserPrimaryRoleWidget(),
     //other skill
     //profile picture
     UserProfilePictureWidget(),
     //cover picture
     //birthday
-    UserDOBWidget(),
+    const UserDOBWidget(),
     //bio
-    UserBioWidget(),
+    const UserBioWidget(),
   ];
 
   @override

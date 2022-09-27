@@ -17,7 +17,7 @@ abstract class ReelFolioRoute {
         break;
 
       case RoutePath.routeToOnBoardingDetailsScreen:
-        _currentWidget = const OnBoardingDetailsScreen();
+        _currentWidget = OnBoardingDetailsScreen();
         break;
 
       default:

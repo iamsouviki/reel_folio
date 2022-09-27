@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/add_profile_asset_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 class UserProfilePictureWidget extends StatelessWidget {
-  const UserProfilePictureWidget({Key? key}) : super(key: key);
+  UserProfilePictureWidget({Key? key}) : super(key: key);
+
+  final ValueNotifier<File?> _imageNotifier = ValueNotifier<File?>(null);
 
   @override
   Widget build(BuildContext context) {
@@ -34,31 +39,34 @@ class UserProfilePictureWidget extends StatelessWidget {
         SizedBox(
           height: screenWidth! * 20 / 375,
         ),
-        Container(
-          height: screenWidth! * 128 / 375,
-          width: screenWidth! * 128 / 375,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.red,
-          ),
+        ValueListenableBuilder(
+          valueListenable: _imageNotifier,
+          builder: (BuildContext context, File? value, Widget? child) {
+            return Container(
+              height: screenWidth! * 128 / 375,
+              width: screenWidth! * 128 / 375,
+              decoration: value != null
+                  ? BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: FileImage(value),
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.red,
+                    ),
+            );
+          },
         ),
         SizedBox(
           height: screenWidth! * 40 / 375,
         ),
-        Container(
-          height: screenWidth! * 65 / 375,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.white, width: 1.4),
-          ),
-          child: Center(
-            child: Text(
-              '+ Add from camera roll',
-              style: TextStyle(
-                  fontSize: screenWidth! * 16 / 375,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white),
-            ),
-          ),
+        AddProfileAssetWidget(
+          onUploadImage: (file) {
+            _imageNotifier.value = file;
+          },
         ),
       ],
     );
