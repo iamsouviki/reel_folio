@@ -8,6 +8,7 @@ import '../util/size_config.dart';
 import 'manager/onboarding_step_manager.dart';
 import 'widget/user_bio_widget.dart';
 import 'widget/user_contact_number_widget.dart';
+import 'widget/user_cover_image_widget.dart';
 import 'widget/user_dob_widget.dart';
 import 'widget/user_name_widget.dart';
 import 'widget/user_primary_role_widget.dart';
@@ -27,6 +28,7 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
     //profile picture
     UserProfilePictureWidget(),
     //cover picture
+    UserCoverImageWidget(),
     //birthday
     const UserDOBWidget(),
     //bio
