@@ -23,7 +23,7 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
     const UserContactNumberWidget(),
     //pin
     //primary skill
-    const UserPrimaryRoleWidget(),
+    UserPrimaryRoleWidget(),
     //other skill
     //profile picture
     UserProfilePictureWidget(),

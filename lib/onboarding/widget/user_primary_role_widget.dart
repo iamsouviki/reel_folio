@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 class UserPrimaryRoleWidget extends StatelessWidget {
-  const UserPrimaryRoleWidget({Key? key}) : super(key: key);
+  UserPrimaryRoleWidget({Key? key}) : super(key: key);
+
+  final ValueNotifier<String> primaryRoleNotifier = ValueNotifier<String>('');
 
   @override
   Widget build(BuildContext context) {
@@ -40,24 +42,31 @@ class UserPrimaryRoleWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 8,
-                vertical: 6,
+                vertical: 10,
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          'i.e. Director, Foley Artist, Producer, \nColorist etc.',
+                  Expanded(
+                    flex: 2,
+                    child: ValueListenableBuilder(
+                      valueListenable: primaryRoleNotifier,
+                      builder: (BuildContext context, String value,
+                          Widget? child) {
+                        return Text(
+                          value.isEmpty
+                              ? 'i.e. Director, Foley Artist, Producer, \nColorist etc.'
+                              : value,
                           style: TextStyle(
-                              fontSize: screenWidth! * 14 / 375,
-                              color: Color(0xFF474747)),
-                        ),
-                      ),
-                    ],
+                            fontSize: screenWidth! * 14 / 375,
+                            color: value.isEmpty
+                                ? const Color(0xFF474747)
+                                : Colors.white,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   const TextCancelButtonWidget(),
                 ],
@@ -67,37 +76,11 @@ class UserPrimaryRoleWidget extends StatelessWidget {
           SizedBox(
             height: screenWidth! * 20 / 375,
           ),
-
-          ListWidget(),
-          /*AnimatedContainer(
-            duration: const Duration(microseconds: 600),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Directoral',
-                      style: TextStyle(
-                        fontSize: screenWidth! * 17 / 375,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Colors.white,
-                      size: 22,
-                    ),
-                  ],
-                ),
-                SizedBox(height: screenWidth! * 6 / 375,),
-                const Divider(
-                  color: Colors.white,
-                ),
-              ],
-            ),
-          ),*/
+          ListWidget(
+            onValueChanged: (val) {
+              primaryRoleNotifier.value = val;
+            },
+          ),
         ],
       ),
     );
@@ -110,8 +93,8 @@ class TextCancelButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: screenWidth! * 30 / 375,
-      width: screenWidth! * 30 / 375,
+      height: screenWidth! * 28 / 375,
+      width: screenWidth! * 28 / 375,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
@@ -131,7 +114,9 @@ class TextCancelButtonWidget extends StatelessWidget {
 }
 
 class ListWidget extends StatefulWidget {
-  const ListWidget({Key? key}) : super(key: key);
+  final ValueChanged<String> onValueChanged;
+
+  const ListWidget({Key? key, required this.onValueChanged}) : super(key: key);
 
   @override
   State<ListWidget> createState() => _ListWidgetState();
@@ -144,7 +129,6 @@ class _ListWidgetState extends State<ListWidget> {
     'Cast',
     'Sound',
   ];
-
 
   List<dynamic> items = [
     'Director',
@@ -167,10 +151,10 @@ class _ListWidgetState extends State<ListWidget> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ...category.map(
-                  (index) => Flexible(
+              (index) => Flexible(
                 fit: FlexFit.loose,
                 flex: value == category.indexOf(index)
-                //? (dataList[category.indexOf(index)]["items"].length / 3).ceil() ?
+                    //? (dataList[category.indexOf(index)]["items"].length / 3).ceil() ?
                     ? (items.length / 3).ceil()
                     : 1,
                 child: Column(
@@ -188,10 +172,10 @@ class _ListWidgetState extends State<ListWidget> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: (){
-                            if(value == category.indexOf(index)){
+                          onTap: () {
+                            if (value == category.indexOf(index)) {
                               _selectedIndex.value = 10;
-                            }else{
+                            } else {
                               _selectedIndex.value = category.indexOf(index);
                             }
                           },
@@ -214,54 +198,58 @@ class _ListWidgetState extends State<ListWidget> {
                     ),
                     value! == category.indexOf(index)
                         ? Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Wrap(
-                        runSpacing: 20,
-                        spacing: 20,
-                        direction: Axis.horizontal,
-                        alignment: WrapAlignment.spaceBetween,
-                        runAlignment: WrapAlignment.start,
-                        children: [
-                          //...dataList[category.indexOf(index)]["items"]
-                          ...items.map(
-                                (e) => GestureDetector(
-                              onTap: () {
-                                _selectedItem.value = e;
-                              },
-                              child: ValueListenableBuilder(
-                                valueListenable: _selectedItem,
-                                builder: (BuildContext context, value,
-                                    Widget? child) {
-                                  return Container(
-                                    height: 40,
-                                    width: screenWidth! / 3,
-                                    decoration: BoxDecoration(
-                                      color: value == e
-                                          ? Colors.white
-                                          : Colors.black,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(25)),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                      ),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Wrap(
+                              runSpacing: 20,
+                              spacing: 20,
+                              direction: Axis.horizontal,
+                              alignment: WrapAlignment.spaceBetween,
+                              runAlignment: WrapAlignment.start,
+                              children: [
+                                //...dataList[category.indexOf(index)]["items"]
+                                ...items.map(
+                                  (e) => GestureDetector(
+                                    onTap: () {
+                                      _selectedItem.value = e;
+                                      widget.onValueChanged(e);
+                                    },
+                                    child: ValueListenableBuilder(
+                                      valueListenable: _selectedItem,
+                                      builder: (BuildContext context, value,
+                                          Widget? child) {
+                                        return Container(
+                                          height: 40,
+                                          width: screenWidth! / 3,
+                                          decoration: BoxDecoration(
+                                            color: value == e
+                                                ? Colors.white
+                                                : Colors.black,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(25)),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              e,
+                                              style: TextStyle(
+                                                color: value == e
+                                                    ? Colors.black
+                                                    : Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                    child: Center(child:Text(
-                                      e,
-                                      style: TextStyle(
-                                        color: value == e
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),),
-                                  );
-                                },
-                              ),
+                                  ),
+                                ),
+                                // ListTile(title:Text(dataList[category.indexOf(index)]["items"].toString()))
+                              ],
                             ),
-                          ),
-                          // ListTile(title:Text(dataList[category.indexOf(index)]["items"].toString()))
-                        ],
-                      ),
-                    )
+                          )
                         : SizedBox(),
                     SizedBox(
                       height: screenWidth! * 15 / 375,
