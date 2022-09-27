@@ -12,6 +12,7 @@ import 'widget/user_cover_image_widget.dart';
 import 'widget/user_dob_widget.dart';
 import 'widget/user_name_widget.dart';
 import 'widget/user_primary_role_widget.dart';
+import 'widget/user_secondary_role_widget.dart';
 
 class OnBoardingDetailsScreen extends ConsumerWidget {
   OnBoardingDetailsScreen({Key? key}) : super(key: key);
@@ -25,6 +26,7 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
     //primary skill
     UserPrimaryRoleWidget(),
     //other skill
+    UserSecondaryRoleWidget(),
     //profile picture
     UserProfilePictureWidget(),
     //cover picture
