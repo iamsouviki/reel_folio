@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reel_folio/onboarding/widget/user_profile_picture_widget.dart';
+import 'package:reel_folio/route/route_path.dart';
 
 import '../util/floating_action_button_widget.dart';
 import '../util/progress_stepper.dart';
@@ -60,11 +61,12 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        if(stepValue > 1){
+                        if (stepValue > 1) {
                           widgetRef.read(onBoardingStepManger.notifier).state =
                               stepValue - 1;
-                        }else{
-                          widgetRef.read(onBoardingStepManger.notifier).state = 1;
+                        } else {
+                          widgetRef.read(onBoardingStepManger.notifier).state =
+                              1;
                         }
                       },
                       icon: const Icon(
@@ -103,7 +105,11 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
             if (stepValue != 9) {
               widgetRef.read(onBoardingStepManger.notifier).state =
                   stepValue + 1;
-            } else {}
+            } else {
+              Navigator.pushReplacementNamed(
+                  context, RoutePath.routeToWelcomeScreen);
+              widgetRef.read(onBoardingStepManger.notifier).state = 1;
+            }
           },
         ),
       ),
