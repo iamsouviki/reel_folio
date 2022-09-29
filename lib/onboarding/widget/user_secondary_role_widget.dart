@@ -16,7 +16,7 @@ class UserSecondaryRoleWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const ScreenTitleWidget(text: 'WHAT IS YOUR OTHER\nSKILLS'),
-          const ScreenSubTitleWidget(text: 'Choose whatever you are good at and have\ndone in past. Pick all that apply'),
+          const ScreenSubTitleWidget(text: 'Choose whatever you are good at and have done in past. Pick all that apply'),
           Container(
             constraints: const BoxConstraints(maxHeight: 60),
             decoration: BoxDecoration(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
 class UserSocialMediaInformationWidget extends StatelessWidget {
   const UserSocialMediaInformationWidget({Key? key}) : super(key: key);
@@ -8,26 +10,8 @@ class UserSocialMediaInformationWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: const [
-        Text(
-          'Where can we find\nyour worK?',
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontFamily: 'GT-America',
-            letterSpacing: -0.1,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        Text(
-          'Share a link so the reelfolio team can review your work (i.e. YouTube, Vimeo, Instagram, LinkedIn, etc.)',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
-          textAlign: TextAlign.center,
-        ),
+        ScreenTitleWidget(text: 'Where can we find\nyour worK?'),
+        ScreenSubTitleWidget(text: 'Share a link so the reelfolio team can review your work (i.e. YouTube, Vimeo, Instagram, LinkedIn, etc.)'),
         TextField(
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,

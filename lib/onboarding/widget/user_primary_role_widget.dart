@@ -15,7 +15,7 @@ class UserPrimaryRoleWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const ScreenTitleWidget(text: 'WHAT IS YOUR PRIMARY\nROLE',),
-          const ScreenSubTitleWidget(text: 'Choose your main title. You only get to pick\none, so what are you known for?'),
+          const ScreenSubTitleWidget(text: 'Choose your main title. You only get to pick one, so what are you known for?'),
           Container(
             constraints: const BoxConstraints(maxHeight: 60),
             decoration: BoxDecoration(
