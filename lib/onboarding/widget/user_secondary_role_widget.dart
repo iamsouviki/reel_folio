@@ -7,7 +7,8 @@ import '../../util/size_config.dart';
 class UserSecondaryRoleWidget extends StatelessWidget {
   UserSecondaryRoleWidget({Key? key}) : super(key: key);
 
-  final ValueNotifier<List<String>> primaryRoleNotifier = ValueNotifier<List<String>>(['']);
+  final ValueNotifier<List<String>> primaryRoleNotifier =
+      ValueNotifier<List<String>>(['']);
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +17,15 @@ class UserSecondaryRoleWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const ScreenTitleWidget(text: 'WHAT IS YOUR OTHER\nSKILLS'),
-          const ScreenSubTitleWidget(text: 'Choose whatever you are good at and have done in past. Pick all that apply'),
+          const ScreenSubTitleWidget(
+              text:
+                  'Choose whatever you are good at and have done in past. Pick all that apply'),
           Container(
             constraints: const BoxConstraints(maxHeight: 60),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(12)),
               border:
-              Border.all(color: const Color(0xFFFFFFFF).withOpacity(0.5)),
+                  Border.all(color: const Color(0xFFFFFFFF).withOpacity(0.5)),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -39,7 +42,6 @@ class UserSecondaryRoleWidget extends StatelessWidget {
                       valueListenable: primaryRoleNotifier,
                       builder: (BuildContext context, List<String> list,
                           Widget? child) {
-
                         return Text(
                           textAlign: TextAlign.left,
                           list.isEmpty
@@ -124,7 +126,8 @@ class _ListWidgetState extends State<ListWidget> {
     'Editor',
   ];
 
-  final ValueNotifier<List<String>> _selectedItem = ValueNotifier<List<String>>(['']);
+  final ValueNotifier<List<String>> _selectedItem =
+      ValueNotifier<List<String>>(['']);
 
   final ValueNotifier _selectedIndex = ValueNotifier<int>(10);
 
@@ -138,10 +141,10 @@ class _ListWidgetState extends State<ListWidget> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ...category.map(
-                  (index) => Flexible(
+              (index) => Flexible(
                 fit: FlexFit.loose,
                 flex: value == category.indexOf(index)
-                //? (dataList[category.indexOf(index)]["items"].length / 3).ceil() ?
+                    //? (dataList[category.indexOf(index)]["items"].length / 3).ceil() ?
                     ? (items.length / 3).ceil()
                     : 1,
                 child: Column(
@@ -185,66 +188,70 @@ class _ListWidgetState extends State<ListWidget> {
                     ),
                     value! == category.indexOf(index)
                         ? Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Wrap(
-                        runSpacing: 20,
-                        spacing: 20,
-                        direction: Axis.horizontal,
-                        alignment: WrapAlignment.spaceBetween,
-                        runAlignment: WrapAlignment.start,
-                        children: [
-                          //...dataList[category.indexOf(index)]["items"]
-                          ...items.map(
-                                (e) => GestureDetector(
-                              onTap: () {
-                                if(_selectedItem.value.contains(e)){
-                                  _selectedItem.value = List.from(_selectedItem.value)..remove(e);
-                                  widget.onValueChanged(_selectedItem.value);
-                                }else {
-                                  _selectedItem.value =
-                                  List.from(_selectedItem.value)
-                                    ..add(e);
-                                  widget.onValueChanged(_selectedItem.value);
-                                }
-                              },
-                              child: ValueListenableBuilder(
-                                valueListenable: _selectedItem,
-                                builder: (BuildContext context, List<String> value,
-                                    Widget? child) {
-                                  print(value.toString());
-                                  return Container(
-                                    height: 40,
-                                    width: screenWidth! / 3,
-                                    decoration: BoxDecoration(
-                                      color: value.contains(e)
-                                          ? Colors.white
-                                          : Colors.black,
-                                      borderRadius:
-                                      const BorderRadius.all(
-                                          Radius.circular(25)),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                      ),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Wrap(
+                              runSpacing: 20,
+                              spacing: 20,
+                              direction: Axis.horizontal,
+                              alignment: WrapAlignment.spaceBetween,
+                              runAlignment: WrapAlignment.start,
+                              children: [
+                                //...dataList[category.indexOf(index)]["items"]
+                                ...items.map(
+                                  (e) => GestureDetector(
+                                    onTap: () {
+                                      if (_selectedItem.value.contains(e)) {
+                                        _selectedItem.value =
+                                            List.from(_selectedItem.value)
+                                              ..remove(e);
+                                        widget.onValueChanged(
+                                            _selectedItem.value);
+                                      } else {
+                                        _selectedItem.value =
+                                            List.from(_selectedItem.value)
+                                              ..add(e);
+                                        widget.onValueChanged(
+                                            _selectedItem.value);
+                                      }
+                                    },
+                                    child: ValueListenableBuilder(
+                                      valueListenable: _selectedItem,
+                                      builder: (BuildContext context,
+                                          List<String> value, Widget? child) {
+                                        print(value.toString());
+                                        return Container(
+                                          height: 40,
+                                          width: screenWidth! / 3,
+                                          decoration: BoxDecoration(
+                                            color: value.contains(e)
+                                                ? Colors.white
+                                                : Colors.black,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(25)),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              e,
+                                              style: TextStyle(
+                                                color: value.contains(e)
+                                                    ? Colors.black
+                                                    : Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                    child: Center(
-                                      child: Text(
-                                        e,
-                                        style: TextStyle(
-                                          color: value.contains(e)
-                                              ? Colors.black
-                                              : Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                                  ),
+                                ),
+                                // ListTile(title:Text(dataList[category.indexOf(index)]["items"].toString()))
+                              ],
                             ),
-                          ),
-                          // ListTile(title:Text(dataList[category.indexOf(index)]["items"].toString()))
-                        ],
-                      ),
-                    )
+                          )
                         : SizedBox(),
                     SizedBox(
                       height: screenWidth! * 15 / 375,
