@@ -12,10 +12,29 @@ class UserPrimaryRoleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ScreenTitleWidget(text: 'WHAT IS YOUR PRIMARY\nROLE',),
-          const ScreenSubTitleWidget(text: 'Choose your main title. You only get to pick one, so what are you known for?'),
+          const AspectRatio(
+            aspectRatio: 375 / 50,
+            child: SizedBox(),
+          ),
+          const ScreenTitleWidget(
+            text: 'WHAT IS YOUR PRIMARY\nROLE',
+            textAlign: TextAlign.center,
+          ),
+          const AspectRatio(
+            aspectRatio: 375 / 60,
+            child: SizedBox(),
+          ),
+          const ScreenSubTitleWidget(
+            text:
+                'Choose your main title. You only get to pick one, so what are you known for?',
+            textAlign: TextAlign.center,
+          ),
+          const AspectRatio(
+            aspectRatio: 375 / 15,
+            child: SizedBox(),
+          ),
           Container(
             constraints: const BoxConstraints(maxHeight: 60),
             decoration: BoxDecoration(
@@ -36,8 +55,8 @@ class UserPrimaryRoleWidget extends StatelessWidget {
                     flex: 2,
                     child: ValueListenableBuilder(
                       valueListenable: primaryRoleNotifier,
-                      builder: (BuildContext context, String value,
-                          Widget? child) {
+                      builder:
+                          (BuildContext context, String value, Widget? child) {
                         return Text(
                           value.isEmpty
                               ? 'i.e. Director, Foley Artist, Producer, \nColorist etc.'

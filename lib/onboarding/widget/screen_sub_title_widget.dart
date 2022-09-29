@@ -4,8 +4,9 @@ import 'package:reel_folio/util/size_config.dart';
 class ScreenSubTitleWidget extends StatelessWidget {
 
   final String text;
+  final TextAlign? textAlign;
 
-  const ScreenSubTitleWidget({Key? key, required this.text}) : super(key: key);
+  const ScreenSubTitleWidget({Key? key, required this.text, this.textAlign}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class ScreenSubTitleWidget extends StatelessWidget {
         color: Colors.white,
       ),
       maxLines: 3,
+      textAlign: textAlign ?? TextAlign.start,
     );
   }
 }

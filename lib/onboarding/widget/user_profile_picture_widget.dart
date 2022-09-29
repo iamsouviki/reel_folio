@@ -16,14 +16,22 @@ class UserProfilePictureWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const ScreenTitleWidget(text: 'ADD A PORTFOLIO\nPICTURE'),
 
-        SizedBox(
-          height: screenWidth! * 10 / 375,
+        const AspectRatio(
+          aspectRatio: 375 / 70,
+          child: SizedBox(),
         ),
-        const ScreenSubTitleWidget(text: 'Show us who you are'),
-        SizedBox(
-          height: screenWidth! * 20 / 375,
+
+        const ScreenTitleWidget(text: 'ADD A PORTFOLIO\nPICTURE',textAlign: TextAlign.center,),
+
+        const AspectRatio(
+          aspectRatio: 375 / 10,
+          child: SizedBox(),
+        ),
+        const ScreenSubTitleWidget(text: 'Show us who you are',textAlign: TextAlign.center,),
+        const AspectRatio(
+          aspectRatio: 375 / 40,
+          child: SizedBox(),
         ),
         ValueListenableBuilder(
           valueListenable: _imageNotifier,
@@ -46,8 +54,9 @@ class UserProfilePictureWidget extends StatelessWidget {
             );
           },
         ),
-        SizedBox(
-          height: screenWidth! * 40 / 375,
+        const AspectRatio(
+          aspectRatio: 375 / 70,
+          child: SizedBox(),
         ),
         AddProfileAssetWidget(
           onUploadImage: (file) {

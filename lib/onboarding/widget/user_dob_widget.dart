@@ -10,7 +10,15 @@ class UserDOBWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const AspectRatio(
+          aspectRatio: 375 / 70,
+          child: SizedBox(),
+        ),
         const ScreenTitleWidget(text: 'BIRTHDAY'),
+        const AspectRatio(
+          aspectRatio: 375 / 80,
+          child: SizedBox(),
+        ),
         SizedBox(
           height: screenHeight! / 3,
           child: CupertinoTheme(

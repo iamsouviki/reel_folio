@@ -19,9 +19,9 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
 
   final List<Widget> _screens = [
     //name
-    const UserNameWidget(),
+    UserNameWidget(),
     //phone
-    const UserContactNumberWidget(),
+    UserContactNumberWidget(),
     //pin
     //primary skill
     UserPrimaryRoleWidget(),
@@ -81,10 +81,6 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
                       ),
                     )
                   ],
-                ),
-                const AspectRatio(
-                  aspectRatio: 375 / 150,
-                  child: SizedBox(),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(

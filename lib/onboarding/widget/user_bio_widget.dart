@@ -8,10 +8,22 @@ class UserBioWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: const [
-        ScreenTitleWidget(text: 'ADD YOUR BIO'),
-        ScreenSubTitleWidget(text: 'Show us Who you are'),
+        AspectRatio(
+          aspectRatio: 375 / 70,
+          child: SizedBox(),
+        ),
+        ScreenTitleWidget(text: 'ADD YOUR BIO',textAlign: TextAlign.center,),
+        AspectRatio(
+          aspectRatio: 375 / 15,
+          child: SizedBox(),
+        ),
+        ScreenSubTitleWidget(text: 'Show us Who you are',textAlign: TextAlign.center,),
+        AspectRatio(
+          aspectRatio: 375 / 35,
+          child: SizedBox(),
+        ),
         TextField(
           keyboardType: TextInputType.multiline,
           textInputAction: TextInputAction.newline,

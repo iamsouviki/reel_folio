@@ -18,13 +18,19 @@ class UserCoverImageWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const ScreenTitleWidget(text: 'UPLOAD A COVER PHOTO'),
-        SizedBox(
-          height: screenWidth! * 10 / 375,
+        const AspectRatio(
+          aspectRatio: 375 / 70,
+          child: SizedBox(),
         ),
-        const ScreenSubTitleWidget(text: 'Show the world your work'),
-        SizedBox(
-          height: screenWidth! * 20 / 375,
+        const ScreenTitleWidget(text: 'UPLOAD A COVER PHOTO',textAlign: TextAlign.center,),
+        const AspectRatio(
+          aspectRatio: 375 / 10,
+          child: SizedBox(),
+        ),
+        const ScreenSubTitleWidget(text: 'Show the world your work', textAlign: TextAlign.center,),
+        const AspectRatio(
+          aspectRatio: 375 / 40,
+          child: SizedBox(),
         ),
         ValueListenableBuilder(
           valueListenable: _imageNotifier,
@@ -45,8 +51,9 @@ class UserCoverImageWidget extends StatelessWidget {
             );
           },
         ),
-        SizedBox(
-          height: screenWidth! * 40 / 375,
+        const AspectRatio(
+          aspectRatio: 375 / 70,
+          child: SizedBox(),
         ),
         AddProfileAssetWidget(
           onUploadImage: (file) {

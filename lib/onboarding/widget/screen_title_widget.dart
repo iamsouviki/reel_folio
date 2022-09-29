@@ -4,8 +4,9 @@ import 'package:reel_folio/util/size_config.dart';
 class ScreenTitleWidget extends StatelessWidget {
 
   final String text;
+  final TextAlign? textAlign;
 
-  const ScreenTitleWidget({Key? key, required this.text,}) : super(key: key);
+  const ScreenTitleWidget({Key? key, required this.text, this.textAlign}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class ScreenTitleWidget extends StatelessWidget {
         fontFamily: 'GT-America-Compressed-Regular',
         letterSpacing: -0.1,
       ),
+      textAlign: textAlign ?? TextAlign.start,
     );
   }
 }
