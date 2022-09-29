@@ -13,7 +13,7 @@ abstract class ReelFolioRoute {
     switch (settings.name) {
 
       case RoutePath.routeToRequestOnBoardingScreen:
-        _currentWidget = const OnBoardingRequestScreen();
+        _currentWidget = OnBoardingRequestScreen();
         break;
 
       case RoutePath.routeToOnBoardingDetailsScreen:

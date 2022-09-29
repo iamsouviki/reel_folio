@@ -11,11 +11,11 @@ import 'widget/user_details_widget.dart';
 import 'widget/user_social_media_information_widget.dart';
 
 class OnBoardingRequestScreen extends ConsumerWidget {
-  const OnBoardingRequestScreen({
+  OnBoardingRequestScreen({
     Key? key,
   }) : super(key: key);
 
-  final List<Widget> _screens = const [
+  final List<Widget> _screens = [
     UserDetailsWidget(),
     UserSocialMediaInformationWidget(),
   ];
@@ -63,10 +63,6 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                       ),
                     )
                   ],
-                ),
-                const AspectRatio(
-                  aspectRatio: 375 / 150,
-                  child: SizedBox(),
                 ),
                 _screens[stepValue - 1],
               ],
