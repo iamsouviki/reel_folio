@@ -64,7 +64,12 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                     )
                   ],
                 ),
-                _screens[stepValue - 1],
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: screenWidth! * 35 / 375,
+                  ),
+                  child: _screens[stepValue - 1],
+                ),
               ],
             ),
           ),
@@ -75,7 +80,8 @@ class OnBoardingRequestScreen extends ConsumerWidget {
               widgetRef.read(onBoardingStepManger.notifier).state =
                   stepValue + 1;
             } else {
-              Navigator.pushReplacementNamed(context, RoutePath.routeToOnBoardingDetailsScreen);
+              Navigator.pushReplacementNamed(
+                  context, RoutePath.routeToOnBoardingDetailsScreen);
               widgetRef.read(onBoardingStepManger.notifier).state = 1;
             }
           },

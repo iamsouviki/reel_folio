@@ -34,6 +34,7 @@ class UserPinWidget extends StatelessWidget {
         OtpField(
           numberOfFields: 4,
           obscureText: true,
+          cursorColor: Colors.grey,
           textStyle: TextStyle(
             color: Colors.white,
             fontSize: screenWidth! * 20 / 375,
