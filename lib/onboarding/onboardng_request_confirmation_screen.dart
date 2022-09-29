@@ -3,6 +3,8 @@ import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
+import '../route/route_path.dart';
+
 class OnBoardingRequestConfirmationScreen extends StatelessWidget {
   const OnBoardingRequestConfirmationScreen({
     Key? key,
@@ -54,7 +56,34 @@ class OnBoardingRequestConfirmationScreen extends StatelessWidget {
                   ),
                   maxLines: 3,
                   textAlign: TextAlign.center,
-                )
+                ),
+                const AspectRatio(
+                  aspectRatio: 373 / 80,
+                  child: SizedBox(),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RoutePath.routeToOnBoardingDetailsScreen,
+                    );
+                  },
+                  child: Container(
+                    color: Colors.white,
+                    child: const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Center(
+                        child: Text(
+                          'For testing Purpose',
+                          style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

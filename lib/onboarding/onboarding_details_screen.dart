@@ -60,8 +60,12 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        widgetRef.read(onBoardingStepManger.notifier).state =
-                            stepValue - 1;
+                        if(stepValue > 1){
+                          widgetRef.read(onBoardingStepManger.notifier).state =
+                              stepValue - 1;
+                        }else{
+                          widgetRef.read(onBoardingStepManger.notifier).state = 1;
+                        }
                       },
                       icon: const Icon(
                         Icons.arrow_back,
