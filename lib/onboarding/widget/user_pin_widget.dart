@@ -24,7 +24,7 @@ class UserPinWidget extends StatelessWidget {
         ),
         const ScreenSubTitleWidget(
           text:
-          'Type the four-digit code that you recieved via text.',
+          'Type the four-digit code that you received via text.',
           textAlign: TextAlign.center,
         ),
         SizedBox(
