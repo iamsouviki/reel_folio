@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/route/route_path.dart';
 import '../onboarding/onboarding_details_screen.dart';
 import '../onboarding/onboarding_request_screen.dart';
@@ -18,6 +19,10 @@ abstract class ReelFolioRoute {
 
       case RoutePath.routeToOnBoardingDetailsScreen:
         _currentWidget = OnBoardingDetailsScreen();
+        break;
+
+      case RoutePath.routeToOnBoardingConfirmationScreen:
+        _currentWidget = const OnBoardingRequestConfirmationScreen();
         break;
 
       default:

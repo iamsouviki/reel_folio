@@ -81,7 +81,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                   stepValue + 1;
             } else {
               Navigator.pushReplacementNamed(
-                  context, RoutePath.routeToOnBoardingDetailsScreen);
+                  context, RoutePath.routeToOnBoardingConfirmationScreen);
               widgetRef.read(onBoardingStepManger.notifier).state = 1;
             }
           },
