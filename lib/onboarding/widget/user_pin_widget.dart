@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../util/size_config.dart';
+import '../../widget/otp_field.dart';
 import 'screen_sub_title_widget.dart';
 import 'screen_title_widget.dart';
 
@@ -30,29 +31,23 @@ class UserPinWidget extends StatelessWidget {
         SizedBox(
           height: screenWidth! * 60 / 375,
         ),
-        TextField(
-          controller: _pinController,
-          keyboardType: TextInputType.name,
-          textInputAction: TextInputAction.next,
-          cursorColor: const Color(0xFF474747),
-          style: TextStyle(
+        OtpField(
+          numberOfFields: 4,
+          obscureText: true,
+          textStyle: TextStyle(
             color: Colors.white,
-            fontWeight: FontWeight.w400,
-            fontSize: screenWidth! * 22 / 375,
+            fontSize: screenWidth! * 20 / 375,
           ),
-          decoration: InputDecoration(
-            hintText: 'first last',
-            hintStyle: TextStyle(
-              color: const Color(0xFF474747),
-              fontWeight: FontWeight.w400,
-              fontSize: screenWidth! * 22 / 375,
-            ),
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: Color(0xFF474747),
-              ),
-            ),
-          ),
+          //set to true to show as box or false to show as dash
+          showFieldAsBox: true,
+          //runs when a code is typed in
+          onCodeChanged: (String code) {
+            //handle validation or checks here
+          },
+
+          onSubmit: (String verificationCode){
+
+          }, // end onSubmit
         ),
       ],
     );
