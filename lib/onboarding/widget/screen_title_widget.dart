@@ -15,7 +15,7 @@ class ScreenTitleWidget extends StatelessWidget {
         fontSize: screenWidth! * 35 / 375,
         fontWeight: FontWeight.w700,
         color: Colors.white,
-        fontFamily: 'GT-America-Compressed-Bold',
+        fontFamily: 'GT-America-Compressed-Regular',
         letterSpacing: -0.1,
       ),
     );

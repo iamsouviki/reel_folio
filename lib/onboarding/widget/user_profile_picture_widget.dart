@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:reel_folio/onboarding/widget/add_profile_asset_widget.dart';
+import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 class UserProfilePictureWidget extends StatelessWidget {
@@ -14,17 +15,8 @@ class UserProfilePictureWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          'ADD A PORTFOLIO\nPICTURE',
-          style: TextStyle(
-            fontSize: screenWidth! * 30 / 375,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontFamily: 'GT-America',
-            letterSpacing: -0.1,
-          ),
-          textAlign: TextAlign.center,
-        ),
+        const ScreenTitleWidget(text: 'ADD A PORTFOLIO\nPICTURE'),
+
         SizedBox(
           height: screenWidth! * 10 / 375,
         ),

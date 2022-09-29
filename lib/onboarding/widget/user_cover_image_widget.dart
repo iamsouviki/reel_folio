@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
 import '../../util/size_config.dart';
 import 'add_profile_asset_widget.dart';
@@ -16,17 +17,7 @@ class UserCoverImageWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          'UPLOAD A COVER PHOTO',
-          style: TextStyle(
-            fontSize: screenWidth! * 30 / 375,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontFamily: 'GT-America',
-            letterSpacing: -0.1,
-          ),
-          textAlign: TextAlign.center,
-        ),
+        const ScreenTitleWidget(text: 'UPLOAD A COVER PHOTO'),
         SizedBox(
           height: screenWidth! * 10 / 375,
         ),

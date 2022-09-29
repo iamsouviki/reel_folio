@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 class UserDOBWidget extends StatelessWidget {
@@ -9,16 +10,7 @@ class UserDOBWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
-          'BIRTHDAY',
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontFamily: 'GT-America',
-            letterSpacing: -0.1,
-          ),
-        ),
+        const ScreenTitleWidget(text: 'BIRTHDAY'),
         SizedBox(
           height: screenHeight! / 3,
           child: CupertinoTheme(
