@@ -11,6 +11,7 @@ import 'widget/user_contact_number_widget.dart';
 import 'widget/user_cover_image_widget.dart';
 import 'widget/user_dob_widget.dart';
 import 'widget/user_name_widget.dart';
+import 'widget/user_pin_widget.dart';
 import 'widget/user_primary_role_widget.dart';
 import 'widget/user_secondary_role_widget.dart';
 
@@ -23,6 +24,7 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
     //phone
     UserContactNumberWidget(),
     //pin
+    UserPinWidget(),
     //primary skill
     UserPrimaryRoleWidget(),
     //other skill
