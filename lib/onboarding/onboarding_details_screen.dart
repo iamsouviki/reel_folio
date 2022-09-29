@@ -34,7 +34,7 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
     //birthday
     const UserDOBWidget(),
     //bio
-    const UserBioWidget(),
+    UserBioWidget(),
   ];
 
   @override

@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
+import 'package:reel_folio/util/size_config.dart';
 
 class UserBioWidget extends StatelessWidget {
-  const UserBioWidget({Key? key}) : super(key: key);
+  UserBioWidget({Key? key}) : super(key: key);
+
+  final _bioController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
-        AspectRatio(
+      children: [
+        const AspectRatio(
           aspectRatio: 375 / 70,
           child: SizedBox(),
         ),
-        ScreenTitleWidget(text: 'ADD YOUR BIO',textAlign: TextAlign.center,),
-        AspectRatio(
+        const ScreenTitleWidget(text: 'ADD YOUR BIO',textAlign: TextAlign.center,),
+        const AspectRatio(
           aspectRatio: 375 / 15,
           child: SizedBox(),
         ),
-        ScreenSubTitleWidget(text: 'Show us Who you are',textAlign: TextAlign.center,),
-        AspectRatio(
+        const ScreenSubTitleWidget(text: 'Show us Who you are',textAlign: TextAlign.center,),
+        const AspectRatio(
           aspectRatio: 375 / 35,
           child: SizedBox(),
         ),
         TextField(
+          controller: _bioController,
           keyboardType: TextInputType.multiline,
           textInputAction: TextInputAction.newline,
           maxLines: null,
@@ -33,7 +37,7 @@ class UserBioWidget extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w400,
-            fontSize: 18,
+            fontSize: screenWidth! * 18 / 375,
           ),
           decoration: InputDecoration(
             hintMaxLines: 6,
@@ -42,15 +46,15 @@ class UserBioWidget extends StatelessWidget {
             hintStyle: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w400,
-              fontSize: 16,
+              fontSize: screenWidth! * 16 / 375,
             ),
             enabled: true,
-            enabledBorder: OutlineInputBorder(
+            enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: Color(0xFF474747),
               ),
             ),
-            focusedBorder: OutlineInputBorder(
+            focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: Color(0xFF474747),
               ),
