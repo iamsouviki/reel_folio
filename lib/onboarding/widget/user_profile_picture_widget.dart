@@ -47,9 +47,9 @@ class UserProfilePictureWidget extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     )
-                  : const BoxDecoration(
+                  : BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.red,
+                      border: Border.all(color: Colors.white),
                     ),
             );
           },

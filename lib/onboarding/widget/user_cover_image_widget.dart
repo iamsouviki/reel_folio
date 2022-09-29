@@ -45,8 +45,8 @@ class UserCoverImageWidget extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               )
-                  : const BoxDecoration(
-                color: Colors.red,
+                  : BoxDecoration(
+                border: Border.all(color: Colors.white),
               ),
             );
           },
