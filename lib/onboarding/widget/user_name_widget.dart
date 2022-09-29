@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
 class UserNameWidget extends StatelessWidget {
   const UserNameWidget({Key? key}) : super(key: key);
@@ -8,16 +9,7 @@ class UserNameWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        Text(
-          'USERNAME',
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontFamily: 'GT-America',
-            letterSpacing: -0.1,
-          ),
-        ),
+        ScreenTitleWidget(text: 'USERNAME'),
         Text(
           'Create a username. You will be unable to change this. Choose wisely',
           style: TextStyle(

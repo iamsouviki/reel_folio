@@ -67,9 +67,9 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   fonts:
-    - family: GT-America
+    - family: GT-America-Compressed-Regular
       fonts:
-        - asset: fonts/GT-America-Regular.ttf
+        - asset: fonts/GT-America-Compressed-Regular.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
