@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
+import 'screen_sub_title_widget.dart';
+
 class UserContactNumberWidget extends StatelessWidget {
   const UserContactNumberWidget({Key? key}) : super(key: key);
 
@@ -10,13 +12,9 @@ class UserContactNumberWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         ScreenTitleWidget(text: 'PHONE'),
-        Text(
-          'Create a username. You will be unable to change this. Choose wisely',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
+        ScreenSubTitleWidget(
+          text:
+              'Please list your cell phone number. It will only be used for authentication purposes.',
         ),
         TextField(
           keyboardType: TextInputType.name,
@@ -36,7 +34,7 @@ class UserContactNumberWidget extends StatelessWidget {
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color:  Color(0xFF474747),
+                color: Color(0xFF474747),
               ),
             ),
           ),

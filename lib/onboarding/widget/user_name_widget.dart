@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
 class UserNameWidget extends StatelessWidget {
@@ -10,13 +11,9 @@ class UserNameWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         ScreenTitleWidget(text: 'USERNAME'),
-        Text(
-          'Create a username. You will be unable to change this. Choose wisely',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
+        ScreenSubTitleWidget(
+          text:
+              'Create a username. You will be unable to change this. Choose wisely',
         ),
         TextField(
           keyboardType: TextInputType.name,
@@ -36,7 +33,7 @@ class UserNameWidget extends StatelessWidget {
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color:  Color(0xFF474747),
+                color: Color(0xFF474747),
               ),
             ),
           ),
@@ -45,4 +42,3 @@ class UserNameWidget extends StatelessWidget {
     );
   }
 }
-

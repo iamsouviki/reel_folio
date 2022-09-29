@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
@@ -14,15 +15,7 @@ class UserPrimaryRoleWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const ScreenTitleWidget(text: 'WHAT IS YOUR PRIMARY\nROLE',),
-          const Text(
-            'Choose your main title. You only get to pick\none, so what are you known for?',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
-            ),
-            textAlign: TextAlign.center,
-          ),
+          const ScreenSubTitleWidget(text: 'Choose your main title. You only get to pick\none, so what are you known for?'),
           Container(
             constraints: const BoxConstraints(maxHeight: 60),
             decoration: BoxDecoration(

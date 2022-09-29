@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
 class UserBioWidget extends StatelessWidget {
@@ -10,14 +11,7 @@ class UserBioWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         ScreenTitleWidget(text: 'ADD YOUR BIO'),
-        Text(
-          'Show us Who you are',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
-        ),
+        ScreenSubTitleWidget(text: 'Show us Who you are'),
         TextField(
           keyboardType: TextInputType.multiline,
           textInputAction: TextInputAction.newline,

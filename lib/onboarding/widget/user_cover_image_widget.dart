@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
 import '../../util/size_config.dart';
@@ -21,14 +22,7 @@ class UserCoverImageWidget extends StatelessWidget {
         SizedBox(
           height: screenWidth! * 10 / 375,
         ),
-        const Text(
-          'Show the world your work',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
-        ),
+        const ScreenSubTitleWidget(text: 'Show the world your work'),
         SizedBox(
           height: screenWidth! * 20 / 375,
         ),

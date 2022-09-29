@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
 class UserDetailsWidget extends StatelessWidget {
   const UserDetailsWidget({Key? key}) : super(key: key);
@@ -8,16 +9,7 @@ class UserDetailsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: const [
-        Text(
-          'Your Name',
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontFamily: 'GT-America',
-            letterSpacing: -0.1,
-          ),
-        ),
+        ScreenTitleWidget(text: 'YOUR NAME'),
         TextField(
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,
@@ -41,16 +33,7 @@ class UserDetailsWidget extends StatelessWidget {
             ),
           ),
         ),
-        Text(
-          'Your Email',
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontFamily: 'GT-America',
-            letterSpacing: -0.1,
-          ),
-        ),
+        ScreenTitleWidget(text: 'YOUR EMAIL'),
         TextField(
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.done,

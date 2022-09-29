@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 
 import '../../util/size_config.dart';
@@ -15,15 +16,7 @@ class UserSecondaryRoleWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const ScreenTitleWidget(text: 'WHAT IS YOUR OTHER\nSKILLS'),
-          const Text(
-            'Choose whatever you are good at and have\ndone in past. Pick all that apply',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
-            ),
-            textAlign: TextAlign.center,
-          ),
+          const ScreenSubTitleWidget(text: 'Choose whatever you are good at and have\ndone in past. Pick all that apply'),
           Container(
             constraints: const BoxConstraints(maxHeight: 60),
             decoration: BoxDecoration(
