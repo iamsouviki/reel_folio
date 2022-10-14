@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
-import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_sub_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-final primaryRoleManager = StateProvider<String>((ref) => '');
-final primaryRole = StateProvider<String>((ref) => '');
+import '../../util/reel_folio_input_decoration.dart';
+import '../manager/role_selection_manager.dart';
+
+
 
 class UserPrimaryRoleWidget extends StatelessWidget {
   UserPrimaryRoleWidget({Key? key}) : super(key: key);
@@ -337,23 +339,4 @@ class ListWidgetState extends ConsumerState {
   }
 }
 
-InputDecoration textInputDecoration({
-  required BuildContext context,
-  required String hintText,
-}) {
-  var width = MediaQuery.of(context).size.width;
-  var border = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(width * 14 / 375),
-    borderSide: const BorderSide(width: 1.2, color: Colors.white),
-  );
-  return InputDecoration(
-    contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
-    isDense: true,
-    hintText: hintText,
-    hintStyle: TextStyle(color: Colors.white, fontSize: width * 14 / 375),
-    counterText: '',
-    focusedBorder: border,
-    enabledBorder: border,
-    border: border,
-  );
-}
+

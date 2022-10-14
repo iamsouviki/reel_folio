@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_title_widget.dart';
 
 import '../../util/size_config.dart';
-import 'screen_sub_title_widget.dart';
+import 'tools/screen_sub_title_widget.dart';
 
 class UserContactNumberWidget extends StatelessWidget {
 

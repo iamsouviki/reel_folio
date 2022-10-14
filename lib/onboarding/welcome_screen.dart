@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../util/size_config.dart';
-import 'widget/screen_title_widget.dart';
+import 'widget/tools/screen_title_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);

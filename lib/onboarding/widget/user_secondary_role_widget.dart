@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
-import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_sub_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_title_widget.dart';
 
 import '../../util/size_config.dart';
+import 'tools/text_cancel_button_widget.dart';
 
 class UserSecondaryRoleWidget extends StatelessWidget {
   UserSecondaryRoleWidget({Key? key}) : super(key: key);
@@ -90,31 +91,7 @@ class UserSecondaryRoleWidget extends StatelessWidget {
   }
 }
 
-class TextCancelButtonWidget extends StatelessWidget {
-  const TextCancelButtonWidget({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: screenWidth! * 28 / 375,
-      width: screenWidth! * 28 / 375,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: Colors.white,
-          width: 2,
-        ),
-      ),
-      child: Transform.rotate(
-        angle: 2.35,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
 
 class ListWidget extends StatefulWidget {
   final ValueChanged<List<String>> onValueChanged;

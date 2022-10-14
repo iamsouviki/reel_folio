@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../util/size_config.dart';
 import '../../widget/otp_field.dart';
-import 'screen_sub_title_widget.dart';
-import 'screen_title_widget.dart';
+import 'tools/screen_sub_title_widget.dart';
+import 'tools/screen_title_widget.dart';
 
 class UserPinWidget extends StatelessWidget {
   UserPinWidget({Key? key}) : super(key: key);

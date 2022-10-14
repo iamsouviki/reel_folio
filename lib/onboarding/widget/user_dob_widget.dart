@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 class UserDOBWidget extends StatelessWidget {

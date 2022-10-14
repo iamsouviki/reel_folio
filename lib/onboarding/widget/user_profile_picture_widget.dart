@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:reel_folio/onboarding/widget/add_profile_asset_widget.dart';
-import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
-import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/add_profile_asset_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_sub_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 class UserProfilePictureWidget extends StatelessWidget {

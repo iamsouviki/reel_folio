@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
-import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_sub_title_widget.dart';
+import 'package:reel_folio/onboarding/widget/tools/screen_title_widget.dart';
 
 import '../../util/size_config.dart';
-import 'add_profile_asset_widget.dart';
+import 'tools/add_profile_asset_widget.dart';
 
 
 class UserCoverImageWidget extends StatelessWidget {
