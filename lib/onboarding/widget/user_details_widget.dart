@@ -30,7 +30,7 @@ class UserDetailsWidget extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w400,
-            fontSize: screenWidth! * 22/ 375,
+            fontSize: screenWidth! * 22 / 375,
           ),
           decoration: InputDecoration(
             hintText: 'first last',
@@ -41,7 +41,7 @@ class UserDetailsWidget extends StatelessWidget {
             ),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
-                color:  Color(0xFF474747),
+                color: Color(0xFF474747),
               ),
             ),
           ),
@@ -74,7 +74,7 @@ class UserDetailsWidget extends StatelessWidget {
             ),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
-                color:  Color(0xFF474747),
+                color: Color(0xFF474747),
               ),
             ),
           ),
