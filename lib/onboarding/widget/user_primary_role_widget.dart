@@ -91,25 +91,21 @@ class UserPrimaryRoleWidget extends StatelessWidget {
                 //controller: firstNameController,
                 //validator: validator,
                 controller: controller,
-                cursorColor: Colors.black,
+                cursorColor: Colors.white,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.name,
-                maxLines: 2,
+                maxLines: text.isNotEmpty ? 1 : 2,
+                textAlignVertical: TextAlignVertical.center,
+                textAlign: TextAlign.justify,
                 decoration: textInputDecoration(
                   context: context,
                   hintText:
                       'i.e. Director, Foley Artist, Producer, \nColorist etc.',
                 ).copyWith(
-                  suffixIconConstraints: const BoxConstraints(
-                    minHeight: 12,
-                    minWidth: 12,
-                    maxHeight: 20,
-                    maxWidth: 20,
-                  ),
                   suffix: text.isNotEmpty
                       ? GestureDetector(
                           onTap: () {
@@ -117,11 +113,16 @@ class UserPrimaryRoleWidget extends StatelessWidget {
                             ref.read(primaryRole.notifier).state = '';
                             controller.text = '';
                           },
-                          child: const TextCancelButtonWidget())
+                          child: const TextCancelButtonWidget(),
+                        )
                       : const SizedBox(),
                 ),
-                onChanged: (val) =>
-                    ref.read(primaryRoleManager.notifier).state = val,
+                onChanged: (val) {
+                  ref.read(primaryRoleManager.notifier).state = val;
+                  if(val.isEmpty){
+                    ref.read(primaryRole.notifier).state = '';
+                  }
+                },
               );
             },
           ),
@@ -144,26 +145,21 @@ class TextCancelButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: IntrinsicHeight(
-        child: Container(
-          /*height: screenWidth! * 28 / 375,
-          width: screenWidth! * 28 / 375,*/
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.white,
-              width: 2,
-            ),
-          ),
-          child: Transform.rotate(
-            angle: 2.35,
-            child: const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-          ),
+    return Container(
+      height: screenWidth! * 22 / 375,
+      width: screenWidth! * 22 / 375,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: Colors.white,
+        ),
+      ),
+      child: Transform.rotate(
+        angle: 2.35,
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 15,
         ),
       ),
     );
@@ -240,8 +236,8 @@ class ListWidgetState extends ConsumerState {
                                 color: ref.watch(primaryRole) == e
                                     ? Colors.white
                                     : Colors.black,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(25)),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(25)),
                                 border: Border.all(
                                   color: Colors.white,
                                 ),
@@ -322,12 +318,16 @@ class ListWidgetState extends ConsumerState {
                                 //...dataList[category.indexOf(index)]["items"]
                                 ...items.map(
                                   (e) => Consumer(
-                                    builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                                    builder: (BuildContext context,
+                                        WidgetRef ref, Widget? child) {
                                       return GestureDetector(
                                         onTap: () {
-                                          ref.read(primaryRole.notifier).state = e;
+                                          ref.read(primaryRole.notifier).state =
+                                              e;
                                           //widget.onValueChanged(e);
-                                          ref.read(primaryRoleManager.notifier).state = e;
+                                          ref
+                                              .read(primaryRoleManager.notifier)
+                                              .state = e;
                                         },
                                         child: Container(
                                           height: 40,
@@ -337,8 +337,8 @@ class ListWidgetState extends ConsumerState {
                                                 ? Colors.white
                                                 : Colors.black,
                                             borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(25)),
+                                                const BorderRadius.all(
+                                                    Radius.circular(25)),
                                             border: Border.all(
                                               color: Colors.white,
                                             ),
@@ -347,9 +347,10 @@ class ListWidgetState extends ConsumerState {
                                             child: Text(
                                               e,
                                               style: TextStyle(
-                                                color: ref.watch(primaryRole) == e
-                                                    ? Colors.black
-                                                    : Colors.white,
+                                                color:
+                                                    ref.watch(primaryRole) == e
+                                                        ? Colors.black
+                                                        : Colors.white,
                                               ),
                                             ),
                                           ),
@@ -387,7 +388,7 @@ InputDecoration textInputDecoration({
     borderSide: const BorderSide(width: 1.2, color: Colors.white),
   );
   return InputDecoration(
-    contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+    contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
     isDense: true,
     hintText: hintText,
     hintStyle: TextStyle(color: Colors.white, fontSize: width * 14 / 375),
