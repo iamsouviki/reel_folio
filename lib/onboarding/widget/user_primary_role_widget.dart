@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reel_folio/onboarding/widget/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
+
+final primaryRoleManager = StateProvider<String>((ref) => '');
+final primaryRole = StateProvider<String>((ref) => '');
 
 class UserPrimaryRoleWidget extends StatelessWidget {
   UserPrimaryRoleWidget({Key? key}) : super(key: key);
@@ -35,7 +39,7 @@ class UserPrimaryRoleWidget extends StatelessWidget {
             aspectRatio: 375 / 15,
             child: SizedBox(),
           ),
-          Container(
+          /*Container(
             constraints: const BoxConstraints(maxHeight: 60),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(12)),
@@ -75,15 +79,60 @@ class UserPrimaryRoleWidget extends StatelessWidget {
                 ],
               ),
             ),
+          ),*/
+          Consumer(
+            builder: (BuildContext context, WidgetRef ref, Widget? child) {
+              String text = ref.watch(primaryRoleManager);
+              TextEditingController controller = TextEditingController();
+              controller.text = text;
+              controller.selection =
+                  TextSelection.fromPosition(TextPosition(offset: text.length));
+              return TextFormField(
+                //controller: firstNameController,
+                //validator: validator,
+                controller: controller,
+                cursorColor: Colors.black,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.name,
+                maxLines: 2,
+                decoration: textInputDecoration(
+                  context: context,
+                  hintText:
+                      'i.e. Director, Foley Artist, Producer, \nColorist etc.',
+                ).copyWith(
+                  suffixIconConstraints: const BoxConstraints(
+                    minHeight: 12,
+                    minWidth: 12,
+                    maxHeight: 20,
+                    maxWidth: 20,
+                  ),
+                  suffix: text.isNotEmpty
+                      ? GestureDetector(
+                          onTap: () {
+                            ref.read(primaryRoleManager.notifier).state = '';
+                            ref.read(primaryRole.notifier).state = '';
+                            controller.text = '';
+                          },
+                          child: const TextCancelButtonWidget())
+                      : const SizedBox(),
+                ),
+                onChanged: (val) =>
+                    ref.read(primaryRoleManager.notifier).state = val,
+              );
+            },
           ),
           SizedBox(
             height: screenWidth! * 20 / 375,
           ),
-          ListWidget(
-            onValueChanged: (val) {
+          const ListWidget(
+              /*onValueChanged: (val) {
               primaryRoleNotifier.value = val;
-            },
-          ),
+            },*/
+              ),
         ],
       ),
     );
@@ -95,57 +144,66 @@ class TextCancelButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: screenWidth! * 28 / 375,
-      width: screenWidth! * 28 / 375,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: Colors.white,
-          width: 2,
-        ),
-      ),
-      child: Transform.rotate(
-        angle: 2.35,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: IntrinsicHeight(
+        child: Container(
+          /*height: screenWidth! * 28 / 375,
+          width: screenWidth! * 28 / 375,*/
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.white,
+              width: 2,
+            ),
+          ),
+          child: Transform.rotate(
+            angle: 2.35,
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );
   }
 }
 
-class ListWidget extends StatefulWidget {
-  final ValueChanged<String> onValueChanged;
+class ListWidget extends ConsumerStatefulWidget {
+  //final ValueChanged<String> onValueChanged;
 
-  const ListWidget({Key? key, required this.onValueChanged}) : super(key: key);
+  const ListWidget({Key? key}) : super(key: key);
 
   @override
-  State<ListWidget> createState() => _ListWidgetState();
+  ListWidgetState createState() => ListWidgetState();
 }
 
-class _ListWidgetState extends State<ListWidget> {
+class ListWidgetState extends ConsumerState {
   List<String> category = [
     'Directoral',
-    'Production',
+    /* 'Production',
     'Cast',
-    'Sound',
+    'Sound',*/
   ];
 
-  List<dynamic> items = [
+  List<String> items = [
     'Director',
     'Producer',
     'Casting Assistant',
     'Editor',
+    'Assistant Director',
+    'Sound Director',
   ];
 
-  final ValueNotifier _selectedItem = ValueNotifier<String>('');
+  //final ValueNotifier _selectedItem = ValueNotifier<String>('');
 
   final ValueNotifier _selectedIndex = ValueNotifier<int>(10);
 
   @override
   Widget build(BuildContext context) {
+    var text = ref.watch(primaryRoleManager);
+
     return ValueListenableBuilder(
       valueListenable: _selectedIndex,
       builder: (BuildContext context, value, Widget? child) {
@@ -153,6 +211,58 @@ class _ListWidgetState extends State<ListWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            if (text.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Wrap(
+                  runSpacing: 20,
+                  spacing: 20,
+                  direction: Axis.horizontal,
+                  alignment: WrapAlignment.spaceBetween,
+                  runAlignment: WrapAlignment.start,
+                  children: [
+                    //...dataList[category.indexOf(index)]["items"]
+                    ...items
+                        .where((element) => element.contains(text))
+                        .toList()
+                        .map(
+                          (e) => GestureDetector(
+                            onTap: () {
+                              //_selectedItem.value = e;
+                              //widget.onValueChanged(e);
+                              ref.read(primaryRole.notifier).state = e;
+                              ref.read(primaryRoleManager.notifier).state = e;
+                            },
+                            child: Container(
+                              height: 40,
+                              width: screenWidth! / 3,
+                              decoration: BoxDecoration(
+                                color: ref.watch(primaryRole) == e
+                                    ? Colors.white
+                                    : Colors.black,
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(25)),
+                                border: Border.all(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  e,
+                                  style: TextStyle(
+                                    color: ref.watch(primaryRole) == e
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                    // ListTile(title:Text(dataList[category.indexOf(index)]["items"].toString()))
+                  ],
+                ),
+              ),
             ...category.map(
               (index) => Flexible(
                 fit: FlexFit.loose,
@@ -211,25 +321,24 @@ class _ListWidgetState extends State<ListWidget> {
                               children: [
                                 //...dataList[category.indexOf(index)]["items"]
                                 ...items.map(
-                                  (e) => GestureDetector(
-                                    onTap: () {
-                                      _selectedItem.value = e;
-                                      widget.onValueChanged(e);
-                                    },
-                                    child: ValueListenableBuilder(
-                                      valueListenable: _selectedItem,
-                                      builder: (BuildContext context, value,
-                                          Widget? child) {
-                                        return Container(
+                                  (e) => Consumer(
+                                    builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          ref.read(primaryRole.notifier).state = e;
+                                          //widget.onValueChanged(e);
+                                          ref.read(primaryRoleManager.notifier).state = e;
+                                        },
+                                        child: Container(
                                           height: 40,
                                           width: screenWidth! / 3,
                                           decoration: BoxDecoration(
-                                            color: value == e
+                                            color: ref.watch(primaryRole) == e
                                                 ? Colors.white
                                                 : Colors.black,
                                             borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(25)),
+                                            const BorderRadius.all(
+                                                Radius.circular(25)),
                                             border: Border.all(
                                               color: Colors.white,
                                             ),
@@ -238,15 +347,15 @@ class _ListWidgetState extends State<ListWidget> {
                                             child: Text(
                                               e,
                                               style: TextStyle(
-                                                color: value == e
+                                                color: ref.watch(primaryRole) == e
                                                     ? Colors.black
                                                     : Colors.white,
                                               ),
                                             ),
                                           ),
-                                        );
-                                      },
-                                    ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                                 // ListTile(title:Text(dataList[category.indexOf(index)]["items"].toString()))
@@ -266,4 +375,25 @@ class _ListWidgetState extends State<ListWidget> {
       },
     );
   }
+}
+
+InputDecoration textInputDecoration({
+  required BuildContext context,
+  required String hintText,
+}) {
+  var width = MediaQuery.of(context).size.width;
+  var border = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(width * 14 / 375),
+    borderSide: const BorderSide(width: 1.2, color: Colors.white),
+  );
+  return InputDecoration(
+    contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+    isDense: true,
+    hintText: hintText,
+    hintStyle: TextStyle(color: Colors.white, fontSize: width * 14 / 375),
+    counterText: '',
+    focusedBorder: border,
+    enabledBorder: border,
+    border: border,
+  );
 }
