@@ -39,47 +39,6 @@ class UserPrimaryRoleWidget extends StatelessWidget {
             aspectRatio: 375 / 15,
             child: SizedBox(),
           ),
-          /*Container(
-            constraints: const BoxConstraints(maxHeight: 60),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(12)),
-              border:
-                  Border.all(color: const Color(0xFFFFFFFF).withOpacity(0.5)),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-                vertical: 10,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: ValueListenableBuilder(
-                      valueListenable: primaryRoleNotifier,
-                      builder:
-                          (BuildContext context, String value, Widget? child) {
-                        return Text(
-                          value.isEmpty
-                              ? 'i.e. Director, Foley Artist, Producer, \nColorist etc.'
-                              : value,
-                          style: TextStyle(
-                            fontSize: screenWidth! * 14 / 375,
-                            color: value.isEmpty
-                                ? const Color(0xFF474747)
-                                : Colors.white,
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  const TextCancelButtonWidget(),
-                ],
-              ),
-            ),
-          ),*/
           Consumer(
             builder: (BuildContext context, WidgetRef ref, Widget? child) {
               String text = ref.watch(primaryRoleManager);
