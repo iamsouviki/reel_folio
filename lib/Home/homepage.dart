@@ -13,9 +13,7 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> with TickerProviderStateMixin{
-  
-
+class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -24,39 +22,36 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return 
+    
+    SafeArea(
         top: true,
         child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(screenHeight! * 190 / 812),
-              child: HomeNavbar(),
-            ),
-
-            backgroundColor: primarybgcolor,
-            body: Column(
-              children: [
-                Container(
-                  height: screenHeight! * 500 / 812,
-                  width: screenWidth,
-                  color: primarybgcolor,
-                
-                  child: DefaultTabController(
-                    length: 2,
-                    child: TabBarView(
-                      // controller: tabController,
-                    children: [
-                      Container(
-                        child: HomeProjects()
-                      ),
-                      Container(
-                        color: Colors.green,
-                      ),
-                    ],
-                  ),
-                    )
-                  
-                )
-              ],
-            )));
+                appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(screenHeight! * 190 / 812),
+                  child: HomeNavbar(),
+                ),
+                backgroundColor: primarybgcolor,
+                body: SingleChildScrollView(
+      child: Column(
+                  children: [
+                    Container(
+                        height: screenHeight!,
+                        width: screenWidth,
+                        color: primarybgcolor,
+                        child: DefaultTabController(
+                          length: 2,
+                          child: TabBarView(
+                            // controller: tabController,
+                            children: [
+                              Container(child: HomeProjects()),
+                              Container(
+                                color: Colors.green,
+                              ),
+                            ],
+                          ),
+                        ))
+                  ],
+                ))));
   }
 }
