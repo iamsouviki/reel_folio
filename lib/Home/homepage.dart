@@ -36,7 +36,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin{
             body: Column(
               children: [
                 Container(
-                  height: screenHeight! * 190 / 812,
+                  height: screenHeight! * 500 / 812,
                   width: screenWidth,
                   color: primarybgcolor,
                 
