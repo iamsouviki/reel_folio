@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Home/details.dart';
 import 'package:reel_folio/Home/widget/projects_bottom_card.dart';
 import 'package:reel_folio/Home/widget/projects_top_card.dart';
+import 'package:reel_folio/route/route_path.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 import '../../util/colors.dart';
 
-Widget HomeProjects() {
+Widget HomeProjects(BuildContext context) {
   return Container(
       child: Column(
     children: [
@@ -29,8 +31,8 @@ Widget HomeProjects() {
       Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth! * 10 / 375),
         child: Row(
-          children: const [
-            Text(
+          children: [
+            const Text(
               "CREWING UP",
               style: TextStyle(
                 color: Colors.white,
@@ -38,13 +40,19 @@ Widget HomeProjects() {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Spacer(),
-            Text(
-              "See All",
-              style: TextStyle(
-                color: secondaryTextColor2,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+            const Spacer(),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Detail()));
+              },
+              child: const Text(
+                "See All",
+                style: TextStyle(
+                  color: secondaryTextColor2,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],
@@ -79,5 +87,3 @@ ListView _bottomhorizontalList(int n) {
     children: List.generate(n, (i) => CrewingUpCard(i)),
   );
 }
-
-

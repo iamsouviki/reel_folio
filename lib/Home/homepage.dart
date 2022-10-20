@@ -45,7 +45,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                           child: TabBarView(
                             // controller: tabController,
                             children: [
-                              Container(child: HomeProjects()),
+                              Container(child: HomeProjects(context)),
                               Container(child: HomePeople()),
                             ],
                           ),

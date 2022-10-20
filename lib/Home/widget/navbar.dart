@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/Home/homepage.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 Widget HomeNavbar() {
   return AppBar(
+    automaticallyImplyLeading: false,
     title: Text('DISCOVER',
         style: TextStyle(
           fontSize: 32,

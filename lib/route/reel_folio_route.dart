@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Home/details.dart';
 import 'package:reel_folio/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/onboarding/welcome_screen.dart';
 import 'package:reel_folio/route/route_path.dart';
@@ -28,6 +29,10 @@ abstract class ReelFolioRoute {
       case RoutePath.routeToWelcomeScreen:
         _currentWidget = const WelcomeScreen();
         break;
+
+      // case RoutePath.routeToProjectCategoryDetails:
+      //   _currentWidget = Detail();
+      //   break;
 
       default:
         _currentWidget = Scaffold(

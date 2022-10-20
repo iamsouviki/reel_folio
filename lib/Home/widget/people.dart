@@ -10,6 +10,13 @@ Widget HomePeople() {
   );
 }
 
+ListView _verticalList(int n) {
+  return ListView(
+    scrollDirection: Axis.vertical,
+    children: List.generate(n, (i) => PeopleListItem()),
+  );
+}
+
 Widget PeopleListItem() {
   return Container(
       // height: screenHeight!*0.2,
@@ -81,9 +88,4 @@ Widget PeopleListItem() {
   ));
 }
 
-ListView _verticalList(int n) {
-  return ListView(
-    scrollDirection: Axis.vertical,
-    children: List.generate(n, (i) => PeopleListItem()),
-  );
-}
+
