@@ -7,7 +7,7 @@ import 'package:reel_folio/util/reel_folio_icon.dart';
 import '../util/size_config.dart';
 
 
-// Building the page in 1 widget. Will break when done.
+// Building the page in 1 widget. Will break later.
 
 class PortfolioHomePage extends StatefulWidget {
   const PortfolioHomePage({super.key});
