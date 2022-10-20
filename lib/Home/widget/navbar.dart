@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Home/widget/filter_modal_people_widget.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-Widget HomeNavbar() {
+Widget HomeNavbar(BuildContext context) {
   return AppBar(
     automaticallyImplyLeading: false,
     title: Text('DISCOVER',
@@ -12,14 +13,12 @@ Widget HomeNavbar() {
         )),
     centerTitle: false,
     backgroundColor: primarybgcolor,
-    flexibleSpace: NavbarUtil(),
+    flexibleSpace: NavbarUtil(context),
     elevation: 0,
   );
 }
 
-Widget NavbarUtil() {
-  
-  
+Widget NavbarUtil(BuildContext context) {
   return Column(children: [
     SizedBox(height: screenHeight! * 60 / 812),
     Container(
@@ -60,8 +59,8 @@ Widget NavbarUtil() {
                 child: const DefaultTabController(
                   length: 2,
                   child: TabBar(
-                    // controller: tabController,
-                    indicatorColor: Colors.white,
+                      // controller: tabController,
+                      indicatorColor: Colors.white,
                       // ignore: prefer_const_literals_to_create_immutables
                       tabs: [
                         Tab(
@@ -103,7 +102,16 @@ Widget NavbarUtil() {
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                        context: context,
+                        builder: (context) {
+                          
+                          return FilterModalPeople(context);
+                        });
+                  },
                   child: const Text(
                     "Filter",
                     style: TextStyle(
@@ -117,3 +125,5 @@ Widget NavbarUtil() {
         ))
   ]);
 }
+
+
