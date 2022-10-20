@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/Home/widget/filter_modal_people_widget.dart';
+import 'package:reel_folio/Home/widget/filter_modal_projects_widget.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
@@ -10,6 +11,7 @@ Widget HomeNavbar(BuildContext context) {
         style: TextStyle(
           fontSize: 32,
           fontWeight: FontWeight.w500,
+          fontFamily: 'GT-America-Compressed-Regular',
         )),
     centerTitle: false,
     backgroundColor: primarybgcolor,
@@ -109,7 +111,7 @@ Widget NavbarUtil(BuildContext context) {
                         context: context,
                         builder: (context) {
                           
-                          return FilterModalPeople(context);
+                          return FilterModalProjects(context);
                         });
                   },
                   child: const Text(

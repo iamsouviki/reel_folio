@@ -3,7 +3,7 @@ import 'package:reel_folio/Home/widget/filter_fields_widget.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-Widget FilterModalPeople(BuildContext context) {
+Widget FilterModalProjects(BuildContext context) {
   return Container(
       padding: EdgeInsets.symmetric(
           horizontal: screenWidth! * 20 / 375, vertical: 10),
@@ -28,9 +28,9 @@ Widget FilterModalPeople(BuildContext context) {
               const Text(
                 "FILTER",
                 style: TextStyle(
-                  fontFamily: 'GT-America-Compressed-Regular',
                     color: Colors.white,
                     fontSize: 32,
+                    fontFamily: 'GT-America-Compressed-Regular',
                     fontWeight: FontWeight.w400),
               ),
               ElevatedButton(
@@ -79,7 +79,6 @@ Widget FilterModalPeople(BuildContext context) {
                 ),
               )),
 
-              FilterField("Directoral",1),
               FilterField("Directoral",1),
               FilterField("Directoral",1),
               FilterField("Directoral",1),
