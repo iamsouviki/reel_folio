@@ -6,7 +6,6 @@ import 'package:reel_folio/util/reel_folio_font_family.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';
 import '../util/size_config.dart';
 
-
 // Building the page in 1 widget. Will break later.
 
 class PortfolioHomePage extends StatefulWidget {
@@ -32,8 +31,6 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                   Image.asset(
                     ReelfolioImageAsset.portfolioReelPreview,
                     fit: BoxFit.fitWidth,
-                    // height: screenHeight,
-                    // width: screenWidth,
                   ),
                   Column(
                     children: [
@@ -118,9 +115,11 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                          color: Color(0xff394A71),
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: EdgeInsets.all(8.0),
+                        color: Color(0xff394A71),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: Text(
                         "Add to Contacts",
                         style: TextStyle(
@@ -131,6 +130,62 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                     Image.asset(ReelFolioIcon.iconArrowDownward),
                   ],
                 ),
+              ),
+              Divider(
+                color: Colors.white,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth! * 0.1,
+                  vertical: screenHeight! * 0.01,
+                ),
+                width: screenWidth!,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(ReelfolioImageAsset.portfolioDp),
+                    // Couldn't fix text overflow
+                    Text(
+                      "This is my personal bio",
+                      overflow: TextOverflow.clip,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Divider(
+                color: Colors.white,
+              ),
+              Container(
+                height: screenHeight! * 0.08,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Skills",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 15,
+                      ),
+                    ),
+                    VerticalDivider(
+                      color: Colors.white,
+                      thickness: 1,
+                    ),
+                    SingleChildScrollView(
+                      child: Row(),
+                    ),
+                  ],
+                ),
+              ),
+              Divider(
+                color: Colors.white,
               ),
             ],
           ),
