@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reel_folio/portfolio/portfolio_home.dart';
 import 'package:reel_folio/route/reel_folio_route.dart';
 
 import 'util/size_config.dart';
@@ -21,7 +22,9 @@ class ReelFolioApp extends StatelessWidget {
               title: 'Reel Folio',
               //theme: ThemeData(fontFamily: 'Sora'),
               debugShowCheckedModeBanner: false,
-              onGenerateRoute: ReelFolioRoute.generateRoute,
+              // onGenerateRoute: ReelFolioRoute.generateRoute,
+              // Temporary re-route for testing.
+              home: PortfolioHomePage(),
             );
           },
         );
