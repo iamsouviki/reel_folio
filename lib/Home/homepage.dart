@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/Home/widget/navbar.dart';
+import 'package:reel_folio/Home/widget/people.dart';
 import 'package:reel_folio/Home/widget/projects.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
@@ -45,9 +46,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                             // controller: tabController,
                             children: [
                               Container(child: HomeProjects()),
-                              Container(
-                                color: Colors.green,
-                              ),
+                              Container(child: HomePeople()),
                             ],
                           ),
                         ))
