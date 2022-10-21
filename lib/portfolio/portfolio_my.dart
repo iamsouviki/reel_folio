@@ -84,6 +84,7 @@ class _PortfolioMyPageState extends State<PortfolioMyPage> {
                                   child: const Text(
                                     "MATTHEW SAFFORD",
                                     style: TextStyle(
+                                      fontFamily: "GT-America-Extended-Bold",
                                       fontWeight: FontWeight.w900,
                                       fontSize: 50,
                                       color: Colors.white,
@@ -101,6 +102,8 @@ class _PortfolioMyPageState extends State<PortfolioMyPage> {
                                       const Text(
                                         "DIRECTOR",
                                         style: TextStyle(
+                                          fontFamily:
+                                              "GT-America-Extended-Bold",
                                           color: Colors.white,
                                           fontSize: 17,
                                           fontWeight: FontWeight.w700,

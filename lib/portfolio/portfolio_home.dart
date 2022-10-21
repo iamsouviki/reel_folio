@@ -87,6 +87,7 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                                   child: Text(
                                     "MATTHEW SAFFORD",
                                     style: TextStyle(
+                                      fontFamily: "GT-America-Extended-Bold",
                                       fontWeight: FontWeight.w900,
                                       fontSize: 50,
                                       color: Colors.white,
@@ -104,6 +105,8 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                                       Text(
                                         "DIRECTOR",
                                         style: TextStyle(
+                                          fontFamily:
+                                              "GT-America-Extended-Bold",
                                           color: Colors.white,
                                           fontSize: 17,
                                           fontWeight: FontWeight.w700,
@@ -295,7 +298,8 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                                     Image.asset(
                                         ReelfolioImageAsset.portfolioWork),
                                     Padding(
-                                      padding: EdgeInsets.only(left: 100, right: 5, top: 5),
+                                      padding: EdgeInsets.only(
+                                          left: 100, right: 5, top: 5),
                                       child: Container(
                                         alignment: Alignment.center,
                                         color: Color(0xff5450EC),

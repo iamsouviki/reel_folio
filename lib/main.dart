@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reel_folio/portfolio/portfolio_edit.dart';
+import 'package:reel_folio/portfolio/portfolio_edit_profile_picture.dart';
 import 'package:reel_folio/portfolio/portfolio_home.dart';
 import 'package:reel_folio/portfolio/portfolio_my.dart';
 import 'package:reel_folio/portfolio/test.dart';
@@ -21,7 +22,7 @@ class ReelFolioApp extends StatelessWidget {
         return OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) {
             SizeConfig().init(constraints, orientation);
-            return const MaterialApp(
+            return MaterialApp(
               title: 'Reel Folio',
               //theme: ThemeData(fontFamily: 'Sora'),
               debugShowCheckedModeBanner: false,

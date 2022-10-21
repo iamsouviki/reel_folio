@@ -3,4 +3,5 @@ abstract class ReelfolioImageAsset {
   static const portfolioDp = 'assets/portfolio_dp.png';
   static const portfolioWork = 'assets/work.png';
   static const portfolioHiringProject = 'assets/hiring_project.png';
+  static const portfolioEditReelPreview = 'assets/edit_reel_preview.png';
 }
