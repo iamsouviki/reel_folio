@@ -71,6 +71,10 @@ flutter:
     - family: GT-America-Compressed-Regular
       fonts:
         - asset: fonts/GT-America-Compressed-Regular.otf
+
+    - family: GT-America-Expanded-Bold
+      fonts:
+        - asset: fonts/GT-America-Expanded-Bold.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

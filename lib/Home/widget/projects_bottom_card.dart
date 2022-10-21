@@ -15,7 +15,7 @@ Widget CrewingUpCard(i) {
               Image.asset(
                 ReelfolioImageAsset.homeProjectsImage2,
                 fit: BoxFit.cover,
-                height: screenHeight! * 0.2,
+                height: screenHeight! * 0.15,
               ),
               SizedBox(height: screenHeight! * 10 / 812),
               Text(
@@ -38,7 +38,7 @@ Widget CrewingUpCard(i) {
             ],
           ),
           Padding(
-          padding: EdgeInsets.only(left:screenWidth!*0.5, top:15),
+          padding: EdgeInsets.only(left:screenWidth!*0.35, top:15),
           child: Column(
             children: [
               Container(

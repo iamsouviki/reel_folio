@@ -10,6 +10,7 @@ import '../../util/colors.dart';
 
 Widget HomeProjects(BuildContext context) {
   return Container(
+    padding: EdgeInsets.symmetric(vertical: screenHeight! * 0.02,), 
       child: Column(
     children: [
       /// Project Page Heading

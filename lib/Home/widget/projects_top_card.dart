@@ -50,6 +50,7 @@ Widget ProjectCard(i) {
               const Text(
                 "WEEKEND\nGETAWAY",
                 style: TextStyle(
+                  fontFamily: 'GT-America-Expanded-Bold',
                   color: Colors.white,
                   fontSize: 33,
                   fontWeight: FontWeight.w900,

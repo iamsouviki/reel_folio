@@ -29,7 +29,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
         top: true,
         child: Scaffold(
                 appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(screenHeight! * 190 / 812),
+                  preferredSize: Size.fromHeight(screenHeight! * 180 / 812),
                   child: HomeNavbar(context),
                 ),
                 backgroundColor: primarybgcolor,

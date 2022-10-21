@@ -23,7 +23,7 @@ class _DetailState extends State<Detail> {
             child: ProjectCategoryNavbar(context),
           ),
           body: SingleChildScrollView(
-              child: Container(height: screenHeight! * 400 / 812,child: _gridList(2),)
+              child: Container(height: screenHeight!,child: _gridList(2),)
           )),
         );
   }
