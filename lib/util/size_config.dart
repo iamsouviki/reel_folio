@@ -21,7 +21,7 @@ class SizeConfig {
     _screenHeight = boxConstraints.maxHeight;
 
 
-    screenWidth = _screenWidth;
-    screenHeight = _screenHeight;
+    screenWidth = _screenWidth ?? 375;
+    screenHeight = _screenHeight ?? 814;
   }
 }

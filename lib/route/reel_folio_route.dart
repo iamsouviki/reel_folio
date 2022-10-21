@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/auth/splash_screen.dart';
 import 'package:reel_folio/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/onboarding/welcome_screen.dart';
 import 'package:reel_folio/route/route_path.dart';
@@ -14,6 +15,9 @@ abstract class ReelFolioRoute {
 
     switch (settings.name) {
       case RoutePath.routeInitial:
+      case RoutePath.routeToSplashScreen:
+        currentWidget = const SplashScreen();
+        break;
       case RoutePath.routeToRequestOnBoardingScreen:
         currentWidget = OnBoardingRequestScreen();
         break;
