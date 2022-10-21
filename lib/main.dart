@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reel_folio/portfolio/portfolio_edit.dart';
 import 'package:reel_folio/portfolio/portfolio_home.dart';
 import 'package:reel_folio/portfolio/portfolio_my.dart';
+import 'package:reel_folio/portfolio/test.dart';
 import 'package:reel_folio/route/reel_folio_route.dart';
 
 import 'util/size_config.dart';
@@ -25,7 +27,7 @@ class ReelFolioApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               // onGenerateRoute: ReelFolioRoute.generateRoute,
               // Temporary re-route for testing.
-              home: PortfolioMyPage(),
+              home: PortfolioEditPage(),
             );
           },
         );

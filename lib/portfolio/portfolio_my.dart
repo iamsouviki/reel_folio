@@ -127,23 +127,20 @@ class _PortfolioMyPageState extends State<PortfolioMyPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      child: OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: Colors.white, width: 1),
-                          minimumSize: Size(screenWidth! * 0.2, 30),
-                          backgroundColor: Colors.transparent,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: screenWidth! * 0.04,
-                          ),
+                    OutlinedButton(
+                      onPressed: () {},
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Colors.white, width: 1),
+                        minimumSize: Size(screenWidth! * 0.2, 30),
+                        backgroundColor: Colors.transparent,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: screenWidth! * 0.04,
                         ),
-                        child: const Text(
-                          "Edit Portfolio",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
+                      ),
+                      child: const Text(
+                        "Edit Portfolio",
+                        style: TextStyle(
+                          color: Colors.white,
                         ),
                       ),
                     ),
