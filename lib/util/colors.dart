@@ -8,3 +8,4 @@ const tagcolor2 = Color(0xFF50A969);
 const secondaryTextColor = Color(0xFF888888);
 const secondaryTextColor2 = Color(0xFF767676);
 const filterbgcolor = Color(0xFF353535);
+const navbarIconcolor = Color(0xFF4441D3);

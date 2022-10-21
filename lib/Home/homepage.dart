@@ -4,6 +4,7 @@ import 'package:reel_folio/Home/widget/people.dart';
 import 'package:reel_folio/Home/widget/projects.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
+import 'package:reel_folio/widget/bottom_navbar.dart';
 
 // late TabController tabController;
 
@@ -23,34 +24,37 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    
-    SafeArea(
+    return SafeArea(
         top: true,
         child: Scaffold(
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(screenHeight! * 180 / 812),
-                  child: HomeNavbar(context),
-                ),
-                backgroundColor: primarybgcolor,
-                body: SingleChildScrollView(
-      child: Column(
-                  children: [
-                    Container(
-                        height: screenHeight!,
-                        width: screenWidth,
-                        color: primarybgcolor,
-                        child: DefaultTabController(
-                          length: 2,
-                          child: TabBarView(
-                            // controller: tabController,
-                            children: [
-                              Container(child: HomeProjects(context)),
-                              Container(child: HomePeople()),
-                            ],
-                          ),
-                        ))
-                  ],
-                ))));
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(screenHeight! * 180 / 812),
+            child: HomeNavbar(context),
+          ),
+          backgroundColor: primarybgcolor,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                    height: screenHeight!,
+                    width: screenWidth,
+                    color: primarybgcolor,
+                    child: DefaultTabController(
+                      length: 2,
+                      child: TabBarView(
+                        // controller: tabController,
+                        children: [
+                          Container(child: HomeProjects(context)),
+                          Container(child: HomePeople()),
+                        ],
+                      ),
+                    ))
+              ],
+            ),
+          ),
+          bottomNavigationBar: BottomNavBar(),
+        ));
   }
 }
+
+
