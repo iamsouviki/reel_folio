@@ -21,7 +21,7 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
     return SafeArea(
       top: true,
       child: Scaffold(
-        backgroundColor: ReelfolioColor.bgColor,
+        backgroundColor: ReelfolioColor.shadowColor,
         // TODO: Fix AppBar transparent issue
         body: SingleChildScrollView(
           child: Column(
@@ -34,8 +34,25 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                   ),
                   Column(
                     children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: screenWidth! * 0.05,
+                            vertical: screenHeight! * 0.03),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              ReelFolioIcon.iconArrowBackward,
+                            ),
+                            Image.asset(
+                              ReelFolioIcon.iconMenu,
+                            ),
+                          ],
+                        ),
+                      ),
                       SizedBox(
-                        height: screenHeight! * 0.45,
+                        height: screenHeight! * 0.35,
                       ),
                       Container(
                         height: screenHeight! * 0.465,
@@ -108,7 +125,7 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: screenWidth! * 0.08,
-                    vertical: screenHeight! * 0.01),
+                    vertical: screenHeight! * 0.02),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -120,14 +137,20 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                       ),
                       padding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      child: Text(
-                        "Add to Contacts",
-                        style: TextStyle(
-                          color: Colors.white,
+                      child: InkWell(
+                        onTap: () {},
+                        child: Text(
+                          "Add to Contacts",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                    Image.asset(ReelFolioIcon.iconArrowDownward),
+                    InkWell(
+                      onTap: () {},
+                      child: Image.asset(ReelFolioIcon.iconArrowDownward),
+                    ),
                   ],
                 ),
               ),
@@ -137,7 +160,7 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
               Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: screenWidth! * 0.1,
-                  vertical: screenHeight! * 0.01,
+                  vertical: screenHeight! * 0.005,
                 ),
                 width: screenWidth!,
                 child: Row(
@@ -146,13 +169,18 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                   children: [
                     Image.asset(ReelfolioImageAsset.portfolioDp),
                     // Couldn't fix text overflow
-                    Text(
-                      "This is my personal bio",
-                      overflow: TextOverflow.clip,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                        fontSize: 16,
+                    Flexible(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          "This is my personal bio and desctiption of what im doing on this platform",
+                          overflow: TextOverflow.clip,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -162,30 +190,189 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                 color: Colors.white,
               ),
               Container(
-                height: screenHeight! * 0.08,
+                height: screenHeight! * 0.06,
+                width: screenWidth!,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      "Skills",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15,
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
+                      child: Text(
+                        "Skills",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                     VerticalDivider(
                       color: Colors.white,
                       thickness: 1,
                     ),
-                    SingleChildScrollView(
-                      child: Row(),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: screenHeight! * 0.01,
+                      ),
+                      width: screenWidth! * 0.75,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        reverse: true,
+                        // Hardcoded for now
+                        itemCount: skillList.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: screenWidth! * 0.02),
+                            child: OutlinedButton(
+                                onPressed: () {},
+                                child: Text(
+                                  skillList[index],
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                      color: Colors.white),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    side: BorderSide(
+                                        color: Colors.white, width: 1),
+                                    minimumSize: Size(screenWidth! * 0.2, 30),
+                                    backgroundColor: Colors.transparent,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: screenWidth! * 0.04,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ))),
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),
               ),
               Divider(
                 color: Colors.white,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth! * 0.03,
+                  vertical: screenHeight! * 0.01,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "My Work",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: screenHeight! * 0.3,
+                child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: screenHeight! * 0.01),
+                          child: Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Stack(
+                                  children: [
+                                    Image.asset(
+                                        ReelfolioImageAsset.portfolioWork),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 100, right: 5, top: 5),
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        color: Color(0xff5450EC),
+                                        height: 20,
+                                        width: 50,
+                                        child: Text(
+                                          "Hiring",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                  child: Text(
+                                    "PROJECT TITLE",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  "OWNER",
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(0.6),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: screenHeight! * 0.01),
+                          child: Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(ReelfolioImageAsset.portfolioWork),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                  child: Text(
+                                    "PROJECT TITLE",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  "ROLE",
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(0.6),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
             ],
           ),
@@ -194,3 +381,24 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
     );
   }
 }
+
+const workList = [
+  {
+    "image": ReelfolioImageAsset.portfolioWork,
+    "title": "Project Title",
+    "description": "Owner",
+  },
+  {
+    "image": ReelfolioImageAsset.portfolioWork,
+    "title": "Project Title",
+    "description": "Role",
+  }
+];
+
+const skillList = [
+  "Art Direction",
+  "Actor",
+  "Sound Design",
+  "Editing",
+  "Directing",
+];
