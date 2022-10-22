@@ -7,6 +7,7 @@ import 'package:reel_folio/util/size_config.dart';
 import 'package:reel_folio/widget/bottom_navbar.dart';
 
 // late TabController tabController;
+var id=0;
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -52,7 +53,9 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
               ],
             ),
           ),
-          bottomNavigationBar: BottomNavBar(),
+          bottomNavigationBar: SizedBox(
+            height: 55,
+            child: BottomNavBar(),) ,
         ));
   }
 }

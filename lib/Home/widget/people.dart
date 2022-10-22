@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Home/homepage.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 Widget HomePeople() {
+  id=0;
   return Container(
     height: screenHeight! * 400 / 812,
     child: _verticalList(8),

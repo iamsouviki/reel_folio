@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/Home/details.dart';
+import 'package:reel_folio/Home/homepage.dart';
 import 'package:reel_folio/Home/widget/projects_bottom_card.dart';
 import 'package:reel_folio/Home/widget/projects_top_card.dart';
 import 'package:reel_folio/route/route_path.dart';
@@ -9,6 +10,7 @@ import 'package:reel_folio/util/size_config.dart';
 import '../../util/colors.dart';
 
 Widget HomeProjects(BuildContext context) {
+  id=1;
   return Container(
     padding: EdgeInsets.symmetric(vertical: screenHeight! * 0.02,), 
       child: Column(

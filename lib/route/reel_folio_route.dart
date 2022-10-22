@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/Home/details.dart';
+import 'package:reel_folio/auth/splash_screen.dart';
 import 'package:reel_folio/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/onboarding/welcome_screen.dart';
 import 'package:reel_folio/route/route_path.dart';
@@ -11,23 +11,27 @@ abstract class ReelFolioRoute {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     currentRouteName = settings.name;
-    Widget _currentWidget;
+    Widget currentWidget;
 
     switch (settings.name) {
+      case RoutePath.routeInitial:
+      case RoutePath.routeToSplashScreen:
+        currentWidget = const SplashScreen();
+        break;
       case RoutePath.routeToRequestOnBoardingScreen:
-        _currentWidget = OnBoardingRequestScreen();
+        currentWidget = OnBoardingRequestScreen();
         break;
 
       case RoutePath.routeToOnBoardingDetailsScreen:
-        _currentWidget = OnBoardingDetailsScreen();
+        currentWidget = OnBoardingDetailsScreen();
         break;
 
       case RoutePath.routeToOnBoardingConfirmationScreen:
-        _currentWidget = const OnBoardingRequestConfirmationScreen();
+        currentWidget = const OnBoardingRequestConfirmationScreen();
         break;
 
       case RoutePath.routeToWelcomeScreen:
-        _currentWidget = const WelcomeScreen();
+        currentWidget = const WelcomeScreen();
         break;
 
       // case RoutePath.routeToProjectCategoryDetails:
@@ -35,14 +39,14 @@ abstract class ReelFolioRoute {
       //   break;
 
       default:
-        _currentWidget = Scaffold(
+        currentWidget = Scaffold(
           body: Center(
             child: Text('No route defined for ${settings.name}'),
           ),
         );
     }
 
-    return _ReelFolioRoute(screen: _currentWidget, settings: settings);
+    return _ReelFolioRoute(screen: currentWidget, settings: settings);
   }
 }
 
