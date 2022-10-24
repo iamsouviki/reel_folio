@@ -4,7 +4,9 @@ import 'package:reel_folio/Home/widget/filter_modal_projects_widget.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-Widget HomeNavbar(BuildContext context) {
+
+
+Widget HomeNavbar(BuildContext context, TabController _tabController) {
   return AppBar(
     automaticallyImplyLeading: false,
     title: Text('DISCOVER',
@@ -15,12 +17,12 @@ Widget HomeNavbar(BuildContext context) {
         )),
     centerTitle: false,
     backgroundColor: primarybgcolor,
-    flexibleSpace: NavbarUtil(context),
+    flexibleSpace: NavbarUtil(context, _tabController),
     elevation: 0,
   );
 }
 
-Widget NavbarUtil(BuildContext context) {
+Widget NavbarUtil (BuildContext context,TabController _tabController) {
   return Column(children: [
     SizedBox(height: screenHeight! * 60 / 812),
     Container(
@@ -58,9 +60,10 @@ Widget NavbarUtil(BuildContext context) {
               child: SizedBox(
                 height: screenHeight! * 40 / 812,
                 width: 200,
-                child: const DefaultTabController(
+                child: DefaultTabController(
                   length: 2,
                   child: TabBar(
+                    controller: _tabController,
                       // controller: tabController,
                       indicatorColor: Colors.white,
                       // ignore: prefer_const_literals_to_create_immutables

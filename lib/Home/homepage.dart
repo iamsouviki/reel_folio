@@ -6,7 +6,8 @@ import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 import 'package:reel_folio/widget/bottom_navbar.dart';
 
-// late TabController tabController;
+
+
 var id=0;
 
 class Homepage extends StatefulWidget {
@@ -17,10 +18,12 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
+  late TabController _tabController;
+
   @override
   void initState() {
     super.initState();
-    // tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -30,7 +33,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(screenHeight! * 180 / 812),
-            child: HomeNavbar(context),
+            child: HomeNavbar(context,_tabController),
           ),
           backgroundColor: primarybgcolor,
           body: SingleChildScrollView(
@@ -43,7 +46,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                     child: DefaultTabController(
                       length: 2,
                       child: TabBarView(
-                        // controller: tabController,
+                        controller: _tabController,
                         children: [
                           Container(child: HomeProjects(context)),
                           Container(child: HomePeople()),
