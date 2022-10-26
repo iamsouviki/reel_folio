@@ -1,54 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Chat/chat_screen.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 import 'package:reel_folio/util/asset.dart';
 
-Widget ChatMainList() {
-  return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      height: screenHeight! * 0.1,
-      // color: Colors.red,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal:10.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.start,
+Widget ChatMainList(BuildContext context) {
+  return InkWell(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));
+      },
+      child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          height: screenHeight! * 0.1,
+          // color: Colors.red,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundImage:
-                          AssetImage(ReelfolioImageAsset.chatProfilePic),
-                    ),
-                    SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
                       children: [
-                        Text(
-                          "Lindsay Sunada",
-                          style: TextStyle(color: Colors.white),
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                              AssetImage(ReelfolioImageAsset.chatProfilePic),
                         ),
-                        Text("Production Designer",
-                            style: TextStyle(
-                                color: secondaryTextColor, fontSize: 15)),
+                        SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Lindsay Sunada",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Text("Production Designer",
+                                style: TextStyle(
+                                    color: secondaryTextColor, fontSize: 15)),
+                          ],
+                        ),
                       ],
                     ),
+                    Image.asset(ReelfolioImageAsset.messageicon),
                   ],
                 ),
-                
-                Image.asset(ReelfolioImageAsset.messageicon),
+                Divider(
+                  color: secondaryTextColor,
+                )
               ],
             ),
-            Divider(
-            color: secondaryTextColor,
-          )
-          ],
-          
-
-
-        ),
-      ));
+          )));
 }

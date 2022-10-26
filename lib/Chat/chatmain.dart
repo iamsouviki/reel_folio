@@ -23,16 +23,16 @@ class _ChatMainState extends State<ChatMain> {
             child: ChatMainNavbar()
           ),
       
-        body: _verticalList(3),
+        body: _verticalList(3, context),
         
       ),
     );
   }
 }
 
-ListView _verticalList(int n) {
+ListView _verticalList(int n, BuildContext context) {
   return ListView(
     scrollDirection: Axis.vertical,
-    children: List.generate(n, (i) => ChatMainList()),
+    children: List.generate(n, (i) => ChatMainList(context)),
   );
 }
