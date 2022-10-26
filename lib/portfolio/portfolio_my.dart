@@ -39,8 +39,13 @@ class _PortfolioMyPageState extends State<PortfolioMyPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              ReelFolioIcon.iconArrowBackward,
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Image.asset(
+                                ReelFolioIcon.iconArrowBackward,
+                              ),
                             ),
                             Image.asset(
                               ReelFolioIcon.iconMenu,

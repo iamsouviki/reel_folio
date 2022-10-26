@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/portfolio/widget/popup.dart';
 import 'package:reel_folio/portfolio/widget/portfolio_navbar.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
@@ -45,8 +46,15 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                             Image.asset(
                               ReelFolioIcon.iconArrowBackward,
                             ),
-                            Image.asset(
-                              ReelFolioIcon.iconMenu,
+                            InkWell(
+                              onTap: () => showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) {
+                                    return PopUp(context);
+                                  }),
+                              child: Image.asset(
+                                ReelFolioIcon.iconMenu,
+                              ),
                             ),
                           ],
                         ),

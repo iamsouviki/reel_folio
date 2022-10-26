@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/portfolio/portfolio_edit.dart';
+import 'package:reel_folio/portfolio/portfolio_my.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';
@@ -14,21 +16,30 @@ Widget PopUp(BuildContext context) {
         Padding(
           padding: EdgeInsets.only(
               left: screenWidth! * 0.05, top: screenHeight! * 0.01),
-          child: Row(
-            children: [
-              Image.asset(ReelFolioIcon.iconBell),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
-                child: Text(
-                  "Notifications",
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PortfolioMyPage()),
+              );
+            },
+            child: Row(
+              children: [
+                Image.asset(ReelFolioIcon.iconBell),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
+                  child: Text(
+                    "Notifications",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
         Divider(
@@ -39,21 +50,31 @@ Widget PopUp(BuildContext context) {
         Padding(
           padding: EdgeInsets.only(
               left: screenWidth! * 0.05, top: screenHeight! * 0.01),
-          child: Row(
-            children: [
-              Image.asset(ReelFolioIcon.iconSettings),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
-                child: Text(
-                  "Settings",
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PortfolioEditPage()),
+              );
+            },
+            child: Row(
+              children: [
+                Image.asset(ReelFolioIcon.iconSettings),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
+                  child: Text(
+                    "Settings",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
         Divider(

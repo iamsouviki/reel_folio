@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/portfolio/portfolio_edit_detail_text.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';
@@ -28,7 +29,11 @@ class _PortfolioEditPageState extends State<PortfolioEditPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset(ReelFolioIcon.iconArrowBackward),
+                      InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Image.asset(ReelFolioIcon.iconArrowBackward)),
                       Text(
                         "Edit Portfolio",
                         style: TextStyle(
@@ -114,7 +119,16 @@ class _PortfolioEditPageState extends State<PortfolioEditPage> {
                         width: 10,
                         child: Container(),
                       ),
-                      Image.asset(ReelFolioIcon.iconSmallArrowForward)
+                      InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EditDetailsTextPage()),
+                            );
+                          },
+                          child:
+                              Image.asset(ReelFolioIcon.iconSmallArrowForward))
                     ],
                   ),
                 ),
