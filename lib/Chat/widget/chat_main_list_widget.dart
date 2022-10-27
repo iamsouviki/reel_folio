@@ -11,7 +11,7 @@ Widget ChatMainList(BuildContext context) {
       },
       child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
-          height: screenHeight! * 0.1,
+          height: screenHeight! * 0.11,
           // color: Colors.red,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),

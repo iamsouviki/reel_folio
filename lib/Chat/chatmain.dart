@@ -19,8 +19,8 @@ class _ChatMainState extends State<ChatMain> {
       child: Scaffold(
         backgroundColor: primarybgcolor,
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(screenHeight! * 215 / 812),
-            child: ChatMainNavbar()
+            preferredSize: Size.fromHeight(screenHeight! * 220 / 812),
+            child: ChatMainNavbar(context)
           ),
       
         body: _verticalList(3, context),

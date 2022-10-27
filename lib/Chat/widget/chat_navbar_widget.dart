@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Chat/new_message_screen.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-Widget ChatMainNavbar() {
+Widget ChatMainNavbar(BuildContext context) {
   return Column(
     children: [
       Padding(
@@ -21,7 +22,10 @@ Widget ChatMainNavbar() {
           ),
           SizedBox(width: 10),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NewMessage()));
+            },
             icon: const Icon(Icons.edit_note, color: Colors.white),
           ),
         ]),
