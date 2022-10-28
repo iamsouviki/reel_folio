@@ -22,7 +22,7 @@ class _AddContactsState extends State<AddContacts> {
             preferredSize: Size.fromHeight(screenHeight! * 80 / 812),
             child: ContactsNavbar(context)),
         body: Container(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth! * 10 / 375),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth! * 20 / 375),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,10 +30,11 @@ class _AddContactsState extends State<AddContacts> {
               Text(
                 "ON REELFOLIO",
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 15,
                     color: Colors.white,
-                    fontFamily: "GT-America-Compressed-Regular"),
-              ),
+                    fontWeight: FontWeight.w500
+                    // fontFamily: "GT-America-Compressed-Regular"),
+              ),),
               SizedBox(height:30),
               Column(
                 children: [
@@ -74,6 +75,7 @@ class _AddContactsState extends State<AddContacts> {
                       ),
                     )
                   ]),
+                  SizedBox(height: screenHeight!*0.02,),
                   const Divider(
                     color: filterbgcolor,
                     thickness: 1,
@@ -86,11 +88,12 @@ class _AddContactsState extends State<AddContacts> {
               Text(
                 "INVITE FROM CONTACTS",
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 15,
                     color: Colors.white,
-                    fontFamily: "GT-America-Compressed-Regular"),
-              ),
-              SizedBox(height:30),
+                    fontWeight: FontWeight.w500,
+                    // fontFamily: "GT-America-Compressed-Regular"),
+              ),),
+              const SizedBox(height:30),
               Column(
                 children: [
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -131,6 +134,7 @@ class _AddContactsState extends State<AddContacts> {
                       ),
                     )
                   ]),
+                  SizedBox(height: screenHeight!*0.05,),
                   const Divider(
                     color: filterbgcolor,
                     thickness: 1,
