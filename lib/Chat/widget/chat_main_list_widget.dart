@@ -16,6 +16,7 @@ Widget ChatMainList(BuildContext context) {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,7 +25,7 @@ Widget ChatMainList(BuildContext context) {
                     Row(
                       children: [
                         CircleAvatar(
-                          radius: 30,
+                          radius: 20,
                           backgroundImage:
                               AssetImage(ReelfolioImageAsset.chatProfilePic),
                         ),

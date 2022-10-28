@@ -28,7 +28,7 @@ class _NewMessageState extends State<NewMessage> {
               ),
               title: const Text(
                 "New Message",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w400),
               ),
               centerTitle: true,
               actions: [
@@ -44,7 +44,7 @@ class _NewMessageState extends State<NewMessage> {
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(5),
                 child: Divider(
-                  color: secondaryTextColor,
+                  color: filterbgcolor,
                   thickness: 0.5,
                 ),
               )),
@@ -62,12 +62,12 @@ class _NewMessageState extends State<NewMessage> {
                       fontWeight: FontWeight.w600),
                 ),
               ),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10.0),
                   filled: true,
-                  hintText: " Search",
-                  hintStyle: const TextStyle(
+                  hintText: "Search",
+                  hintStyle: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w300,
                     color: secondaryTextColor,

@@ -40,7 +40,8 @@ Widget ChatScreenNavbar(BuildContext context) {
             ),
             SizedBox(height: 10),
             Divider(
-              color: secondaryTextColor,
+              thickness: 1,
+              color: filterbgcolor,
             ),
           ],
         ),

@@ -4,7 +4,7 @@ import 'package:reel_folio/util/size_config.dart';
 
 Widget SenderWidget(){
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 10),
+    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
     width: screenWidth,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.end,

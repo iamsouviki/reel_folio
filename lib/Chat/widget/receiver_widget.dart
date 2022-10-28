@@ -7,17 +7,25 @@ String text = "Hello! I’d love to be considered as director for “weekend get
 
 Widget ReceiverWidget() {
   return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       width: screenWidth,
-      child: Row(children: [
-        Column(
-          children: [
-            CircleAvatar(
-              radius: 15,
-              backgroundImage: AssetImage(ReelfolioImageAsset.chatProfilePic),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        // Column(
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+            Padding(
+              padding: EdgeInsets.only(top:screenHeight! * 0.04),
+              child: CircleAvatar(
+                radius: 15,
+                backgroundImage: AssetImage(ReelfolioImageAsset.chatProfilePic),
+              ),
             ),
-          ],
-        ),
+        //     const Spacer(),
+        //   ],
+        // ),
         Padding(
           padding: const EdgeInsets.only(left:8.0),
           child: Column(
@@ -54,7 +62,7 @@ Widget ReceiverWidget() {
                     )),
                 SizedBox(height: 10),
                 Text(
-                  "4 days ago",
+                  " 4 days ago",
                   style: TextStyle(color: secondaryTextColor2, fontSize: 13),
                 ),
               ])

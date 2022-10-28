@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/Chat/chatmain.dart';
 import 'package:reel_folio/Home/homepage.dart';
+import 'package:reel_folio/Saved/saved_screen.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
@@ -47,6 +48,27 @@ class TestPage extends StatelessWidget {
                 },
                 child: Text(
                   "Chat",
+                  style: TextStyle(color: Colors.black),
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(screenWidth! * 0.5, 40),
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement<void, void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => SavedScreen(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Saved",
                   style: TextStyle(color: Colors.black),
                 ),
                 style: ElevatedButton.styleFrom(

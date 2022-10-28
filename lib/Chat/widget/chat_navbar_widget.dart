@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/Chat/new_message_screen.dart';
 import 'package:reel_folio/util/colors.dart';
+import 'package:reel_folio/util/reel_folio_icon.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 Widget ChatMainNavbar(BuildContext context) {
@@ -18,20 +19,20 @@ Widget ChatMainNavbar(BuildContext context) {
           const Text(
             "Chats",
             style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
           ),
           SizedBox(width: 10),
-          IconButton(
-            onPressed: () {
+          InkWell(
+            onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => NewMessage()));
             },
-            icon: const Icon(Icons.edit_note, color: Colors.white),
+            child: Image.asset(ReelFolioIcon.editIcon),
           ),
         ]),
       ),
       const Divider(
-        color: secondaryTextColor2,
+        color: filterbgcolor,
         thickness: 1,
       ),
       SizedBox(height: 10),
@@ -62,7 +63,7 @@ Widget ChatMainNavbar(BuildContext context) {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(10.0,10,10, 0),
+        padding: const EdgeInsets.fromLTRB(10.0,10,10, 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -71,19 +72,22 @@ Widget ChatMainNavbar(BuildContext context) {
               style: TextStyle(
                   color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                "Contacts Only",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+            SizedBox(
+              height: 27,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  "Contacts Only",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white.withOpacity(0.6),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
                 ),
               ),
             ),
@@ -93,15 +97,16 @@ Widget ChatMainNavbar(BuildContext context) {
 
       Stack(
         children: [
-           Divider(
+           
+      const Divider(
+        color: filterbgcolor,
+        thickness: 1,
+      ),
+      Divider(
         color: Colors.white,
         thickness: 2,
         indent: 10,
         endIndent: screenWidth!*0.85,
-      ),
-      const Divider(
-        color: secondaryTextColor2,
-        thickness: 1,
       ),
         ],
       ),

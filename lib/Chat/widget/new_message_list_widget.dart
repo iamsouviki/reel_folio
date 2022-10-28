@@ -9,11 +9,12 @@ Widget NewMessageList(){
       child: Row(children: [
 
         CircleAvatar(
-          radius: 30,
+          radius: 20,
           backgroundImage: AssetImage(ReelfolioImageAsset.chatProfilePic),
         ),
         SizedBox(width: 10),
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(

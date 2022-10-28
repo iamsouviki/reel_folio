@@ -4,20 +4,23 @@ import 'package:reel_folio/util/size_config.dart';
 
 Widget TypeMessage(){
   return Container(
+    padding: EdgeInsets.symmetric(horizontal: 10),
     color: primarybgcolor,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-      SizedBox(
+      Container(
+        
         // height: 50,
-        width: screenWidth! * 0.84,
+        width: screenWidth! * 0.82,
         child: Container(
+          // padding:EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.white, width: 1),
+            border: Border.all(color: Colors.white.withOpacity(0.5), width: 1),
           ),
-          padding: EdgeInsets.all(5),
+          // padding: EdgeInsets.all(5),
           child: TextField(
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(vertical: 10.0),
@@ -26,7 +29,7 @@ Widget TypeMessage(){
               hintStyle: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w400,
-                color: Colors.white,
+                color: secondaryTextColor,
               ),
               fillColor: Colors.transparent,
               border: OutlineInputBorder(
@@ -37,6 +40,7 @@ Widget TypeMessage(){
         )
       ),
       Container(
+        width: screenWidth! * 0.1,
         decoration: BoxDecoration(
           color: secondaryTextColor,
           borderRadius: BorderRadius.circular(5),
