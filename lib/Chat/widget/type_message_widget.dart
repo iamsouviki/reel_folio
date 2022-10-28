@@ -4,7 +4,7 @@ import 'package:reel_folio/util/size_config.dart';
 
 Widget TypeMessage(){
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 10),
+    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
     color: primarybgcolor,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,8 +22,9 @@ Widget TypeMessage(){
           ),
           // padding: EdgeInsets.all(5),
           child: TextField(
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 10.0),
+              contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
               filled: true,
               hintText: " Write your message here",
               hintStyle: const TextStyle(
