@@ -5,7 +5,8 @@ import 'package:reel_folio/util/size_config.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-Widget SavedList(BuildContext context){
+// ignore: non_constant_identifier_names
+Widget SliderListItem(BuildContext context, Widget function){
   return Container(
     height: screenHeight!*0.1,
     child: Slidable(
@@ -30,7 +31,7 @@ Widget SavedList(BuildContext context){
 
     // The child of the Slidable is what the user sees when the
     // component is not dragged.
-    child: ListTile(title: SavedItem()),
+    child: ListTile(title: function),
 ),
   );
 }

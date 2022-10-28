@@ -11,4 +11,7 @@ abstract class ReelfolioImageAsset{
   ///Chat
   static const messageicon = 'icons/chat.png';
   static const chatProfilePic = 'assets/chat_profile_pic.png';
+
+  //Contacts
+  static const addContacts = 'assets/add_contacts.png';
 }
