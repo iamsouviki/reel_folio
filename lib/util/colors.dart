@@ -11,3 +11,4 @@ const filterbgcolor = Color(0xFF353535);
 const navbarIconcolor = Color(0xFF4441D3);
 const chatboxcolor = Color(0xFF9997EC);
 const chatboxcolor2 = Color(0xFF4F4DA9);
+const deletebuttoncolor = Color(0xFFD45454);

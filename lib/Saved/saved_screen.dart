@@ -17,20 +17,22 @@ class _SavedScreenState extends State<SavedScreen> {
     return SafeArea(
       top: true,
       child: Scaffold(
-        backgroundColor: primarybgcolor,
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(screenHeight! * 220 / 812),
-            child: SavedNavbar(context)),
-        // body: SingleChildScrollView(child:_verticalList(3, context),)
-        
-      ),
+          backgroundColor: primarybgcolor,
+          appBar: PreferredSize(
+              preferredSize: Size.fromHeight(screenHeight! * 150 / 812),
+              child: SavedNavbar(context)),
+          body: SingleChildScrollView(
+            child: Container(
+              height: screenHeight,
+              child: _verticalList(3, context)),
+          )),
     );
   }
 }
 
-// ListView _verticalList(int n, BuildContext context) {
-//   return ListView(
-//     scrollDirection: Axis.vertical,
-//     children: List.generate(n, (i) => SavedList(context)),
-//   );
-// }
+ListView _verticalList(int n, BuildContext context) {
+  return ListView(
+    scrollDirection: Axis.vertical,
+    children: List.generate(n, (i) => SavedList(context)),
+  );
+}
