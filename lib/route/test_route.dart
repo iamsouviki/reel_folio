@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/login/login_firstpage.dart';
 import 'package:reel_folio/login/login_forgot_password.dart';
 import 'package:reel_folio/login/login_password_reset.dart';
+import 'package:reel_folio/roles/roles_accept_candidates.dart';
 import 'package:reel_folio/roles/roles_see_candidates.dart';
 import 'package:reel_folio/util/colors.dart';
 
@@ -100,6 +101,29 @@ class TestRoutePage extends StatelessWidget {
               ),
               child: Text(
                 'See Candidates Page',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AcceptCandidatesPage()),
+                );
+              },
+              style: OutlinedButton.styleFrom(
+                backgroundColor: ReelfolioColor.bgColor,
+                side: BorderSide(
+                  color: Colors.white,
+                  width: 2,
+                ),
+              ),
+              child: Text(
+                'Accept Candidates Page',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,

@@ -7,7 +7,11 @@ abstract class ReelFolioIcon {
   static const iconUpload = 'icons/icon_upload.png';
   static const iconContacts = 'icons/icon_contacts.png';
   static const iconSmallArrowForward = 'icons/icon_small_arrow_forward.png';
+  static const iconSmallArrowUpward = 'icons/icon_small_arrow_upward.png';
   static const iconSettings = 'icons/icon_settings.png';
   static const reelPlayButton = 'icons/reel_play_button.png';
   static const saveButton = 'icons/save_button.png';
+  static const acceptedCheck = 'icons/accepted_check.png';
+  static const iconDeny = 'icons/deny_button.png';
+  static const iconInactive = 'icons/inactive.png';
 }

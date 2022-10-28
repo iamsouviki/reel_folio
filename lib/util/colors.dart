@@ -5,4 +5,5 @@ abstract class ReelfolioColor {
   static const bgColor = Color(0xff313137);
   static const buttonColor = Color(0xff3849E7);
   static const circleColor = Color(0xff4161D3);
+  static const usernameColor = Color(0xff9997EC);
 }
