@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Contacts/add_contacts.dart';
 import 'package:reel_folio/Contacts/widget/contacts_item.dart';
 import 'package:reel_folio/Contacts/widget/contacts_navbar.dart';
 import 'package:reel_folio/util/asset.dart';
@@ -37,7 +38,9 @@ class _ContactsMainState extends State<ContactsMain> {
                   Image.asset(ReelfolioImageAsset.addContacts),
                   SizedBox(height: screenHeight!*0.06,),
                   ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddContacts()));
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: tagcolor1,
                   shape: RoundedRectangleBorder(
