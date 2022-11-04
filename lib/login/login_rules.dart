@@ -21,9 +21,12 @@ class _LoginRulesPageState extends State<LoginRulesPage> {
         backgroundColor: ReelfolioColor.shadowColor,
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: screenHeight! * 0.1,
+              ),
               RulesBlock(
                   id: "1",
                   title: "BE AUTHENTIC",

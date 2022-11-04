@@ -10,7 +10,7 @@ import 'package:reel_folio/util/size_config.dart';
 class SeeCandidatesPage extends StatelessWidget {
   SeeCandidatesPage({super.key});
 
-  final roles = ["Director", "Producer", "Writer", "Actor", "Cinematographer"];
+  final roles = ["Director", "Producer", "Writer", "Cinematographer"];
   final ValueNotifier<List<String>> roleNotifier =
       ValueNotifier<List<String>>(["Director", "Writer"]);
 
@@ -46,39 +46,47 @@ class SeeCandidatesPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   horizontal: screenWidth! * 0.04,
                   vertical: screenHeight! * 0.02),
-              child: Expanded(
-                flex: 5,
-                child: ValueListenableBuilder(
-                    valueListenable: roleNotifier,
-                    builder: (BuildContext context, List<String> list,
-                        Widget? child) {
-                      final roles = roleNotifier.value;
-                      print(roles);
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: roles.length,
-                          itemBuilder: ((context, index) {
-                            return RolesItemWidget(
-                              body: roles[index],
-                            );
-                          }));
-                    }),
-                // return RolesItemWidget(body: roles[list]);
-                // return Text(
-                //   textAlign: TextAlign.left,
-                //   list.isEmpty
-                //       ? 'i.e. Director, Foley Artist, Producer, \nColorist etc.'
-                //       : list.join(' '),
-                //   style: TextStyle(
-                //     fontSize: screenWidth! * 14 / 375,
-                //     color: list.isEmpty
-                //         ? const Color(0xFF474747)
-                //         : Colors.white,
-                //   ),
-                // );
-                //   },
-                // ),
-              ),
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: roles.length,
+                  itemBuilder: ((context, index) {
+                    return RolesItemWidget(
+                      body: roles[index],
+                    );
+                  })),
+              // Expanded(
+              //   flex: 5,
+              //   child: ValueListenableBuilder(
+              //       valueListenable: roleNotifier,
+              //       builder: (BuildContext context, List<String> list,
+              //           Widget? child) {
+              //         final roles = roleNotifier.value;
+              //         print(roles);
+              //         return ListView.builder(
+              //             shrinkWrap: true,
+              //             itemCount: roles.length,
+              //             itemBuilder: ((context, index) {
+              //               return RolesItemWidget(
+              //                 body: roles[index],
+              //               );
+              //             }));
+              //       }),
+              // return RolesItemWidget(body: roles[list]);
+              // return Text(
+              //   textAlign: TextAlign.left,
+              //   list.isEmpty
+              //       ? 'i.e. Director, Foley Artist, Producer, \nColorist etc.'
+              //       : list.join(' '),
+              //   style: TextStyle(
+              //     fontSize: screenWidth! * 14 / 375,
+              //     color: list.isEmpty
+              //         ? const Color(0xFF474747)
+              //         : Colors.white,
+              //   ),
+              // );
+              //   },
+              // ),
+              // ),
             ),
             Spacer(
               flex: 3,

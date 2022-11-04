@@ -14,4 +14,9 @@ abstract class ReelFolioIcon {
   static const acceptedCheck = 'icons/accepted_check.png';
   static const iconDeny = 'icons/deny_button.png';
   static const iconInactive = 'icons/inactive.png';
+  static const iconHelpCircle = 'icons/help-circle.png';
+  static const iconPlusSquare = 'icons/plus-square.png';
+  static const iconUser = 'icons/user.png';
+  static const iconNotificationBell = 'icons/notification_bell.png';
+  static const iconSaveSmall = 'icons/save_small.png';
 }

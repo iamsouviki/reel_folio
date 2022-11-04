@@ -22,9 +22,12 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
         backgroundColor: ReelfolioColor.shadowColor,
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: screenHeight! * 170 / 812,
+              ),
               Image.asset(ReelfolioImageAsset.loginTitle),
               SizedBox(
                 height: screenHeight! * 0.12,
@@ -51,7 +54,7 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    top: screenHeight! * 0.025, bottom: screenHeight! * 0.064),
+                    top: screenHeight! * 0.025, bottom: screenHeight! * 0.05),
                 child: InkWell(
                   onTap: () {
                     Navigator.push(
