@@ -19,7 +19,9 @@ class SettingsMainPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SettingsAppBarWidget(),
+              SettingsAppBarWidget(
+                title: "Settings",
+              ),
               Divider(
                 color: Colors.white.withOpacity(0.6),
                 thickness: 1,

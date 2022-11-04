@@ -6,7 +6,10 @@ import 'package:reel_folio/util/size_config.dart';
 class SettingsAppBarWidget extends StatelessWidget {
   const SettingsAppBarWidget({
     Key? key,
+    required this.title,
   }) : super(key: key);
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class SettingsAppBarWidget extends StatelessWidget {
         children: [
           Image.asset(ReelFolioIcon.iconArrowBackward),
           Text(
-            "Settings",
+            title,
             style: TextStyle(
               color: Colors.white,
               fontSize: screenWidth! * 15 / 375,
