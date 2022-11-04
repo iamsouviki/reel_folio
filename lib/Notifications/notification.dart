@@ -21,37 +21,40 @@ class _NotificationScreenState extends State<NotificationScreen> {
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(screenHeight! * 60 / 812),
                 child: DefaultNavbar(context, "Notifications")),
-            body: Container(
-              height: screenHeight! * 752 / 812,
-              child: Column(children: [
-                Container(
-                  height: 100,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: screenWidth! * 10 / 375),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 10.0),
-                        filled: true,
-                        hintText: " Search",
-                        hintStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: searchTextcolor,
-                        ),
-                        prefixIcon: Visibility(
-                          visible: true,
-                          child: Icon(
-                            Icons.search,
-                            color: Colors.grey,
+            body: new SingleChildScrollView(
+        child: Column(children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:10.0),
+                  child: TextField(
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 10.0),
+                          filled: true,
+                          hintText: " Search",
+                          hintStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: searchTextcolor,
                           ),
+                          prefixIcon: Visibility(
+                            visible: true,
+                            child: Icon(
+                              Icons.search,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          fillColor: searchBarcolor,
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(5)),
                         ),
-                        fillColor: searchBarcolor,
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(5)),
                       ),
-                    )),
-                _verticalList(2, context),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: screenHeight!*0.05, horizontal: screenWidth!*0.04),
+                  child: _verticalList(2, context),
+                )
+                
               ]),
             )));
   }
@@ -59,6 +62,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
 ListView _verticalList(int n, BuildContext context) {
   return ListView(
+    shrinkWrap: true,
     scrollDirection: Axis.vertical,
     children: List.generate(n, (i) => NotiItem()),
   );
