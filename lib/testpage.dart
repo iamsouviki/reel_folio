@@ -5,6 +5,7 @@ import 'package:reel_folio/Contacts/contacts_main_list.dart';
 import 'package:reel_folio/Home/homepage.dart';
 import 'package:reel_folio/Notifications/notification.dart';
 import 'package:reel_folio/Saved/saved_screen.dart';
+import 'package:reel_folio/apply/select_role.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
@@ -135,6 +136,27 @@ class TestPage extends StatelessWidget {
                 },
                 child: Text(
                   "Notifications",
+                  style: TextStyle(color: Colors.black),
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(screenWidth! * 0.5, 40),
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement<void, void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => SelectRole(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Apply",
                   style: TextStyle(color: Colors.black),
                 ),
                 style: ElevatedButton.styleFrom(
