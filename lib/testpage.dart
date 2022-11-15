@@ -173,7 +173,7 @@ class TestPage extends StatelessWidget {
                   Navigator.pushReplacement<void, void>(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => NewProject(),
+                      builder: (BuildContext context) => NewProjectWidget(),
                     ),
                   );
                 },
