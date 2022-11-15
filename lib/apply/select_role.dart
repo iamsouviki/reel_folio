@@ -4,14 +4,14 @@ import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 import 'package:reel_folio/widget/default_navbar.dart';
 
-class SelectRole extends StatefulWidget {
-  const SelectRole({Key? key}) : super(key: key);
+class SelectRoleScreen extends StatefulWidget {
+  const SelectRoleScreen({Key? key}) : super(key: key);
 
   @override
-  State<SelectRole> createState() => _SelectRoleState();
+  State<SelectRoleScreen> createState() => _SelectRoleScreenState();
 }
 
-class _SelectRoleState extends State<SelectRole> {
+class _SelectRoleScreenState extends State<SelectRoleScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
