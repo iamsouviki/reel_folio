@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/CastCrew/castcrew.dart';
 import 'package:reel_folio/Chat/chatmain.dart';
 import 'package:reel_folio/Contacts/contacts_main_list.dart';
+import 'package:reel_folio/CreateProject(Completed)/new%20_project.dart';
 import 'package:reel_folio/Home/homepage.dart';
 import 'package:reel_folio/Notifications/notification.dart';
 import 'package:reel_folio/Saved/saved_screen.dart';
@@ -157,6 +158,27 @@ class TestPage extends StatelessWidget {
                 },
                 child: Text(
                   "Apply",
+                  style: TextStyle(color: Colors.black),
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(screenWidth! * 0.5, 40),
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement<void, void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => NewProject(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Create Project (Completed)",
                   style: TextStyle(color: Colors.black),
                 ),
                 style: ElevatedButton.styleFrom(

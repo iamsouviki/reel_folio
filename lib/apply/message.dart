@@ -64,7 +64,7 @@ class _ApplyMessageState extends State<ApplyMessage> {
                   minLines:8,
                   maxLines: 8,
                   keyboardType: TextInputType.multiline,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     contentPadding: EdgeInsets.all(30.0),
                     hintText: 'Stand out: write a couple sentences on why your right for the job! ',
                     hintStyle: TextStyle(color: Colors.white),

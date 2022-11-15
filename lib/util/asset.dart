@@ -14,4 +14,7 @@ abstract class ReelfolioImageAsset{
 
   //Contacts
   static const addContacts = 'assets/add_contacts.png';
+
+  //Create Project
+  static const createProject = 'assets/create_project_Demo.png';
 }
