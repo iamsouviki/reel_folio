@@ -111,7 +111,7 @@ Widget _buildPopupDialog(BuildContext context) {
             fontWeight: FontWeight.w400,
           )
           )),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
               OutlinedButton(
