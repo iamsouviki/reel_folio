@@ -152,7 +152,7 @@ class TestPage extends StatelessWidget {
                   Navigator.pushReplacement<void, void>(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => SelectRole(),
+                      builder: (BuildContext context) => SelectRoleScreen(),
                     ),
                   );
                 },
