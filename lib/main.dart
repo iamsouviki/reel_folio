@@ -19,7 +19,6 @@ class ReelFolioApp extends StatelessWidget {
             SizeConfig().init(constraints, orientation);
             return const MaterialApp(
               title: 'Reel Folio',
-              //theme: ThemeData(fontFamily: 'Sora'),
               debugShowCheckedModeBanner: false,
               onGenerateRoute: ReelFolioRoute.generateRoute,
             );
