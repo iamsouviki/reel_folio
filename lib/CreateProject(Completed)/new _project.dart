@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/CreateProject(Completed)/project_upload.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/appbar_widget.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/new_project_item_widget.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
-import 'package:reel_folio/widget/default_navbar.dart';
 
 class NewProjectWidget extends StatefulWidget {
   NewProjectWidget({Key? key}) : super(key: key);
@@ -117,10 +117,10 @@ Widget _buildPopupDialog(BuildContext context) {
             children: [
               OutlinedButton(
                 onPressed: () {
-                  showDialog(
-              context: context,
-              builder: (BuildContext context) => _buildPopupDialog(context),
-            );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NewProjectUpload()),
+                  );
                 },
                 child: Text(
                   "Completed",
