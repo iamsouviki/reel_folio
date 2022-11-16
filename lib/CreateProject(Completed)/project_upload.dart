@@ -3,6 +3,7 @@ import 'package:reel_folio/CreateProject(Completed)/widget/appbar_widget.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/project_upload_textfield_widget.dart';
+import 'package:reel_folio/CreateProject(Completed)/select_category.dart';
 
 class NewProjectUpload extends StatefulWidget {
   const NewProjectUpload({super.key});
@@ -20,7 +21,7 @@ class _NewProjectUploadState extends State<NewProjectUpload> {
             backgroundColor: secondarybgcolor,
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(screenHeight! * 70 / 812),
-                child: CreateProjectNavbar(context, "ADD NEW PROJECT")),
+                child: CreateProjectNavbar(context, "ADD NEW PROJECT", SelectCategoryScreen())),
             body: SingleChildScrollView(
                 child: Column(
               children: [

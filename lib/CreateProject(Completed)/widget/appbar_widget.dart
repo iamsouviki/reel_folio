@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/util/colors.dart';
 
 // ignore: non_constant_identifier_names
-Widget CreateProjectNavbar(BuildContext context, String title) {
+Widget CreateProjectNavbar(BuildContext context, String title, route) {
   return AppBar(
       backgroundColor: secondarybgcolor,
       elevation: 0,
@@ -31,7 +31,14 @@ Widget CreateProjectNavbar(BuildContext context, String title) {
                     color: Colors.black,
                     fontSize: 13,
                     fontWeight: FontWeight.w400)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement<void, void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => route,
+                ),
+              );
+            },
             style: TextButton.styleFrom(
               padding: EdgeInsets.zero,
               backgroundColor: secondaryTextColor2,

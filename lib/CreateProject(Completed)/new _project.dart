@@ -21,7 +21,7 @@ class _NewProjectWidgetState extends State<NewProjectWidget> {
           backgroundColor: secondarybgcolor,
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(screenHeight! * 70 / 812),
-              child: CreateProjectNavbar(context, "ADD NEW PROJECT")),
+              child: CreateProjectNavbar(context, "ADD NEW PROJECT",NewProjectWidget())),
           body: SingleChildScrollView(
               child: Container(
                   child: Column(
@@ -160,14 +160,5 @@ Widget _buildPopupDialog(BuildContext context) {
           )
       ],
     ),
-    // actions: <Widget>[
-    //   new TextButton(
-    //     onPressed: () {
-    //       Navigator.of(context).pop();
-    //     },
-    //     // textColor: Theme.of(context).primaryColor,
-    //     child: const Text('Close'),
-    //   ),
-    // ],
   );
 }
