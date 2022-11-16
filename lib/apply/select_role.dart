@@ -12,6 +12,8 @@ class SelectRoleScreen extends StatefulWidget {
 }
 
 class _SelectRoleScreenState extends State<SelectRoleScreen> {
+
+  var roles = ["Director", "Cinematographer", "Kry Grip", "Actor", "VFX"];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -75,8 +77,8 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                               width: 1,
                             ),
                           ),
-                          child: const Text(
-                            "Director",
+                          child: Text(
+                            roles[index],
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,

@@ -6,7 +6,7 @@ import 'package:reel_folio/util/size_config.dart';
 import 'package:reel_folio/widget/default_navbar.dart';
 
 class NewProjectWidget extends StatefulWidget {
-  const NewProjectWidget({Key? key}) : super(key: key);
+  NewProjectWidget({Key? key}) : super(key: key);
 
   @override
   State<NewProjectWidget> createState() => _NewProjectWidgetState();
@@ -23,35 +23,36 @@ class _NewProjectWidgetState extends State<NewProjectWidget> {
               preferredSize: Size.fromHeight(screenHeight! * 50 / 812),
               child: CreateProjectNavbar(context, "ADD NEW PROJECT")),
           body: SingleChildScrollView(
-              child: Column(
+              child: Container(
+                  child: Column(
             children: [
               Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: screenWidth! * 10 / 375, vertical: 10),
-              child: TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: screenWidth! * 10 / 375),
-                  filled: true,
-                  hintText: " Search",
-                  hintStyle: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: searchTextcolor,
-                  ),
-                  prefixIcon: const Visibility(
-                    visible: true,
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.grey,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth! * 10 / 375, vertical: 10),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(vertical: 10.0),
+                      filled: true,
+                      hintText: " Search",
+                      hintStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: searchTextcolor,
+                      ),
+                      prefixIcon: Visibility(
+                        visible: true,
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      fillColor: searchBarcolor,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10)),
                     ),
-                  ),
-                  fillColor: searchBarcolor,
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-              )),
-              const SizedBox(
+                  )),
+              SizedBox(
                 height: 10,
               ),
               ListView.builder(
@@ -60,46 +61,46 @@ class _NewProjectWidgetState extends State<NewProjectWidget> {
                 itemBuilder: (context, index) => NewProject_Item(),
               ),
               SizedBox(height: screenHeight! * 0.2),
-              const Text(
+              Text(
                 "Didn’t find what you were searching for? ",
                 style: TextStyle(
-              color: secondaryTextColor2,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
+                  color: secondaryTextColor2,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               OutlinedButton(
                 onPressed: () {
-              showDialog(
+                  showDialog(
               context: context,
               builder: (BuildContext context) => _buildPopupDialog(context),
             );
                 },
-                style: OutlinedButton.styleFrom(
-              minimumSize: const Size(100, 50),
-              backgroundColor: searchTextcolor,
-              side: const BorderSide(color: Colors.white),
+                child: Text(
+                  "Create New Project",
+                  style: TextStyle(                    
+                      color: Colors.white, 
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400),
                 ),
-                child: const Text(
-              "Create New Project",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: Size(100, 50),
+                  backgroundColor: searchBarcolor,
+                  side: BorderSide(color: Colors.white),
                 ),
               )
             ],
-          )),
+          ))),
         ));
   }
 }
 
 Widget _buildPopupDialog(BuildContext context) {
-  return AlertDialog(
+  return new AlertDialog(
     backgroundColor: primarybgcolor,
     // title: const Text('Popup example'),
-    content: Column(
+    content: new Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -111,7 +112,7 @@ Widget _buildPopupDialog(BuildContext context) {
             fontWeight: FontWeight.w400,
           )
           )),
-          const SizedBox(height: 10),
+          SizedBox(height: 20),
           Row(
             children: [
               OutlinedButton(
@@ -121,20 +122,20 @@ Widget _buildPopupDialog(BuildContext context) {
               builder: (BuildContext context) => _buildPopupDialog(context),
             );
                 },
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(100, 40),
-                  backgroundColor: searchTextcolor,
-                  side: const BorderSide(color: Colors.white),
-                ),
-                child: const Text(
+                child: Text(
                   "Completed",
-                  style: TextStyle(
-                      color: Colors.white,
+                  style: TextStyle(                    
+                      color: Colors.white, 
                       fontSize: 14,
                       fontWeight: FontWeight.w400),
                 ),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: Size(100, 40),
+                  backgroundColor: searchTextcolor,
+                  side: BorderSide(color: Colors.white),
+                ),
               ),
-              const SizedBox(width:10),
+              SizedBox(width:10),
               OutlinedButton(
                 onPressed: () {
                   showDialog(
@@ -142,17 +143,17 @@ Widget _buildPopupDialog(BuildContext context) {
               builder: (BuildContext context) => _buildPopupDialog(context),
             );
                 },
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(100, 40),
-                  backgroundColor: searchTextcolor,
-                  side: const BorderSide(color: Colors.white),
-                ),
-                child: const Text(
+                child: Text(
                   "Crewing Up",
-                  style: TextStyle(
-                      color: Colors.white,
+                  style: TextStyle(                    
+                      color: Colors.white, 
                       fontSize: 14,
                       fontWeight: FontWeight.w400),
+                ),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: Size(100, 40),
+                  backgroundColor: searchTextcolor,
+                  side: BorderSide(color: Colors.white),
                 ),
               )
             ],

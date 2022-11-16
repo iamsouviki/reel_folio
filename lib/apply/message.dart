@@ -20,107 +20,149 @@ class _ApplyMessageState extends State<ApplyMessage> {
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(screenHeight! * 60 / 812),
             child: DefaultNavbar(context, "Apply")),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: screenHeight!*0.06,),
-              const Text(
-                "ADD A SHORT MESSAGE?",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  // fontFamily: "GT-America-Compressed-Regular",
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: screenHeight! * 0.06,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              // ignore: prefer_const_constructors
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.2),
-                child: const Text(
-                  "write a few sentences on why you’re right for the job",
+                const Text(
+                  "ADD A SHORT MESSAGE?",
                   style: TextStyle(
-                    color: searchTextcolor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
                     // fontFamily: "GT-America-Compressed-Regular",
                   ),
                   textAlign: TextAlign.center,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              // SizedBox(height: screenHeight! * 0.1),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal:40.0),
-                child: TextFormField(
-                  minLines:8,
-                  maxLines: 8,
-                  keyboardType: TextInputType.multiline,
-                  decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.all(30.0),
-                    hintText: 'Stand out: write a couple sentences on why your right for the job! ',
-                    hintStyle: TextStyle(color: Colors.white),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: secondaryTextColor2,width: 1),
+                // ignore: prefer_const_constructors
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.2),
+                  child: const Text(
+                    "write a few sentences on why you’re right for the job",
+                    style: TextStyle(
+                      color: searchTextcolor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      // fontFamily: "GT-America-Compressed-Regular",
                     ),
-                    // border: 
-                    
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              ),
-              SizedBox(height: screenHeight! * 0.1),
-              Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: screenWidth! * 0.1, vertical: screenHeight! * 0.05),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(screenWidth! * 0.8, 50),
-                backgroundColor: navbarIconcolor,
-                // shape: RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(32.0),
-                // ),
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ApplyMessage()));
-              },
-              // color: Colors.blue,
-              // textColor: Colors.white,
-              child: const Text('Message'),
+                SizedBox(
+                  height: 20,
+                ),
+                // SizedBox(height: screenHeight! * 0.1),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  // child: TextFormField(
+                  //   minLines:8,
+                  //   maxLines: 8,
+                  //   keyboardType: TextInputType.multiline,
+                  //   decoration: const InputDecoration(
+                  //     contentPadding: EdgeInsets.all(30.0),
+                  //     hintText: 'Stand out: write a couple sentences on why your right for the job! ',
+                  //     hintStyle: TextStyle(color: Colors.white),
+                  //     enabledBorder: OutlineInputBorder(
+                  //       borderSide: BorderSide(color: secondaryTextColor2,width: 1),
+                  //     ),
+                  //     // border:
+
+                  //   ),
+                  // ),
+                  child: TextField(
+                    // controller: _bioController,
+                    keyboardType: TextInputType.multiline,
+                    textInputAction: TextInputAction.newline,
+                    maxLines: null,
+                    minLines: 12,
+                    cursorColor: Color(0xFF474747),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: screenWidth! * 18 / 375,
+                    ),
+                    decoration: InputDecoration(
+                      hintMaxLines: 6,
+                      hintText:
+                          "Stand out: write a couple sentences on why your right for the job! ",
+                      hintStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: screenWidth! * 16 / 375,
+                      ),
+                      enabled: true,
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFF474747),
+                        ),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFF474747),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: screenHeight! * 0.05),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth! * 0.1,
+                      vertical: screenHeight! * 0.05),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(screenWidth! * 0.8, 50),
+                      backgroundColor: navbarIconcolor,
+                      // shape: RoundedRectangleBorder(
+                      //   borderRadius: BorderRadius.circular(32.0),
+                      // ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ApplyMessage()));
+                    },
+                    // color: Colors.blue,
+                    // textColor: Colors.white,
+                    child: const Text('Message'),
+                  ),
+                ),
+              ],
             ),
-          ),
-              
-            ],
           ),
         ),
         bottomNavigationBar: Padding(
-            padding: EdgeInsets.fromLTRB(
-                screenWidth! * 0.1,0, screenWidth! * 0.1, screenHeight! * 0.05),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(screenWidth! * 0.1, 50),
-                backgroundColor: navbarIconcolor,
-                // shape: RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(32.0),
-                // ),
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ApplyMessage()));
-              },
-              // color: Colors.blue,
-              // textColor: Colors.white,
-              child: const Text('Submit'),
+          padding: EdgeInsets.fromLTRB(
+              screenWidth! * 0.1, 0, screenWidth! * 0.1, screenHeight! * 0.05),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(screenWidth! * 0.1, 50),
+              backgroundColor: navbarIconcolor,
+              // shape: RoundedRectangleBorder(
+              //   borderRadius: BorderRadius.circular(32.0),
+              // ),
             ),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ApplyMessage()));
+            },
+            // color: Colors.blue,
+            // textColor: Colors.white,
+            child: const Text('Skip'),
           ),
+        ),
       ),
     );
   }
