@@ -24,7 +24,7 @@ Widget CreateProjectNavbar(BuildContext context, String title) {
       centerTitle: true,
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 10.0),
+          padding: const EdgeInsets.only(right: 10.0,top: 10,bottom:10),
           child: TextButton(
             child: Text('Next',
                 style: const TextStyle(

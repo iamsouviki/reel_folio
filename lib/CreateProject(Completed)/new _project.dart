@@ -20,7 +20,7 @@ class _NewProjectWidgetState extends State<NewProjectWidget> {
         child: Scaffold(
           backgroundColor: secondarybgcolor,
           appBar: PreferredSize(
-              preferredSize: Size.fromHeight(screenHeight! * 50 / 812),
+              preferredSize: Size.fromHeight(screenHeight! * 70 / 812),
               child: CreateProjectNavbar(context, "ADD NEW PROJECT")),
           body: SingleChildScrollView(
               child: Container(
