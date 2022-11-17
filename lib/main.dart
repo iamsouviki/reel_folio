@@ -4,6 +4,7 @@ import 'package:reel_folio/Home/homepage.dart';
 import 'package:reel_folio/auth/splash_screen.dart';
 import 'package:reel_folio/route/reel_folio_route.dart';
 
+import 'package:reel_folio/route/test_route.dart';
 import 'util/size_config.dart';
 
 void main() {
@@ -25,6 +26,9 @@ class ReelFolioApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               // onGenerateRoute: ReelFolioRoute.generateRoute,
               home: SplashScreen(),
+              // onGenerateRoute: ReelFolioRoute.generateRoute,
+              // Temporary re-route for testing.
+              //home: TestRoutePage(),
             );
           },
         );
