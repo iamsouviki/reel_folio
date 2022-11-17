@@ -1,31 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/project_page/widgets/open_positions_widget.dart';
+import 'package:reel_folio/project_page/widgets/owner_wrappedup_hero_widget.dart';
+import 'package:reel_folio/project_page/widgets/owner_wrappedup_widget.dart';
 import 'package:reel_folio/project_page/widgets/project_appbar_widget.dart';
 import 'package:reel_folio/project_page/widgets/project_applied_widget.dart';
 import 'package:reel_folio/project_page/widgets/project_cast_crew_widget.dart';
 import 'package:reel_folio/project_page/widgets/project_detail_widget.dart';
-import 'package:reel_folio/project_page/widgets/project_hero_widget.dart';
+import 'package:reel_folio/project_page/widgets/wrappedup_hero_widget.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-const skillList = [
-  "Art Direction",
-  "Actor",
-  "Sound Design",
-  "Editing",
-  "Directing",
-];
-
-class ProjectAppliedPage extends StatefulWidget {
-  const ProjectAppliedPage({super.key});
+class OwnerWrappedPage extends StatefulWidget {
+  const OwnerWrappedPage({super.key});
 
   @override
-  State<ProjectAppliedPage> createState() => _ProjectAppliedPageState();
+  State<OwnerWrappedPage> createState() => _OwnerWrappedPageState();
 }
 
-class _ProjectAppliedPageState extends State<ProjectAppliedPage> {
+class _OwnerWrappedPageState extends State<OwnerWrappedPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,15 +32,13 @@ class _ProjectAppliedPageState extends State<ProjectAppliedPage> {
             children: [
               Padding(
                 padding: EdgeInsets.only(top: screenWidth! * 0.05),
-                child: ProjectPageAppbarWidget(
-                  title: "Shoot in 30 Days",
-                ),
+                child: OwnerWrappedUpWidget(title: "Complete"),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: screenWidth! * 0.05,
                     vertical: screenWidth! * 0.05),
-                child: ProjectHeroWidget(),
+                child: OwnerWrappedUpHeroWidget(),
               ),
               Divider(
                 color: Colors.white.withOpacity(0.4),
@@ -57,17 +48,13 @@ class _ProjectAppliedPageState extends State<ProjectAppliedPage> {
                 padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
                 child: CastAndCrewWidget(),
               ),
-              Divider(
-                color: Colors.white.withOpacity(0.4),
-              ),
-              AppliedWidget(),
-              Divider(
-                color: Colors.white.withOpacity(0.4),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
-                child: OpenPositionsWidget(),
-              ),
+              // Divider(
+              //   color: Colors.white.withOpacity(0.4),
+              // ),
+              // AppliedWidget(),
+              // Divider(
+              //   color: Colors.white.withOpacity(0.4),
+              // ),
               Divider(
                 color: Colors.white.withOpacity(0.4),
               ),
@@ -143,3 +130,11 @@ class _ProjectAppliedPageState extends State<ProjectAppliedPage> {
     );
   }
 }
+
+const skillList = [
+  "Art Direction",
+  "Actor",
+  "Sound Design",
+  "Editing",
+  "Directing",
+];

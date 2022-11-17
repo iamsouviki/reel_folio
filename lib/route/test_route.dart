@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/project_page/project_owner_crewup_page.dart';
+import 'package:reel_folio/project_page/project_owner_wrapped_page.dart';
 import 'package:reel_folio/project_page/project_page_applied_page.dart';
+import 'package:reel_folio/project_page/project_wrapped_page.dart';
 import 'package:reel_folio/util/colors.dart';
 
 class TestRoutePage extends StatelessWidget {
@@ -30,6 +33,72 @@ class TestRoutePage extends StatelessWidget {
               ),
               child: Text(
                 'Project Applied Page',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProjectWrappedPage()),
+                );
+              },
+              style: OutlinedButton.styleFrom(
+                backgroundColor: ReelfolioColor.bgColor,
+                side: BorderSide(
+                  color: Colors.white,
+                  width: 2,
+                ),
+              ),
+              child: Text(
+                'Project Wrapped up Page',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OwnerWrappedPage()),
+                );
+              },
+              style: OutlinedButton.styleFrom(
+                backgroundColor: ReelfolioColor.bgColor,
+                side: BorderSide(
+                  color: Colors.white,
+                  width: 2,
+                ),
+              ),
+              child: Text(
+                'Owner Wrapped up Page',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OwnerCrewUpPage()),
+                );
+              },
+              style: OutlinedButton.styleFrom(
+                backgroundColor: ReelfolioColor.bgColor,
+                side: BorderSide(
+                  color: Colors.white,
+                  width: 2,
+                ),
+              ),
+              child: Text(
+                'Owner Crew up Page',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,

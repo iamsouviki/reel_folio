@@ -5,6 +5,7 @@ import 'package:reel_folio/project_page/widgets/project_applied_widget.dart';
 import 'package:reel_folio/project_page/widgets/project_cast_crew_widget.dart';
 import 'package:reel_folio/project_page/widgets/project_detail_widget.dart';
 import 'package:reel_folio/project_page/widgets/project_hero_widget.dart';
+import 'package:reel_folio/project_page/widgets/wrappedup_hero_widget.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';
@@ -18,14 +19,14 @@ const skillList = [
   "Directing",
 ];
 
-class ProjectAppliedPage extends StatefulWidget {
-  const ProjectAppliedPage({super.key});
+class ProjectWrappedPage extends StatefulWidget {
+  const ProjectWrappedPage({super.key});
 
   @override
-  State<ProjectAppliedPage> createState() => _ProjectAppliedPageState();
+  State<ProjectWrappedPage> createState() => _ProjectWrappedPageState();
 }
 
-class _ProjectAppliedPageState extends State<ProjectAppliedPage> {
+class _ProjectWrappedPageState extends State<ProjectWrappedPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,18 +38,10 @@ class _ProjectAppliedPageState extends State<ProjectAppliedPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: screenWidth! * 0.05),
-                child: ProjectPageAppbarWidget(
-                  title: "Shoot in 30 Days",
-                ),
+              ProjectPageAppbarWidget(
+                title: "Complete",
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth! * 0.05,
-                    vertical: screenWidth! * 0.05),
-                child: ProjectHeroWidget(),
-              ),
+              WrappedUpHeroWidget(),
               Divider(
                 color: Colors.white.withOpacity(0.4),
                 thickness: 1,
@@ -60,17 +53,13 @@ class _ProjectAppliedPageState extends State<ProjectAppliedPage> {
               Divider(
                 color: Colors.white.withOpacity(0.4),
               ),
-              AppliedWidget(),
-              Divider(
-                color: Colors.white.withOpacity(0.4),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
-                child: OpenPositionsWidget(),
-              ),
-              Divider(
-                color: Colors.white.withOpacity(0.4),
-              ),
+              // AppliedWidget(),
+              // Divider(
+              //   color: Colors.white.withOpacity(0.4),
+              // ),
+              // Divider(
+              //   color: Colors.white.withOpacity(0.4),
+              // ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
                 child: ProjectDetailWidget(),
