@@ -6,8 +6,12 @@ Widget tagCrewWidget(){
   return Column(
     children: [
       Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(ReelfolioImageAsset.chatProfilePic, height: 25),
+          Padding(
+            padding: const EdgeInsets.only(top:10.0),
+            child: Image.asset(ReelfolioImageAsset.chatProfilePic, height: 25),
+          ),
           SizedBox(width: 15,),
           Column(
               mainAxisAlignment: MainAxisAlignment.start,

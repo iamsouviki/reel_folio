@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/CreateProject(Completed)/invite_crew.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/appbar_widget.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/tag_crew_widget.dart';
 import 'package:reel_folio/util/colors.dart';
@@ -103,7 +104,7 @@ class _tagCrewScreenState extends State<tagCrewScreen>{
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const tagCrewScreen()));
+                      builder: (context) => const ImportCrew()));
             },
             // color: Colors.blue,
             // textColor: Colors.white,
