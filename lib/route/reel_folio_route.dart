@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/Chat/chat_screen.dart';
 import 'package:reel_folio/Chat/chatmain.dart';
 import 'package:reel_folio/Home/homepage.dart';
-import 'package:reel_folio/Portfolio/portfolio_home.dart';
 import 'package:reel_folio/auth/splash_screen.dart';
 import 'package:reel_folio/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/onboarding/welcome_screen.dart';
+import 'package:reel_folio/portfolio/portfolio_home.dart';
 import 'package:reel_folio/route/route_path.dart';
 import '../onboarding/onboarding_details_screen.dart';
 import '../onboarding/onboarding_request_screen.dart';
@@ -77,7 +77,7 @@ class _ReelFolioRoute extends PageRouteBuilder {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) =>
-              screen!,
+              screen,
           settings: settings,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             const begin = Offset(1, 0);
