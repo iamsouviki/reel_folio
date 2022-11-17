@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Chat/chat_screen.dart';
+import 'package:reel_folio/Chat/chatmain.dart';
+import 'package:reel_folio/Home/homepage.dart';
+import 'package:reel_folio/Portfolio/portfolio_home.dart';
 import 'package:reel_folio/auth/splash_screen.dart';
 import 'package:reel_folio/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/onboarding/welcome_screen.dart';
@@ -32,6 +36,18 @@ abstract class ReelFolioRoute {
 
       case RoutePath.routeToWelcomeScreen:
         currentWidget = const WelcomeScreen();
+        break;
+
+      case RoutePath.routeToHomeScreen:
+        currentWidget = const Homepage();
+        break;
+
+      case RoutePath.routeToChatScreen:
+        currentWidget = ChatMain();
+        break;
+
+      case RoutePath.routeToPortfolioScreen:
+        currentWidget = const PortfolioHomePage();
         break;
 
       // case RoutePath.routeToProjectCategoryDetails:

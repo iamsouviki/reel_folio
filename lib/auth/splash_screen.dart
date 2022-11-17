@@ -15,7 +15,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     routeToNextScreen();
@@ -24,11 +23,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   routeToNextScreen() {
     Timer(const Duration(seconds: 2), () {
-      // Navigator.of(context).pushReplacementNamed(RoutePath.routeToRequestOnBoardingScreen);
-      Navigator.pushReplacement(context,
-    // Instantiate the new page 
+      Navigator.of(context).pushReplacementNamed(
+        RoutePath.routeToRequestOnBoardingScreen,
+      );
+      /*Navigator.pushReplacement(context,
+    // Instantiate the new page
     // MaterialPageRoute(builder: (context) => const Homepage()),);
-    MaterialPageRoute(builder: (context) => const TestPage()),);
+    MaterialPageRoute(builder: (context) => const TestPage()),);*/
     });
   }
 
@@ -36,9 +37,11 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.black,
-      body: Center(child: CupertinoActivityIndicator(
-        color: Colors.white,
-      ),),
+      body: Center(
+        child: CupertinoActivityIndicator(
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

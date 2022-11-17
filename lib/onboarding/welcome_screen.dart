@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/route/route_path.dart';
 
 import '../util/size_config.dart';
 import 'widget/tools/screen_title_widget.dart';
@@ -81,13 +82,18 @@ class WelcomeScreen extends StatelessWidget {
                   aspectRatio: 373 / 35,
                   child: SizedBox(),
                 ),
-                Text(
-                  "I'LL DO IT LATER",
-                  style: TextStyle(
-                    fontSize: screenWidth! * 20 / 375,
-                    color: const Color(0xFF767676),
-                    fontFamily: 'GT-America-Compressed-Regular',
-                    fontWeight: FontWeight.w700,
+                GestureDetector(
+                  onTap: (){
+                    Navigator.pushReplacementNamed(context, RoutePath.routeToHomeScreen);
+                  },
+                  child: Text(
+                    "I'LL DO IT LATER",
+                    style: TextStyle(
+                      fontSize: screenWidth! * 20 / 375,
+                      color: const Color(0xFF767676),
+                      fontFamily: 'GT-America-Compressed-Regular',
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],

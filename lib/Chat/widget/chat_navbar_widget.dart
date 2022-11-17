@@ -12,7 +12,7 @@ Widget ChatMainNavbar(BuildContext context) {
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pop(context),
             icon: const Icon(Icons.arrow_back, color: Colors.white),
           ),
           const SizedBox(width: 10),

@@ -5,5 +5,8 @@ abstract class RoutePath {
   static const routeToOnBoardingDetailsScreen= 'onboarding-details-screen';
   static const routeToOnBoardingConfirmationScreen = 'onboarding-confirmation-screen';
   static const routeToWelcomeScreen = 'welcome-screen';
+  static const routeToHomeScreen = 'home-screen';
+  static const routeToChatScreen = 'chat-screen';
+  static const routeToPortfolioScreen = 'portfolio-screen';
   // static const routeToProjectCategoryDetails = 'project-category-details-screen';
 }

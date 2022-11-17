@@ -23,11 +23,11 @@ class ReelFolioApp extends StatelessWidget {
             return const MaterialApp(
               title: 'Reel Folio',
               debugShowCheckedModeBanner: false,
-              // onGenerateRoute: ReelFolioRoute.generateRoute,
+              onGenerateRoute: ReelFolioRoute.generateRoute,
               //home: SplashScreen(),
               // onGenerateRoute: ReelFolioRoute.generateRoute,
               // Temporary re-route for testing.
-              home: TestRoutePage(),
+              //home: TestRoutePage(),
             );
           },
         );

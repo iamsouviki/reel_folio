@@ -58,7 +58,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
           ),
           bottomNavigationBar: SizedBox(
             height: 55,
-            child: BottomNavBar(),) ,
+            child: BottomNavBar(context),) ,
         ));
   }
 }
