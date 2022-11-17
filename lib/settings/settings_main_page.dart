@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Portfolio/portfolio_edit.dart';
+import 'package:reel_folio/settings/settings_terms_page.dart';
 import 'package:reel_folio/settings/widgets/app_bar_widget.dart';
 import 'package:reel_folio/settings/widgets/row_widget.dart';
 import 'package:reel_folio/util/asset.dart';
@@ -19,24 +21,42 @@ class SettingsMainPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SettingsAppBarWidget(
+              const SettingsAppBarWidget(
                 title: "Settings",
               ),
               Divider(
                 color: Colors.white.withOpacity(0.6),
                 thickness: 1,
               ),
-              SettingsRowWidget(
-                icon: ReelFolioIcon.iconUser,
-                title: 'Edit Portfolio',
+              InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PortfolioEditPage()),
+                  );
+                },
+                child: const SettingsRowWidget(
+                  icon: ReelFolioIcon.iconUser,
+                  title: 'Edit Portfolio',
+                ),
               ),
               Divider(
                 color: Colors.white.withOpacity(0.4),
                 thickness: 1,
               ),
-              SettingsRowWidget(
-                icon: ReelFolioIcon.iconHelpCircle,
-                title: 'Terms Of Service',
+              InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsTermsPage()),
+                  );
+                },
+                child: const SettingsRowWidget(
+                  icon: ReelFolioIcon.iconHelpCircle,
+                  title: 'Terms Of Service',
+                ),
               ),
               Divider(
                 color: Colors.white.withOpacity(0.4),

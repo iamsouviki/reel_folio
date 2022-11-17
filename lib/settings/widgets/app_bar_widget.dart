@@ -20,7 +20,12 @@ class SettingsAppBarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(ReelFolioIcon.iconArrowBackward),
+          InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Image.asset(ReelFolioIcon.iconArrowBackward),
+          ),
           Text(
             title,
             style: TextStyle(

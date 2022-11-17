@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const primarybgcolor = Color(0xFF181818);
-const secondarybgcolor = Color(0xFF141414);
+const primarybgcolor = Colors.black;//Color(0xFF181818);
+const secondarybgcolor = Colors.black;//Color(0xFF141414);
 const searchBarcolor = Color(0xFF2C2C2C);
 const searchTextcolor = Color(0xFF6F6F6F);
 const tagcolor1 = Color(0xFF5450EC);

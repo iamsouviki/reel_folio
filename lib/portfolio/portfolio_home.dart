@@ -43,8 +43,13 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              ReelFolioIcon.iconArrowBackward,
+                            InkWell(
+                              child: Image.asset(
+                                ReelFolioIcon.iconArrowBackward,
+                              ),
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
                             ),
                             InkWell(
                               onTap: () => showModalBottomSheet(
@@ -306,14 +311,14 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                                     Image.asset(
                                         ReelfolioImageAsset.portfolioWork),
                                     Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 100, right: 5, top: 5),
                                       child: Container(
                                         alignment: Alignment.center,
                                         color: Color(0xff5450EC),
                                         height: 20,
                                         width: 50,
-                                        child: Text(
+                                        child: const Text(
                                           "Hiring",
                                           style: TextStyle(
                                             color: Colors.white,
@@ -325,9 +330,9 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
                                     ),
                                   ],
                                 ),
-                                Padding(
+                                const Padding(
                                   padding:
-                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                      EdgeInsets.symmetric(vertical: 8.0),
                                   child: Text(
                                     "PROJECT TITLE",
                                     style: TextStyle(
