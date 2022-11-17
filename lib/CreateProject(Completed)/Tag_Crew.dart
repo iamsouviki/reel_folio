@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/CreateProject(Completed)/invite_crew.dart';
+import 'package:reel_folio/CreateProject(Completed)/review_screen.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/appbar_widget.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/tag_crew_widget.dart';
 import 'package:reel_folio/util/colors.dart';
@@ -22,7 +23,7 @@ class _tagCrewScreenState extends State<tagCrewScreen>{
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(screenHeight! * 70 / 812),
             child: CreateProjectNavbar(
-                context, "ADD NEW PROJECT", tagCrewScreen())),
+                context, "ADD NEW PROJECT", reviewScreen())),
         body: SingleChildScrollView(
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),

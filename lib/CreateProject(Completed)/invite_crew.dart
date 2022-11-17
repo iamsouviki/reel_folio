@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/CreateProject(Completed)/review_screen.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/appbar_widget.dart';
 import 'package:reel_folio/CreateProject(Completed)/widget/tag_crew_widget.dart';
 import 'package:reel_folio/util/colors.dart';
@@ -21,7 +22,7 @@ class _ImportCrewState extends State<ImportCrew> {
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(screenHeight! * 70 / 812),
               child: CreateProjectNavbar(
-                  context, "ADD NEW PROJECT", ImportCrew())),
+                  context, "ADD NEW PROJECT", reviewScreen())),
           body: SingleChildScrollView(
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
