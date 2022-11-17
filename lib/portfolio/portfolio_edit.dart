@@ -18,7 +18,7 @@ class _PortfolioEditPageState extends State<PortfolioEditPage> {
     return SafeArea(
         top: true,
         child: Scaffold(
-          backgroundColor: ReelfolioColor.bgColor,
+          backgroundColor: ReelfolioColor.shadowColor,
           body: SingleChildScrollView(
             child: Column(
               children: [

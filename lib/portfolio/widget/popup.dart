@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Contacts/contacts_main_list.dart';
+import 'package:reel_folio/Notifications/notification.dart';
+import 'package:reel_folio/Saved/saved_screen.dart';
 import 'package:reel_folio/portfolio/portfolio_edit.dart';
 import 'package:reel_folio/portfolio/portfolio_my.dart';
+import 'package:reel_folio/settings/settings_main_page.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';
@@ -18,9 +22,10 @@ Widget PopUp(BuildContext context) {
               left: screenWidth! * 0.05, top: screenHeight! * 0.01),
           child: InkWell(
             onTap: () {
+              Navigator.of(context).pop();
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PortfolioMyPage()),
+                MaterialPageRoute(builder: (context) => NotificationScreen()),
               );
             },
             child: Row(
@@ -55,7 +60,7 @@ Widget PopUp(BuildContext context) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const PortfolioEditPage()),
+                    builder: (context) => const SettingsMainPage()),
               );
             },
             child: Row(
@@ -85,21 +90,32 @@ Widget PopUp(BuildContext context) {
         Padding(
           padding: EdgeInsets.only(
               left: screenWidth! * 0.05, top: screenHeight! * 0.01),
-          child: Row(
-            children: [
-              Image.asset(ReelFolioIcon.iconContacts),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
-                child: Text(
-                  "Contacts",
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
-                  ),
+          child: InkWell(
+            onTap: (){
+              Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ContactsMain(),
                 ),
-              )
-            ],
+              );
+            },
+            child: Row(
+              children: [
+                Image.asset(ReelFolioIcon.iconContacts),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
+                  child: Text(
+                    "Contacts",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         Divider(
@@ -135,21 +151,33 @@ Widget PopUp(BuildContext context) {
         Padding(
           padding: EdgeInsets.only(
               left: screenWidth! * 0.05, top: screenHeight! * 0.01),
-          child: Row(
-            children: [
-              Image.asset(ReelFolioIcon.saveButton),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
-                child: Text(
-                  "Saved",
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
-                  ),
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SavedScreen(),
                 ),
-              )
-            ],
+              );
+            },
+            child: Row(
+              children: [
+                Image.asset(ReelFolioIcon.saveButton),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: screenWidth! * 0.05),
+                  child: Text(
+                    "Saved",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         Divider(

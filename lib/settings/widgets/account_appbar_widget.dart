@@ -19,7 +19,14 @@ class AccountPageAppBarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(ReelFolioIcon.iconSmallArrowBackward),
+          InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Image.asset(
+              ReelFolioIcon.iconSmallArrowBackward,
+            ),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.12),
             child: Text(

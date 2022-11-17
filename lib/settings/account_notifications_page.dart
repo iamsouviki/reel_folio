@@ -174,6 +174,7 @@ class SettingsAccountPage extends StatelessWidget {
                           ),
                         ),
                         TextField(
+                          keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
