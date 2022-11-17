@@ -101,16 +101,180 @@ class _reviewScreenState extends State<reviewScreen> {
                   color: Colors.white.withOpacity(0.5),
                   thickness: 1,
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(
+                Padding(
+                  padding: const EdgeInsets.symmetric(
                       horizontal: 15.0, vertical: 15),
-                  child: Text("Cast and Crew",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Cast and Crew",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400)),
+                      SizedBox(height:10),
+                      Row(
+                        children: [
+                          Image.asset(ReelfolioImageAsset.chatProfilePic, height: 25),
+                          Image.asset(ReelfolioImageAsset.chatProfilePic, height: 25),
+                          Image.asset(ReelfolioImageAsset.chatProfilePic, height: 25),
+                          Image.asset(ReelfolioImageAsset.chatProfilePic, height: 25),
+                          const Spacer(),
+                          Text("@williamerwin",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400)),
+                          Text(" and 4 others",
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.5),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.white.withOpacity(0.5),
+                  thickness: 1,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Category",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400)),
+                      SizedBox(height:10),
+                      // ListView.builder(
+                      //   shrinkWrap: true,
+                      //   scrollDirection: Axis.horizontal,
+                      //   itemCount: 1,
+                      //   itemBuilder: (context, index){
+                      //     return Container(
+                      //       width: 100,
+                      //       height:40,
+                      //       padding:
+                      //       EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(25),
+                      //         // color: secondaryTextColor2,
+                      //       ),
+                      //       child: Text(
+                      //         "Drama",
+                      //         style: TextStyle(
+                      //           color: Colors.white,
+                      //           fontSize: 15,
+                      //           fontWeight: FontWeight.w400,
+                      //         ),
+                      //       ),
+                      //     );
+                      //   },
+                      // )
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.white.withOpacity(0.5),
+                  thickness: 1,
+                ),
+                SizedBox(
+                  height: screenHeight! * 0.1,
+                ),
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(screenWidth! * 0.3, 40),
+                      backgroundColor: deletebuttoncolor,
+                    ),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => _buildPopupDialog(context),
+                      );
+                    },
+                    child: const Text('Delete'),
+                  ),),
+                SizedBox(
+                  height: 15,
                 ),
               ],
             ))));
   }
+}
+
+Widget _buildPopupDialog(BuildContext context) {
+  return new AlertDialog(
+    alignment: Alignment.center,
+    backgroundColor: primarybgcolor,
+    // title: const Text('Popup example'),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Center(
+
+            child: Text("Are you sure you want \nto DELETE?",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                )
+            )),
+        SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => reviewScreen()),
+                );
+              },
+              child: Text(
+                "NO",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400),
+              ),
+              style: OutlinedButton.styleFrom(
+                minimumSize: Size(100, 40),
+                backgroundColor: searchBarcolor,
+                side: BorderSide(color: Colors.white),
+              ),
+            ),
+            SizedBox(width:10),
+            OutlinedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => _buildPopupDialog(context),
+                );
+              },
+              child: Text(
+                "YES",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400),
+              ),
+              style: OutlinedButton.styleFrom(
+                minimumSize: Size(100, 40),
+                backgroundColor: deletebuttoncolor,
+                side: BorderSide(color: Colors.white),
+              ),
+            )
+          ],
+        )
+      ],
+    ),
+  );
 }
