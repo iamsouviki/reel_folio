@@ -20,7 +20,11 @@ class OwnerWrappedUpWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(ReelFolioIcon.iconArrowBackward),
+          InkWell(
+              onTap: (() {
+                Navigator.pop(context);
+              }),
+              child: Image.asset(ReelFolioIcon.iconArrowBackward)),
           Container(
             decoration: BoxDecoration(
               color: ReelfolioColor.bgColor,
@@ -63,4 +67,3 @@ class OwnerWrappedUpWidget extends StatelessWidget {
     );
   }
 }
-

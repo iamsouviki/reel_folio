@@ -22,7 +22,11 @@ class ProjectPageAppbarWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(ReelFolioIcon.iconArrowBackward),
+            InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Image.asset(ReelFolioIcon.iconArrowBackward)),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.25),
               child: Container(

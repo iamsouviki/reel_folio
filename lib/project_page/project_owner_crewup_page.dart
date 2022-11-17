@@ -41,7 +41,12 @@ class _OwnerCrewUpPageState extends State<OwnerCrewUpPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset(ReelFolioIcon.iconArrowBackward),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image.asset(ReelFolioIcon.iconArrowBackward),
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           color: ReelfolioColor.buttonColor.withOpacity(0.4),
