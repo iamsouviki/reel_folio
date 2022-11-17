@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/project_page/project_owner_crewup_page.dart';
-import 'package:reel_folio/project_page/project_owner_wrapped_page.dart';
+import 'package:reel_folio/create_project(hiring)/category_hiring_page.dart';
+import 'package:reel_folio/create_project(hiring)/hiring_page.dart';
+import 'package:reel_folio/create_project(hiring)/invite_crew.dart';
+import 'package:reel_folio/create_project(hiring)/open_roles_page.dart';
+import 'package:reel_folio/create_project(hiring)/summary_upcomming_page.dart';
 import 'package:reel_folio/project_page/project_page_applied_page.dart';
-import 'package:reel_folio/project_page/project_request_tag_page.dart';
-import 'package:reel_folio/project_page/project_wrapped_page.dart';
 import 'package:reel_folio/util/colors.dart';
 
 class TestRoutePage extends StatelessWidget {
@@ -22,7 +23,7 @@ class TestRoutePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProjectAppliedPage()),
+                  MaterialPageRoute(builder: (context) => NewProjectUpload()),
                 );
               },
               style: OutlinedButton.styleFrom(
@@ -33,7 +34,7 @@ class TestRoutePage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Project Applied Page',
+                'Upcomming Page',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -44,7 +45,8 @@ class TestRoutePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProjectWrappedPage()),
+                  MaterialPageRoute(
+                      builder: (context) => SelectCategoryScreen()),
                 );
               },
               style: OutlinedButton.styleFrom(
@@ -55,7 +57,7 @@ class TestRoutePage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Project Wrapped up Page',
+                'Select Category Page',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -66,7 +68,7 @@ class TestRoutePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => OwnerWrappedPage()),
+                  MaterialPageRoute(builder: (context) => openRolesPage()),
                 );
               },
               style: OutlinedButton.styleFrom(
@@ -77,7 +79,7 @@ class TestRoutePage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Owner Wrapped up Page',
+                'Open Roles Page',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -88,7 +90,7 @@ class TestRoutePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => OwnerCrewUpPage()),
+                  MaterialPageRoute(builder: (context) => ImportCrew()),
                 );
               },
               style: OutlinedButton.styleFrom(
@@ -99,7 +101,7 @@ class TestRoutePage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Owner Crew up Page',
+                'Import Crew Page',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -110,7 +112,7 @@ class TestRoutePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RequestTagPage()),
+                  MaterialPageRoute(builder: (context) => ImportCrew()),
                 );
               },
               style: OutlinedButton.styleFrom(
@@ -121,7 +123,29 @@ class TestRoutePage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Request to Tag Page',
+                'Import Crew Page',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => reviewScreen()),
+                );
+              },
+              style: OutlinedButton.styleFrom(
+                backgroundColor: ReelfolioColor.bgColor,
+                side: BorderSide(
+                  color: Colors.white,
+                  width: 2,
+                ),
+              ),
+              child: Text(
+                'Hiring Page',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
