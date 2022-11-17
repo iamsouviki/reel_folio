@@ -14,6 +14,22 @@ class reviewScreen extends StatefulWidget {
 }
 
 class _reviewScreenState extends State<reviewScreen> {
+  var skill = [
+    "Actor",
+    "Director",
+    "Cinematographer",
+    "Writer",
+    "Producer",
+    "Editor",
+    "Sound Designer",
+    "Composer",
+    "Production Designer",
+    "Costume Designer",
+    "Makeup Artist",
+    "VFX Artist",
+    "Stunt Coordinator",
+    "Other"
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -141,41 +157,61 @@ class _reviewScreenState extends State<reviewScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 15),
+                      horizontal: 0.0, vertical: 15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Category",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400)),
+                      Padding(
+                        padding: const EdgeInsets.only(left:15.0),
+                        child: const Text("Category",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400)),
+                      ),
                       SizedBox(height:10),
-                      // ListView.builder(
-                      //   shrinkWrap: true,
-                      //   scrollDirection: Axis.horizontal,
-                      //   itemCount: 1,
-                      //   itemBuilder: (context, index){
-                      //     return Container(
-                      //       width: 100,
-                      //       height:40,
-                      //       padding:
-                      //       EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      //       decoration: BoxDecoration(
-                      //         borderRadius: BorderRadius.circular(25),
-                      //         // color: secondaryTextColor2,
-                      //       ),
-                      //       child: Text(
-                      //         "Drama",
-                      //         style: TextStyle(
-                      //           color: Colors.white,
-                      //           fontSize: 15,
-                      //           fontWeight: FontWeight.w400,
-                      //         ),
-                      //       ),
-                      //     );
-                      //   },
-                      // )
+                      Row(
+                        children: [
+                          Container(
+                            width: screenWidth!,
+                            height: screenWidth! * 0.1,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              reverse: true,
+                              // Hardcoded for now
+                              itemCount: skill.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: screenWidth! * 0.02),
+                                  child: OutlinedButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        skill[index],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14,
+                                            color: Colors.white),
+                                      ),
+                                      style: OutlinedButton.styleFrom(
+                                          side: BorderSide(
+                                              color: Colors.white, width: 1),
+                                          minimumSize:
+                                          Size(screenWidth! * 0.2, 30),
+                                          backgroundColor: Colors.transparent,
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: screenWidth! * 0.04,
+                                          ),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(30.0),
+                                          ))),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
