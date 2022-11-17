@@ -5,9 +5,6 @@ import 'package:reel_folio/Home/widget/projects.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 import 'package:reel_folio/widget/bottom_navbar.dart';
-
-
-
 var id=0;
 
 class Homepage extends StatefulWidget {
@@ -32,7 +29,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
         top: true,
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(screenHeight! * 180 / 812),
+            preferredSize: Size.fromHeight(screenHeight! * 190 / 812),
             child: HomeNavbar(context,_tabController),
           ),
           backgroundColor: primarybgcolor,

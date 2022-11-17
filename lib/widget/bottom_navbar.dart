@@ -10,6 +10,8 @@ Widget BottomNavBar(BuildContext context) {
         Navigator.pushNamed(context, RoutePath.routeToChatScreen);
       }else if(index == 4){
         Navigator.pushNamed(context, RoutePath.routeToPortfolioScreen);
+      }else if(index == 2){
+        Navigator.pushNamed(context, RoutePath.routeToCreateProject);
       }
     },
     items: [
