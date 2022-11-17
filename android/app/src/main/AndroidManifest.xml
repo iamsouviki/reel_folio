@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:versionCode="1">
+    android:versionCode="1"
+    package = "com.example.reel_folio">
+
    <application
         android:label="Reel Folio"
         android:name="${applicationName}"
