@@ -17,4 +17,5 @@ abstract class ReelfolioImageAsset{
 
   //Create Project
   static const createProject = 'assets/create_project_Demo.png';
+
 }
