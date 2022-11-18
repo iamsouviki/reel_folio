@@ -5,6 +5,10 @@ import 'package:reel_folio/CreateProject(Completed)/widget/new_project_item_widg
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
+import '../create_project(hiring)/invite_crew.dart';
+import '../create_project(hiring)/summary_upcomming_page.dart';
+import '../project_page/project_owner_crewup_page.dart';
+
 class NewProjectWidget extends StatefulWidget {
   NewProjectWidget({Key? key}) : super(key: key);
 
@@ -140,7 +144,7 @@ Widget _buildPopupDialog(BuildContext context) {
                 onPressed: () {
                   showDialog(
               context: context,
-              builder: (BuildContext context) => _buildPopupDialog(context),
+              builder: (BuildContext context) => NewProjectUploadCrew(),
             );
                 },
                 child: Text(

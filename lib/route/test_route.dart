@@ -3,9 +3,9 @@ import 'package:reel_folio/create_project(hiring)/category_hiring_page.dart';
 import 'package:reel_folio/create_project(hiring)/hiring_page.dart';
 import 'package:reel_folio/create_project(hiring)/invite_crew.dart';
 import 'package:reel_folio/create_project(hiring)/open_roles_page.dart';
-import 'package:reel_folio/create_project(hiring)/summary_upcomming_page.dart';
-import 'package:reel_folio/project_page/project_page_applied_page.dart';
 import 'package:reel_folio/util/colors.dart';
+
+import '../CreateProject(Completed)/project_upload.dart';
 
 class TestRoutePage extends StatelessWidget {
   const TestRoutePage({super.key});

@@ -4,14 +4,16 @@ import 'package:reel_folio/create_project(hiring)/widgets/project_upload_widget.
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-class NewProjectUpload extends StatefulWidget {
-  const NewProjectUpload({super.key});
+import '../CreateProject(Completed)/select_category.dart';
+
+class NewProjectUploadCrew extends StatefulWidget {
+  const NewProjectUploadCrew({super.key});
 
   @override
-  State<NewProjectUpload> createState() => _NewProjectUploadState();
+  State<NewProjectUploadCrew> createState() => _NewProjectUploadCrewState();
 }
 
-class _NewProjectUploadState extends State<NewProjectUpload> {
+class _NewProjectUploadCrewState extends State<NewProjectUploadCrew> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,7 +23,7 @@ class _NewProjectUploadState extends State<NewProjectUpload> {
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(screenHeight! * 70 / 812),
                 child: CreateProjectNavbar(
-                    context, "ADD NEW PROJECT", NewProjectUpload())),
+                    context, "ADD NEW PROJECT", SelectCategoryScreen())),
             body: SingleChildScrollView(
                 child: Column(
               children: [

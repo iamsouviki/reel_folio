@@ -9,5 +9,6 @@ abstract class RoutePath {
   static const routeToChatScreen = 'chat-screen';
   static const routeToPortfolioScreen = 'portfolio-screen';
   static const routeToCreateProject = 'create-project';
+  static const routeToProjectDetails = 'project-details';
   // static const routeToProjectCategoryDetails = 'project-category-details-screen';
 }
