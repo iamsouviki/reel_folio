@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/Portfolio/portfolio_my.dart';
 import 'package:reel_folio/route/route_path.dart';
 
+import '../Portfolio/portfolio_home.dart';
 import '../util/size_config.dart';
 import 'widget/tools/screen_title_widget.dart';
 
@@ -58,23 +60,31 @@ class WelcomeScreen extends StatelessWidget {
                   aspectRatio: 373 / 50,
                   child: SizedBox(),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: screenWidth! * 12 / 375,
-                      vertical: screenWidth! * 8 / 375),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 1.5),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(screenWidth! * 10 / 375),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, RoutePath.routeToHomeScreen);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const PortfolioHomePage()));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: screenWidth! * 12 / 375,
+                        vertical: screenWidth! * 8 / 375),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 1.5),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(screenWidth! * 10 / 375),
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    'BUILD YOUR PORTFOLIO',
-                    style: TextStyle(
-                      fontSize: screenWidth! * 28 / 375,
-                      color: Colors.white,
-                      fontFamily: 'GT-America-Compressed-Regular',
-                      fontWeight: FontWeight.w700,
+                    child: Text(
+                      'BUILD YOUR PORTFOLIO',
+                      style: TextStyle(
+                        fontSize: screenWidth! * 28 / 375,
+                        color: Colors.white,
+                        fontFamily: 'GT-America-Compressed-Regular',
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                 ),
@@ -83,8 +93,9 @@ class WelcomeScreen extends StatelessWidget {
                   child: SizedBox(),
                 ),
                 GestureDetector(
-                  onTap: (){
-                    Navigator.pushReplacementNamed(context, RoutePath.routeToHomeScreen);
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, RoutePath.routeToHomeScreen);
                   },
                   child: Text(
                     "I'LL DO IT LATER",
