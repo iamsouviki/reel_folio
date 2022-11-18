@@ -38,7 +38,7 @@ class _reviewScreenState extends State<reviewScreen> {
             backgroundColor: secondarybgcolor,
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(screenHeight! * 70 / 812),
-                child: CreateProjectNavbar(context, "REVIEW", reviewScreen())),
+                child: CreateProjectNavbar(context, "REVIEW", null, stopRoute: true)),
             body: SingleChildScrollView(
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
