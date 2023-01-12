@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/portfolio/portfolio_edit_detail_text.dart';
+import 'package:reel_folio/Portfolio/portfolio_edit_detail_text.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';

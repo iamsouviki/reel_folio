@@ -47,7 +47,7 @@ class LoginPhoneWidget extends StatelessWidget {
         ),
         TextField(
           controller: _contactNumberController,
-          keyboardType: TextInputType.name,
+          keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           cursorColor: const Color(0xFF474747),
           style: TextStyle(
