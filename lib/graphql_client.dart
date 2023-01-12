@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:graphql/client.dart';
 
 class GqlHelper {
-
   Dio _dio = Dio();
 
   static String? uuidFromObject(Object object) {
@@ -30,14 +30,7 @@ class GqlHelper {
     final AuthLink apiTokenLink = AuthLink(
       headerKey: 'Authorization',
       getToken: () async {
-        //Call the HTTP rest api to get authorization token and return that token here
-
-
-        var response = await Dio().get('http://stagingdb.reelfolio.com:8080/graphql');
-
-        print(response);
-
-        const String token = '';
+        String? token = GetStorage().read('token');
         return token;
       },
     );
