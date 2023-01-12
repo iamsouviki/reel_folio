@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/Saved/saved_screen.dart';
-import 'package:reel_folio/portfolio/portfolio_edit.dart';
+import 'package:reel_folio/Portfolio/portfolio_edit.dart';
 import 'package:reel_folio/settings/account_notifications_page.dart';
 import 'package:reel_folio/settings/settings_terms_page.dart';
 import 'package:reel_folio/settings/widgets/app_bar_widget.dart';
