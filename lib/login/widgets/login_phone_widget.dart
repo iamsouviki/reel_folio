@@ -57,7 +57,7 @@ class LoginPhoneWidget extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           cursorColor: const Color(0xFF474747),
-          onSubmitted: (val){
+          onChanged: (val){
             _loginData.phoneOrEmail = val;
           },
           style: TextStyle(

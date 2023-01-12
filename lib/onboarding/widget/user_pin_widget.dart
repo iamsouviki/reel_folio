@@ -52,7 +52,7 @@ class _UserPinWidgetState extends State<UserPinWidget> {
             fontWeight: FontWeight.w400,
             fontSize: screenWidth! * 22 / 375,
           ),
-          onSubmitted: (val) {
+          onChanged: (val) {
             _loginData.password = val;
           },
           decoration: InputDecoration(
