@@ -38,6 +38,7 @@ dependencies:
   flutter_riverpod:
   image_picker:
   graphql: ^5.1.2
+  dio:
 
 dev_dependencies:
   flutter_test:
