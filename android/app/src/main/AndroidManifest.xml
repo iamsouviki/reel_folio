@@ -3,7 +3,10 @@
     android:versionCode="1"
     package = "com.example.reel_folio">
 
-   <application
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
         android:label="Reel Folio"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
