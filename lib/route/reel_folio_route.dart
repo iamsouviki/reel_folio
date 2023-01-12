@@ -5,7 +5,7 @@ import 'package:reel_folio/Home/homepage.dart';
 import 'package:reel_folio/auth/splash_screen.dart';
 import 'package:reel_folio/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/onboarding/welcome_screen.dart';
-import 'package:reel_folio/portfolio/portfolio_home.dart';
+import 'package:reel_folio/Portfolio/portfolio_home.dart';
 import 'package:reel_folio/route/route_path.dart';
 import '../CreateProject(Completed)/new _project.dart';
 import '../onboarding/onboarding_details_screen.dart';
