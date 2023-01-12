@@ -19,7 +19,7 @@ class UserPinWidget extends StatelessWidget {
           aspectRatio: 375 / 110,
           child: SizedBox(),
         ),
-        const ScreenTitleWidget(text: 'ENTER PIN'),
+        const ScreenTitleWidget(text: 'ENTER PASSWORD'),
         SizedBox(
           height: screenWidth! * 10 / 375,
         ),
@@ -31,7 +31,31 @@ class UserPinWidget extends StatelessWidget {
         SizedBox(
           height: screenWidth! * 60 / 375,
         ),
-        OtpField(
+        TextField(
+          controller: _pinController,
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
+          cursorColor: const Color(0xFF474747),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w400,
+            fontSize: screenWidth! * 22 / 375,
+          ),
+          decoration: InputDecoration(
+            hintText: 'Password',
+            hintStyle: TextStyle(
+              color: const Color(0xFF474747),
+              fontWeight: FontWeight.w400,
+              fontSize: screenWidth! * 22 / 375,
+            ),
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Color(0xFF474747),
+              ),
+            ),
+          ),
+        ),
+        /*OtpField(
           numberOfFields: 4,
           obscureText: true,
           cursorColor: Colors.grey,
@@ -49,7 +73,7 @@ class UserPinWidget extends StatelessWidget {
           onSubmit: (String verificationCode){
 
           }, // end onSubmit
-        ),
+        ),*/
       ],
     );
   }
