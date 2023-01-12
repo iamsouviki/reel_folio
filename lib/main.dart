@@ -5,9 +5,14 @@ import 'package:reel_folio/auth/splash_screen.dart';
 import 'package:reel_folio/route/reel_folio_route.dart';
 
 import 'package:reel_folio/route/test_route.dart';
+import 'package:reel_folio/service_locator.dart';
 import 'util/size_config.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();;
+
+  setupServiceLocator();
+
   runApp(const ProviderScope(child: ReelFolioApp()));
 }
 

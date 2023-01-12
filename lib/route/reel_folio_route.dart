@@ -3,6 +3,7 @@ import 'package:reel_folio/Chat/chat_screen.dart';
 import 'package:reel_folio/Chat/chatmain.dart';
 import 'package:reel_folio/Home/homepage.dart';
 import 'package:reel_folio/auth/splash_screen.dart';
+import 'package:reel_folio/login/login_page.dart';
 import 'package:reel_folio/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/onboarding/welcome_screen.dart';
 import 'package:reel_folio/Portfolio/portfolio_home.dart';
@@ -22,6 +23,9 @@ abstract class ReelFolioRoute {
       case RoutePath.routeInitial:
       case RoutePath.routeToSplashScreen:
         currentWidget = const SplashScreen();
+        break;
+      case RoutePath.routeToLoginScreen:
+        currentWidget = LoginPage();
         break;
       case RoutePath.routeToRequestOnBoardingScreen:
         currentWidget = OnBoardingRequestScreen();

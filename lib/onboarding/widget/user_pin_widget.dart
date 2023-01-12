@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:reel_folio/login_data.dart';
 
 import '../../util/size_config.dart';
 import '../../widget/otp_field.dart';
 import 'tools/screen_sub_title_widget.dart';
 import 'tools/screen_title_widget.dart';
 
-class UserPinWidget extends StatelessWidget {
+class UserPinWidget extends StatefulWidget {
   UserPinWidget({Key? key}) : super(key: key);
 
+  @override
+  State<UserPinWidget> createState() => _UserPinWidgetState();
+}
+
+class _UserPinWidgetState extends State<UserPinWidget> {
   final _pinController = TextEditingController();
+
+  LoginData get _loginData => GetIt.I<LoginData>();
+
+  bool shoWPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +35,14 @@ class UserPinWidget extends StatelessWidget {
           height: screenWidth! * 10 / 375,
         ),
         const ScreenSubTitleWidget(
-          text:
-          'Type the four-digit code that you received via text.',
+          text: 'Type your password',
           textAlign: TextAlign.center,
         ),
         SizedBox(
           height: screenWidth! * 60 / 375,
         ),
         TextField(
+          obscureText: !shoWPassword,
           controller: _pinController,
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
@@ -41,8 +52,32 @@ class UserPinWidget extends StatelessWidget {
             fontWeight: FontWeight.w400,
             fontSize: screenWidth! * 22 / 375,
           ),
+          onSubmitted: (val) {
+            _loginData.password = val;
+          },
           decoration: InputDecoration(
             hintText: 'Password',
+            suffixIcon: !shoWPassword
+                ? GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        shoWPassword = !shoWPassword;
+                      });
+                    },
+                    child: const Icon(
+                      Icons.visibility_off,
+                      color: Colors.white,
+                    ))
+                : GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        shoWPassword = !shoWPassword;
+                      });
+                    },
+                    child: const Icon(
+                      Icons.visibility,
+                      color: Colors.white,
+                    )),
             hintStyle: TextStyle(
               color: const Color(0xFF474747),
               fontWeight: FontWeight.w400,

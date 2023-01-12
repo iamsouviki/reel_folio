@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:reel_folio/onboarding/widget/tools/screen_sub_title_widget.dart';
 import 'package:reel_folio/onboarding/widget/tools/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
+import '../../login_data.dart';
+
 class LoginPhoneWidget extends StatelessWidget {
-  LoginPhoneWidget({super.key});
+
+
+  LoginPhoneWidget({super.key,});
   final _contactNumberController = TextEditingController();
+
+  LoginData get _loginData => GetIt.I<LoginData>();
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +57,9 @@ class LoginPhoneWidget extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           cursorColor: const Color(0xFF474747),
+          onSubmitted: (val){
+            _loginData.phoneOrEmail = val;
+          },
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w400,
