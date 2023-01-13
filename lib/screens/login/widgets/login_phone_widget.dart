@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:reel_folio/screens/onboarding/widget/tools/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-import '../../../login_data.dart';
+import '../../../logic/core/login_data.dart';
 import '../../onboarding/widget/tools/screen_sub_title_widget.dart';
 
 class LoginPhoneWidget extends StatelessWidget {

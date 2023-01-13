@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:reel_folio/login_data.dart';
+import 'package:reel_folio/logic/core/login_data.dart';
 
 import '../../../util/size_config.dart';
 import '../../widget/otp_field.dart';

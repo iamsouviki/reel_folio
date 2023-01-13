@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reel_folio/screens/Home/homepage.dart';
-import 'package:reel_folio/testpage.dart';
 
 import '../route/route_path.dart';
 

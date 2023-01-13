@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:reel_folio/screens/login/manager/login_step_manager.dart';
 import 'package:reel_folio/screens/login/widgets/login_phone_widget.dart';
-import 'package:reel_folio/login_data.dart';
+import 'package:reel_folio/logic/core/login_data.dart';
 import 'package:reel_folio/screens/onboarding/widget/user_pin_widget.dart';
 import 'package:reel_folio/user_preferences.dart';
 import 'package:reel_folio/util/colors.dart';
