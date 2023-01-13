@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:reel_folio/Home/homepage.dart';
-import 'package:reel_folio/auth/splash_screen.dart';
-import 'package:reel_folio/route/reel_folio_route.dart';
-
-import 'package:reel_folio/route/test_route.dart';
+import 'package:reel_folio/screens/route/reel_folio_route.dart';
 import 'package:reel_folio/service_locator.dart';
 import 'util/size_config.dart';
 

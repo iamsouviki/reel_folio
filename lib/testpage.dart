@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/CastCrew/castcrew.dart';
-import 'package:reel_folio/Chat/chatmain.dart';
-import 'package:reel_folio/Contacts/contacts_main_list.dart';
-import 'package:reel_folio/CreateProject(Completed)/new%20_project.dart';
-import 'package:reel_folio/Home/homepage.dart';
-import 'package:reel_folio/Notifications/notification.dart';
-import 'package:reel_folio/Saved/saved_screen.dart';
-import 'package:reel_folio/apply/select_role.dart';
+import 'package:reel_folio/screens/CastCrew/castcrew.dart';
+import 'package:reel_folio/screens/Contacts/contacts_main_list.dart';
+import 'package:reel_folio/screens/CreateProject(Completed)/new%20_project.dart';
+import 'package:reel_folio/screens/Home/homepage.dart';
+import 'package:reel_folio/screens/Notifications/notification.dart';
+import 'package:reel_folio/screens/Saved/saved_screen.dart';
+import 'package:reel_folio/screens/apply/select_role.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
+
+import 'screens/Chat/chatmain.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({Key? key}) : super(key: key);
