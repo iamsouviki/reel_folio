@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/authentication-flow/screens/widget/action_button_widget.dart';
 import 'package:reel_folio/screens/route/route_path.dart';
 
 import '../../screens/onboarding/widget/tools/screen_sub_title_widget.dart';
 import '../../screens/onboarding/widget/tools/screen_title_widget.dart';
 import '../../util/colors.dart';
 import '../../util/size_config.dart';
-import 'widget/action_button_widget.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
-  const ForgetPasswordScreen({Key? key}) : super(key: key);
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({Key? key}) : super(key: key);
 
   @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
-
-  final _emailController = TextEditingController();
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  final _passwordController = TextEditingController();
+  final _newPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       child: Scaffold(
         backgroundColor: ReelfolioColor.shadowColor,
         body: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const AspectRatio(
@@ -33,7 +32,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               child: SizedBox(),
             ),
             const ScreenTitleWidget(
-              text: 'FORGOT PASSWORD',
+              text: 'PASSWORD RESET',
               textAlign: TextAlign.center,
             ),
             SizedBox(
@@ -42,7 +41,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.15),
               child: Text(
-                'Happens to us all! Let’s get it sorted. Enter the email associated with your account below.',
+                'Happens to us all! Let’s get it sorted.',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   color: Colors.white.withOpacity(0.4),
@@ -53,15 +52,15 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               ),
             ),
             SizedBox(
-              height: screenWidth! * 21 / 375,
+              height: screenWidth! * 30 / 375,
             ),
             Row(
               children: [
                 Padding(
                   padding:
-                  EdgeInsets.symmetric(horizontal: screenWidth! * 0.15),
+                      EdgeInsets.symmetric(horizontal: screenWidth! * 0.15),
                   child: const ScreenSubTitleWidget(
-                    text: 'Email',
+                    text: 'New Password',
                     textAlign: TextAlign.start,
                   ),
                 ),
@@ -70,17 +69,18 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.15),
               child: TextField(
-                controller: _emailController,
+                controller: _passwordController,
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 cursorColor: const Color(0xFF474747),
+                obscureText: true,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
                   fontSize: screenWidth! * 22 / 375,
                 ),
                 decoration: InputDecoration(
-                  hintText: 'reel@reelfolio.com',
+                  hintText: '**********',
                   hintStyle: TextStyle(
                     color: const Color(0xFF474747),
                     fontWeight: FontWeight.w400,
@@ -94,20 +94,61 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 ),
               ),
             ),
-            // SizedBox(
-            //   height: screenHeight! * 0.4,
-            // ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: screenWidth! * 0.15, top: screenWidth! * 0.05),
+                  child: const ScreenSubTitleWidget(
+                    text: 'Confirm New Password',
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenWidth! * 0.15),
+              child: TextField(
+                controller: _newPasswordController,
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
+                cursorColor: const Color(0xFF474747),
+                obscureText: true,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w400,
+                  fontSize: screenWidth! * 22 / 375,
+                ),
+                decoration: InputDecoration(
+                  hintText: '**********',
+                  hintStyle: TextStyle(
+                    color: const Color(0xFF474747),
+                    fontWeight: FontWeight.w400,
+                    fontSize: screenWidth! * 22 / 375,
+                  ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF474747),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Flexible(
-              flex: 1,
               child: Container(),
+              flex: 1,
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: screenHeight! * 0.05),
               child: InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, RoutePath.routeToResetPasswordScreen);
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RoutePath.routeToLoginScreen,
+                    ModalRoute.withName('/'),
+                  );
                 },
-                child: const ActionButtonWidget(buttonText: "Send Recovery Link"),
+                child: const ActionButtonWidget(buttonText: "Login"),
               ),
             ),
           ],

@@ -13,5 +13,6 @@ abstract class RoutePath {
   static const routeToAuthenticationScreen = 'authentication-screen';
   static const routeToLoginScreen = 'login-screen';
   static const routeToForgetPasswordScreen = 'forget-password-screen';
+  static const routeToResetPasswordScreen = 'reset-password-screen';
   // static const routeToProjectCategoryDetails = 'project-category-details-screen';
 }
