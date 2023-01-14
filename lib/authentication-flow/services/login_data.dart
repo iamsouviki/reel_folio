@@ -3,4 +3,9 @@ class LoginData {
   String? password;
 
   LoginData({this.phoneOrEmail, this.password});
+
+  clearData(){
+    phoneOrEmail = null;
+    password = null;
+  }
 }

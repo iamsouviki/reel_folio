@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:reel_folio/authentication-flow/screens/widget/action_button_widget.dart';
+import '../screens/widget/action_button_widget.dart';
+import '../services/auth_service.dart';
 
-import '../../logic/core/login_data.dart';
+import '../services/login_data.dart';
 import '../../util/size_config.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
 
-  LoginData get _loginDat => GetIt.I<LoginData>();
+  LoginData get _loginData => GetIt.I<LoginData>();
+
+  AuthService get _authService => GetIt.I<AuthService>();
+
+  final ValueNotifier<bool> _loadingNotifier = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.white, fontSize: screenWidth! * 22 / 375),
                 ),
                 TextField(
-                  onChanged: (val) => _loginDat.phoneOrEmail = val,
+                  onChanged: (val) => _loginData.phoneOrEmail = val,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   cursorColor: const Color(0xFF474747),
@@ -87,6 +92,7 @@ class LoginScreen extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.done,
                   cursorColor: const Color(0xFF474747),
+                  onChanged: (val) => _loginData.password = val,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
@@ -124,13 +130,56 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: screenWidth! * 21 / 375,
                 ),
-                const Center(
-                  child: ActionButtonWidget(
-                    buttonText: 'Login',
+                Center(
+                  child: ValueListenableBuilder(
+                    valueListenable: _loadingNotifier,
+                    builder: (BuildContext context, bool value, Widget? child) {
+                      return value
+                          ? const CircularProgressIndicator()
+                          : InkWell(
+                              onTap: () async {
+                                if (_loginData.phoneOrEmail != null &&
+                                    _loginData.password != null) {
+                                  _loadingNotifier.value = true;
+
+                                  bool response = await _authService.login();
+
+                                  if (!response) {
+                                    _loadingNotifier.value = false;
+                                    showMessage(context,
+                                        'Please check your credentails');
+                                  } else {
+                                    _loadingNotifier.value = false;
+                                    _loginData.clearData();
+                                  }
+                                } else {
+                                  showMessage(
+                                      context, 'Please add your credentials');
+                                }
+                              },
+                              child: const ActionButtonWidget(
+                                buttonText: 'Login',
+                              ),
+                            );
+                    },
                   ),
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  showMessage(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.white,
+        content: Text(
+          message,
+          style: const TextStyle(
+            color: Colors.black,
           ),
         ),
       ),
