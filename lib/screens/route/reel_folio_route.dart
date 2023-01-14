@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/authentication-flow/screens/authentication_screen.dart';
+import 'package:reel_folio/authentication-flow/screens/forget_password_screen.dart';
+import 'package:reel_folio/authentication-flow/screens/login_screen.dart';
 import 'package:reel_folio/screens/Home/homepage.dart';
 import 'package:reel_folio/screens/onboarding/onboardng_request_confirmation_screen.dart';
 import 'package:reel_folio/screens/onboarding/welcome_screen.dart';
@@ -24,7 +26,13 @@ abstract class ReelFolioRoute {
         currentWidget = const SplashScreen();
         break;
       case RoutePath.routeToAuthenticationScreen:
-        currentWidget = AuthenticationScreen();
+        currentWidget = const AuthenticationScreen();
+        break;
+      case RoutePath.routeToLoginScreen:
+        currentWidget = const LoginScreen();
+        break;
+      case RoutePath.routeToForgetPasswordScreen:
+        currentWidget = const ForgetPasswordScreen();
         break;
       case RoutePath.routeToRequestOnBoardingScreen:
         currentWidget = OnBoardingRequestScreen();

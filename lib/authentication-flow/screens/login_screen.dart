@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:reel_folio/screens/route/route_path.dart';
 import '../screens/widget/action_button_widget.dart';
 import '../services/auth_service.dart';
 
@@ -115,25 +116,25 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     suffixIcon: !shoWPassword
                         ? GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            shoWPassword = !shoWPassword;
-                          });
-                        },
-                        child: const Icon(
-                          Icons.visibility_off,
-                          color: Colors.white,
-                        ))
+                            onTap: () {
+                              setState(() {
+                                shoWPassword = !shoWPassword;
+                              });
+                            },
+                            child: const Icon(
+                              Icons.visibility_off,
+                              color: Colors.white,
+                            ))
                         : GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            shoWPassword = !shoWPassword;
-                          });
-                        },
-                        child: const Icon(
-                          Icons.visibility,
-                          color: Colors.white,
-                        )),
+                            onTap: () {
+                              setState(() {
+                                shoWPassword = !shoWPassword;
+                              });
+                            },
+                            child: const Icon(
+                              Icons.visibility,
+                              color: Colors.white,
+                            )),
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF474747),
@@ -148,11 +149,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Center(
-                  child: Text(
-                    'I forgot my password',
-                    style: TextStyle(
-                      color: const Color(0xFF7E7E7E),
-                      fontSize: screenWidth! * 17 / 375,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RoutePath.routeToForgetPasswordScreen,
+                      );
+                    },
+                    child: Text(
+                      'I forgot my password',
+                      style: TextStyle(
+                        color: const Color(0xFF7E7E7E),
+                        fontSize: screenWidth! * 17 / 375,
+                      ),
                     ),
                   ),
                 ),

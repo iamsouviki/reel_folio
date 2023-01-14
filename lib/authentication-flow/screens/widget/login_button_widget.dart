@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/authentication-flow/screens/login_screen.dart';
+import 'package:reel_folio/screens/route/route_path.dart';
 import 'package:reel_folio/util/size_config.dart';
 import '../../../util/colors.dart';
 
@@ -10,11 +10,9 @@ class LoginButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => LoginScreen(),
-          ),
+          RoutePath.routeToLoginScreen,
         );
       },
       child: Text(
