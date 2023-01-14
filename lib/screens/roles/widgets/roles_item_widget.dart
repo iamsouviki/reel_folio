@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/screens/login/login_page.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';
 import 'package:reel_folio/util/size_config.dart';
 

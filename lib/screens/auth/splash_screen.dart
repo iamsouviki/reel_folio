@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   routeToNextScreen() {
     Timer(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacementNamed(
-        RoutePath.routeToLoginScreen,
+        RoutePath.routeToAuthenticationScreen,
       );
       /*Navigator.pushReplacement(context,
     // Instantiate the new page

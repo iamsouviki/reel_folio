@@ -1,28 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/util/colors.dart';
-import 'package:reel_folio/util/size_config.dart';
 
-class RulesBlock extends StatelessWidget {
-  const RulesBlock({
-    Key? key,
-    required String id,
-    required String title,
-    required String description,
-  })  : _id = id,
-        _title = title,
-        _description = description,
-        super(key: key);
+import '../../../util/colors.dart';
+import '../../../util/size_config.dart';
 
-  final String _id;
-  final String _title;
-  final String _description;
+class RulesWidget extends StatelessWidget {
+
+  final String id;
+  final String title;
+  final String description;
+
+  const RulesWidget({Key? key, required this.id, required this.title, required this.description}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: screenWidth! * 0.7,
-      // height: screenHeight! * 0.07,
-      // color: ReelfolioColor.buttonColor,
       alignment: Alignment.centerLeft,
       child: Stack(
         children: [
@@ -34,10 +26,10 @@ class RulesBlock extends StatelessWidget {
               radius: 26,
               child: Center(
                 child: Text(
-                  _id,
+                  id,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: screenWidth! * 30 / 375,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -51,18 +43,18 @@ class RulesBlock extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  _title,
+                  title,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: "GT-America-Compressed-Regular",
-                    fontSize: 35,
+                    fontSize: screenWidth! * 35 / 375,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 35, top: 10),
+                  padding: const EdgeInsets.only(left: 35, top: 10),
                   child: Text(
-                    _description,
+                    description,
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.4),
                       fontSize: 14,

@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/screens/login/login_page.dart';
-import 'package:reel_folio/screens/login/login_rules.dart';
-import 'package:reel_folio/util/asset.dart';
-import 'package:reel_folio/util/colors.dart';
-import 'package:reel_folio/util/size_config.dart';
+import 'package:reel_folio/authentication-flow/screens/registration_rules_screen.dart';
+import 'package:reel_folio/authentication-flow/screens/widget/action_button_widget.dart';
 
-import 'widgets/login_action_button.dart';
+import '../../util/asset.dart';
+import '../../util/colors.dart';
+import '../../util/size_config.dart';
+import 'widget/login_button_widget.dart';
 
-class LoginFirstPage extends StatefulWidget {
-  const LoginFirstPage({super.key});
+class AuthenticationScreen extends StatelessWidget {
+  const AuthenticationScreen({Key? key}) : super(key: key);
 
-  @override
-  State<LoginFirstPage> createState() => _LoginFirstPageState();
-}
-
-class _LoginFirstPageState extends State<LoginFirstPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,7 +33,7 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: screenWidth! * 14 / 375,
                 ),
               ),
               SizedBox(
@@ -48,30 +43,17 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginRulesPage()),
+                    MaterialPageRoute(
+                      builder: (context) => const RegistrationRulesScreen(),
+                    ),
                   );
                 },
-                child: LoginActionButton(buttonText: "Get Started"),
+                child: const ActionButtonWidget(buttonText: "Get Started"),
               ),
               Padding(
                 padding: EdgeInsets.only(
                     top: screenHeight! * 0.025, bottom: screenHeight! * 0.05),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
-                  },
-                  child: Text(
-                    "log in",
-                    style: TextStyle(
-                      color: ReelfolioColor.buttonColor,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
+                child: const LoginButtonWidget(),
               ),
             ],
           ),

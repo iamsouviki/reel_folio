@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/util/colors.dart';
-import 'package:reel_folio/util/size_config.dart';
 
-class LoginActionButton extends StatelessWidget {
-  const LoginActionButton({
-    Key? key,
-    required String buttonText,
-  })  : _buttonText = buttonText,
-        super(key: key);
+import '../../../util/colors.dart';
+import '../../../util/size_config.dart';
 
-  final String _buttonText;
+class ActionButtonWidget extends StatelessWidget {
+
+  final String buttonText;
+
+  const ActionButtonWidget({Key? key, required this.buttonText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +17,10 @@ class LoginActionButton extends StatelessWidget {
       color: ReelfolioColor.buttonColor,
       child: Center(
         child: Text(
-          _buttonText,
+          buttonText,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 18,
+            fontSize: screenWidth! * 18 / 375,
             fontWeight: FontWeight.w400,
           ),
         ),
