@@ -6,14 +6,21 @@ import '../services/auth_service.dart';
 import '../services/login_data.dart';
 import '../../util/size_config.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   LoginData get _loginData => GetIt.I<LoginData>();
 
   AuthService get _authService => GetIt.I<AuthService>();
 
   final ValueNotifier<bool> _loadingNotifier = ValueNotifier<bool>(false);
+
+  bool shoWPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +96,7 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.white, fontSize: screenWidth! * 22 / 375),
                 ),
                 TextField(
+                  obscureText: !shoWPassword,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.done,
                   cursorColor: const Color(0xFF474747),
@@ -105,6 +113,27 @@ class LoginScreen extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: screenWidth! * 22 / 375,
                     ),
+                    suffixIcon: !shoWPassword
+                        ? GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            shoWPassword = !shoWPassword;
+                          });
+                        },
+                        child: const Icon(
+                          Icons.visibility_off,
+                          color: Colors.white,
+                        ))
+                        : GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            shoWPassword = !shoWPassword;
+                          });
+                        },
+                        child: const Icon(
+                          Icons.visibility,
+                          color: Colors.white,
+                        )),
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF474747),
