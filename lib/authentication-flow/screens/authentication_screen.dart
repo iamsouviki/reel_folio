@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/authentication-flow/screens/registration_rules_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/widget/action_button_widget.dart';
+import 'package:reel_folio/screens/route/route_path.dart';
 
 import '../../util/asset.dart';
 import '../../util/colors.dart';
@@ -41,11 +41,9 @@ class AuthenticationScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const RegistrationRulesScreen(),
-                    ),
+                    RoutePath.routeToRequestOnBoardingScreen,
                   );
                 },
                 child: const ActionButtonWidget(buttonText: "Get Started"),

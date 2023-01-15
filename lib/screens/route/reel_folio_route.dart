@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/authentication-flow/screens/authentication_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/forget_password_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/login_screen.dart';
+import 'package:reel_folio/authentication-flow/screens/registration_rules_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/reset_password_screen.dart';
 import 'package:reel_folio/screens/Home/homepage.dart';
 import 'package:reel_folio/screens/Portfolio/portfolio_home.dart';
@@ -37,6 +38,9 @@ abstract class ReelFolioRoute {
         break;
       case RoutePath.routeToResetPasswordScreen:
         currentWidget = const ResetPasswordScreen();
+        break;
+      case RoutePath.routeToRegistrationRulesScreen:
+        currentWidget = const RegistrationRulesScreen();
         break;
       case RoutePath.routeToRequestOnBoardingScreen:
         currentWidget = OnBoardingRequestScreen();
