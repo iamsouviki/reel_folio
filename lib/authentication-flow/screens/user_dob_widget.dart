@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reel_folio/util/size_config.dart';
-
-import 'tools/screen_title_widget.dart';
+import 'widget/screen_title_widget.dart';
 
 class UserDOBWidget extends StatelessWidget {
   const UserDOBWidget({Key? key}) : super(key: key);

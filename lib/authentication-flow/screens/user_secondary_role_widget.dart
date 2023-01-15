@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../util/size_config.dart';
-import 'tools/screen_sub_title_widget.dart';
-import 'tools/screen_title_widget.dart';
-import 'tools/secondary_list_widget.dart';
-import 'tools/text_cancel_button_widget.dart';
+import '../../util/size_config.dart';
+import 'widget/screen_sub_title_widget.dart';
+import 'widget/screen_title_widget.dart';
+import 'widget/secondary_list_widget.dart';
+import 'widget/text_cancel_button_widget.dart';
 
 class UserSecondaryRoleWidget extends StatelessWidget {
   UserSecondaryRoleWidget({Key? key}) : super(key: key);

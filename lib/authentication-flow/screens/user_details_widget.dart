@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-import 'tools/screen_title_widget.dart';
+import 'widget/screen_title_widget.dart';
 
 class UserDetailsWidget extends StatelessWidget {
   UserDetailsWidget({Key? key}) : super(key: key);

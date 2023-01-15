@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../util/size_config.dart';
+import '../../../util/size_config.dart';
 
 class TextCancelButtonWidget extends StatelessWidget {
   const TextCancelButtonWidget({Key? key}) : super(key: key);

@@ -3,8 +3,8 @@ import 'package:reel_folio/authentication-flow/screens/widget/action_button_widg
 import 'package:reel_folio/screens/route/route_path.dart';
 import '../../util/colors.dart';
 import '../../util/size_config.dart';
-import 'onboarding/widget/tools/screen_sub_title_widget.dart';
-import 'onboarding/widget/tools/screen_title_widget.dart';
+import 'widget/screen_sub_title_widget.dart';
+import 'widget/screen_title_widget.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);

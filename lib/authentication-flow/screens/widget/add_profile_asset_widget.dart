@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../../../util/size_config.dart';
+import '../../../util/size_config.dart';
 
 class AddProfileAssetWidget extends StatefulWidget {
 

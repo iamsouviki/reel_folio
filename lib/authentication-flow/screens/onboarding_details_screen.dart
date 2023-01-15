@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../screens/route/route_path.dart';
-import '../../../util/floating_action_button_widget.dart';
-import '../../../util/progress_stepper.dart';
-import '../../../util/size_config.dart';
-import 'manager/onboarding_step_manager.dart';
-import 'widget/user_bio_widget.dart';
-import 'widget/user_contact_number_widget.dart';
-import 'widget/user_cover_image_widget.dart';
-import 'widget/user_dob_widget.dart';
-import 'widget/user_name_widget.dart';
-import 'widget/user_pin_widget.dart';
-import 'widget/user_primary_role_widget.dart';
-import 'widget/user_profile_picture_widget.dart';
-import 'widget/user_secondary_role_widget.dart';
+import '../../screens/route/route_path.dart';
+import '../../util/floating_action_button_widget.dart';
+import '../../util/progress_stepper.dart';
+import '../../util/size_config.dart';
+import '../manager/onboarding_step_manager.dart';
+import 'user_bio_widget.dart';
+import 'user_contact_number_widget.dart';
+import 'user_cover_image_widget.dart';
+import 'user_dob_widget.dart';
+import 'user_name_widget.dart';
+import 'user_pin_widget.dart';
+import 'user_primary_role_widget.dart';
+import 'user_profile_picture_widget.dart';
+import 'user_secondary_role_widget.dart';
 
 class OnBoardingDetailsScreen extends ConsumerWidget {
   OnBoardingDetailsScreen({Key? key}) : super(key: key);

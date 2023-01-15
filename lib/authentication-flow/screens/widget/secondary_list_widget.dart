@@ -1,42 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../util/size_config.dart';
-import '../../manager/role_selection_manager.dart';
 
-class PrimaryListWidget extends ConsumerStatefulWidget {
-  //final ValueChanged<String> onValueChanged;
+import '../../../util/size_config.dart';
 
-  const PrimaryListWidget({Key? key}) : super(key: key);
+class SecondaryListWidget extends StatefulWidget {
+  final ValueChanged<List<String>> onValueChanged;
+
+  const SecondaryListWidget({Key? key, required this.onValueChanged}) : super(key: key);
 
   @override
-  PrimaryListWidgetState createState() => PrimaryListWidgetState();
+  State<SecondaryListWidget> createState() => _SecondaryListWidgetState();
 }
 
-class PrimaryListWidgetState extends ConsumerState {
+class _SecondaryListWidgetState extends State<SecondaryListWidget> {
   List<String> category = [
     'Directoral',
-    /* 'Production',
+    'Production',
     'Cast',
-    'Sound',*/
+    'Sound',
   ];
 
-  List<String> items = [
+  List<dynamic> items = [
     'Director',
     'Producer',
     'Casting Assistant',
     'Editor',
-    'Assistant Director',
-    'Sound Director',
   ];
 
-  //final ValueNotifier _selectedItem = ValueNotifier<String>('');
+  final ValueNotifier<List<String>> _selectedItem =
+  ValueNotifier<List<String>>(['']);
 
   final ValueNotifier _selectedIndex = ValueNotifier<int>(10);
 
   @override
   Widget build(BuildContext context) {
-    var text = ref.watch(primaryRoleManager);
-
     return ValueListenableBuilder(
       valueListenable: _selectedIndex,
       builder: (BuildContext context, value, Widget? child) {
@@ -44,58 +40,6 @@ class PrimaryListWidgetState extends ConsumerState {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (text.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Wrap(
-                  runSpacing: 20,
-                  spacing: 20,
-                  direction: Axis.horizontal,
-                  alignment: WrapAlignment.spaceBetween,
-                  runAlignment: WrapAlignment.start,
-                  children: [
-                    //...dataList[category.indexOf(index)]["items"]
-                    ...items
-                        .where((element) => element.contains(text))
-                        .toList()
-                        .map(
-                          (e) => GestureDetector(
-                        onTap: () {
-                          //_selectedItem.value = e;
-                          //widget.onValueChanged(e);
-                          ref.read(primaryRole.notifier).state = e;
-                          ref.read(primaryRoleManager.notifier).state = e;
-                        },
-                        child: Container(
-                          height: 40,
-                          width: screenWidth! / 3,
-                          decoration: BoxDecoration(
-                            color: ref.watch(primaryRole) == e
-                                ? Colors.white
-                                : Colors.black,
-                            borderRadius:
-                            const BorderRadius.all(Radius.circular(25)),
-                            border: Border.all(
-                              color: Colors.white,
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              e,
-                              style: TextStyle(
-                                color: ref.watch(primaryRole) == e
-                                    ? Colors.black
-                                    : Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    // ListTile(title:Text(dataList[category.indexOf(index)]["items"].toString()))
-                  ],
-                ),
-              ),
             ...category.map(
                   (index) => Flexible(
                 fit: FlexFit.loose,
@@ -154,23 +98,32 @@ class PrimaryListWidgetState extends ConsumerState {
                         children: [
                           //...dataList[category.indexOf(index)]["items"]
                           ...items.map(
-                                (e) => Consumer(
-                              builder: (BuildContext context,
-                                  WidgetRef ref, Widget? child) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    ref.read(primaryRole.notifier).state =
-                                        e;
-                                    //widget.onValueChanged(e);
-                                    ref
-                                        .read(primaryRoleManager.notifier)
-                                        .state = e;
-                                  },
-                                  child: Container(
+                                (e) => GestureDetector(
+                              onTap: () {
+                                if (_selectedItem.value.contains(e)) {
+                                  _selectedItem.value =
+                                  List.from(_selectedItem.value)
+                                    ..remove(e);
+                                  widget.onValueChanged(
+                                      _selectedItem.value);
+                                } else {
+                                  _selectedItem.value =
+                                  List.from(_selectedItem.value)
+                                    ..add(e);
+                                  widget.onValueChanged(
+                                      _selectedItem.value);
+                                }
+                              },
+                              child: ValueListenableBuilder(
+                                valueListenable: _selectedItem,
+                                builder: (BuildContext context,
+                                    List<String> value, Widget? child) {
+                                  print(value.toString());
+                                  return Container(
                                     height: 40,
                                     width: screenWidth! / 3,
                                     decoration: BoxDecoration(
-                                      color: ref.watch(primaryRole) == e
+                                      color: value.contains(e)
                                           ? Colors.white
                                           : Colors.black,
                                       borderRadius:
@@ -184,16 +137,15 @@ class PrimaryListWidgetState extends ConsumerState {
                                       child: Text(
                                         e,
                                         style: TextStyle(
-                                          color:
-                                          ref.watch(primaryRole) == e
+                                          color: value.contains(e)
                                               ? Colors.black
                                               : Colors.white,
                                         ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
+                                  );
+                                },
+                              ),
                             ),
                           ),
                           // ListTile(title:Text(dataList[category.indexOf(index)]["items"].toString()))

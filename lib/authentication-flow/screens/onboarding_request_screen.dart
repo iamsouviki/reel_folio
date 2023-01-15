@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reel_folio/util/floating_action_button_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
-import '../../../screens/route/route_path.dart';
-import '../../../util/progress_stepper.dart';
-import 'manager/onboarding_step_manager.dart';
-import 'widget/user_details_widget.dart';
-import 'widget/user_social_media_information_widget.dart';
+import '../../screens/route/route_path.dart';
+import '../../util/progress_stepper.dart';
+import '../manager/onboarding_step_manager.dart';
+import 'user_details_widget.dart';
+import 'user_social_media_information_widget.dart';
 
 class OnBoardingRequestScreen extends ConsumerWidget {
   OnBoardingRequestScreen({

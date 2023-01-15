@@ -5,9 +5,9 @@ import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/reel_folio_icon.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-import '../../authentication-flow/screens/onboarding/widget/tools/add_profile_asset_widget.dart';
-import '../../authentication-flow/screens/onboarding/widget/tools/screen_sub_title_widget.dart';
-import '../../authentication-flow/screens/onboarding/widget/tools/screen_title_widget.dart';
+import '../../authentication-flow/screens/widget/add_profile_asset_widget.dart';
+import '../../authentication-flow/screens/widget/screen_sub_title_widget.dart';
+import '../../authentication-flow/screens/widget/screen_title_widget.dart';
 
 // class EditDetailsProfilePicturePage extends StatefulWidget {
 //   EditDetailsProfilePicturePage({super.key});

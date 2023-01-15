@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-import 'tools/screen_sub_title_widget.dart';
-import 'tools/screen_title_widget.dart';
+import 'widget/screen_sub_title_widget.dart';
+import 'widget/screen_title_widget.dart';
 
 class UserSocialMediaInformationWidget extends StatelessWidget {
   UserSocialMediaInformationWidget({Key? key}) : super(key: key);

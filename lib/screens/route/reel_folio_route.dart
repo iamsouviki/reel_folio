@@ -6,10 +6,10 @@ import 'package:reel_folio/authentication-flow/screens/reset_password_screen.dar
 import 'package:reel_folio/screens/Home/homepage.dart';
 import 'package:reel_folio/screens/Portfolio/portfolio_home.dart';
 import 'package:reel_folio/screens/route/route_path.dart';
-import '../../authentication-flow/screens/onboarding/onboarding_details_screen.dart';
-import '../../authentication-flow/screens/onboarding/onboarding_request_screen.dart';
-import '../../authentication-flow/screens/onboarding/onboardng_request_confirmation_screen.dart';
-import '../../authentication-flow/screens/onboarding/welcome_screen.dart';
+import '../../authentication-flow/screens/onboarding_details_screen.dart';
+import '../../authentication-flow/screens/onboarding_request_screen.dart';
+import '../../authentication-flow/screens/onboardng_request_confirmation_screen.dart';
+import '../../authentication-flow/screens/welcome_screen.dart';
 import '../Chat/chatmain.dart';
 import '../CreateProject(Completed)/new _project.dart';
 import '../auth/splash_screen.dart';
