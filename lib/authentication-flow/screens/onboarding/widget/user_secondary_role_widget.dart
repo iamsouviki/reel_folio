@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/screens/onboarding/widget/tools/screen_title_widget.dart';
-
-import '../../../util/size_config.dart';
+import '../../../../util/size_config.dart';
 import 'tools/screen_sub_title_widget.dart';
+import 'tools/screen_title_widget.dart';
 import 'tools/secondary_list_widget.dart';
 import 'tools/text_cancel_button_widget.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/screens/onboarding/widget/tools/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-import '../route/route_path.dart';
+import '../../../screens/route/route_path.dart';
+import 'widget/tools/screen_title_widget.dart';
 
 
 class OnBoardingRequestConfirmationScreen extends StatelessWidget {

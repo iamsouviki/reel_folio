@@ -1,43 +1,22 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:reel_folio/screens/onboarding/widget/user_profile_picture_widget.dart';
-
-import '../../util/floating_action_button_widget.dart';
-import '../../util/progress_stepper.dart';
-import '../../util/size_config.dart';
-import '../route/route_path.dart';
+import 'package:reel_folio/util/floating_action_button_widget.dart';
+import 'package:reel_folio/util/size_config.dart';
+import '../../../screens/route/route_path.dart';
+import '../../../util/progress_stepper.dart';
 import 'manager/onboarding_step_manager.dart';
-import 'widget/user_bio_widget.dart';
-import 'widget/user_contact_number_widget.dart';
-import 'widget/user_cover_image_widget.dart';
-import 'widget/user_dob_widget.dart';
-import 'widget/user_name_widget.dart';
-import 'widget/user_pin_widget.dart';
-import 'widget/user_primary_role_widget.dart';
-import 'widget/user_secondary_role_widget.dart';
+import 'widget/user_details_widget.dart';
+import 'widget/user_social_media_information_widget.dart';
 
-class OnBoardingDetailsScreen extends ConsumerWidget {
-  OnBoardingDetailsScreen({Key? key}) : super(key: key);
+class OnBoardingRequestScreen extends ConsumerWidget {
+  OnBoardingRequestScreen({
+    Key? key,
+  }) : super(key: key);
 
   final List<Widget> _screens = [
-    //name
-    UserNameWidget(),
-    //phone
-    UserContactNumberWidget(),
-    //pin
-    UserPinWidget(),
-    //primary skill
-    UserPrimaryRoleWidget(),
-    //other skill
-    UserSecondaryRoleWidget(),
-    //profile picture
-    UserProfilePictureWidget(),
-    //cover picture
-    UserCoverImageWidget(),
-    //birthday
-    const UserDOBWidget(),
-    //bio
-    UserBioWidget(),
+    UserDetailsWidget(),
+    UserSocialMediaInformationWidget(),
   ];
 
   @override
@@ -61,12 +40,9 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        if (stepValue > 1) {
+                        if(stepValue != 1){
                           widgetRef.read(onBoardingStepManger.notifier).state =
                               stepValue - 1;
-                        } else {
-                          widgetRef.read(onBoardingStepManger.notifier).state =
-                              1;
                         }
                       },
                       icon: const Icon(
@@ -75,9 +51,8 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
                       ),
                     ),
                     ProgressStepper(
-                      width: 200,
-                      stepCount: 9,
-                      padding: 5,
+                      width: 100,
+                      stepCount: 2,
                       currentStep: stepValue,
                     ),
                     Text(
@@ -102,12 +77,12 @@ class OnBoardingDetailsScreen extends ConsumerWidget {
         ),
         floatingActionButton: FloatingActionButtonWidget(
           onTap: () {
-            if (stepValue != 9) {
+            if (stepValue != 2) {
               widgetRef.read(onBoardingStepManger.notifier).state =
                   stepValue + 1;
             } else {
               Navigator.pushReplacementNamed(
-                  context, RoutePath.routeToWelcomeScreen);
+                  context, RoutePath.routeToOnBoardingConfirmationScreen);
               widgetRef.read(onBoardingStepManger.notifier).state = 1;
             }
           },

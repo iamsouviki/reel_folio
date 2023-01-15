@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../util/size_config.dart';
+import '../../../../../util/size_config.dart';
 
 class SecondaryListWidget extends StatefulWidget {
   final ValueChanged<List<String>> onValueChanged;

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:reel_folio/authentication-flow/services/login_data.dart';
 
-import '../../../util/size_config.dart';
-import '../../widget/otp_field.dart';
+import '../../../../util/size_config.dart';
 import 'tools/screen_sub_title_widget.dart';
 import 'tools/screen_title_widget.dart';
 

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../Portfolio/portfolio_home.dart';
-import '../../util/size_config.dart';
-import '../route/route_path.dart';
+import '../../../screens/Portfolio/portfolio_home.dart';
+import '../../../screens/route/route_path.dart';
+import '../../../util/size_config.dart';
 import 'widget/tools/screen_title_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {

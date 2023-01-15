@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/screens/route/route_path.dart';
-
-import '../../screens/onboarding/widget/tools/screen_sub_title_widget.dart';
-import '../../screens/onboarding/widget/tools/screen_title_widget.dart';
 import '../../util/colors.dart';
 import '../../util/size_config.dart';
+import 'onboarding/widget/tools/screen_sub_title_widget.dart';
+import 'onboarding/widget/tools/screen_title_widget.dart';
 import 'widget/action_button_widget.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:reel_folio/screens/onboarding/widget/tools/screen_title_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
-
-import '../../../util/reel_folio_input_decoration.dart';
+import '../../../../util/reel_folio_input_decoration.dart';
 import '../manager/role_selection_manager.dart';
 import 'tools/primary_list_widget.dart';
 import 'tools/screen_sub_title_widget.dart';
+import 'tools/screen_title_widget.dart';
 import 'tools/text_cancel_button_widget.dart';
 
 
