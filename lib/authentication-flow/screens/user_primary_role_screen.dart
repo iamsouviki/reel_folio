@@ -10,8 +10,8 @@ import 'widget/text_cancel_button_widget.dart';
 
 
 
-class UserPrimaryRoleWidget extends StatelessWidget {
-  UserPrimaryRoleWidget({Key? key}) : super(key: key);
+class UserPrimaryRoleScreen extends StatelessWidget {
+  UserPrimaryRoleScreen({Key? key}) : super(key: key);
 
   final ValueNotifier<String> primaryRoleNotifier = ValueNotifier<String>('');
 

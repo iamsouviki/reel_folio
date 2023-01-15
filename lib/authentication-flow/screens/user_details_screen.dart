@@ -3,8 +3,8 @@ import 'package:reel_folio/util/size_config.dart';
 
 import 'widget/screen_title_widget.dart';
 
-class UserDetailsWidget extends StatelessWidget {
-  UserDetailsWidget({Key? key}) : super(key: key);
+class UserDetailsScreen extends StatelessWidget {
+  UserDetailsScreen({Key? key}) : super(key: key);
 
   final _nameController = TextEditingController();
   final _emailIDController = TextEditingController();

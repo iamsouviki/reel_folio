@@ -4,39 +4,33 @@ import 'package:reel_folio/util/size_config.dart';
 import 'widget/screen_sub_title_widget.dart';
 import 'widget/screen_title_widget.dart';
 
-class UserSocialMediaInformationWidget extends StatelessWidget {
-  UserSocialMediaInformationWidget({Key? key}) : super(key: key);
+class UserNameScreen extends StatelessWidget {
+  UserNameScreen({Key? key}) : super(key: key);
 
-  final _urlController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const AspectRatio(
-          aspectRatio: 375 / 60,
+          aspectRatio: 375 / 150,
           child: SizedBox(),
         ),
-        const ScreenTitleWidget(
-          text: 'Where can we find\nyour worK?',
-          textAlign: TextAlign.center,
-        ),
-        const AspectRatio(
-          aspectRatio: 375 / 15,
-          child: SizedBox(),
+        const ScreenTitleWidget(text: 'USERNAME'),
+        SizedBox(
+          height: screenWidth! * 22 / 375,
         ),
         const ScreenSubTitleWidget(
           text:
-              'Share a link so the reelfolio team can review your work (i.e. YouTube, Vimeo, Instagram, LinkedIn, etc.)',
-          textAlign: TextAlign.center,
+              'Create a username. You will be unable to change this. Choose wisely',
         ),
-        const AspectRatio(
-          aspectRatio: 375 / 45,
-          child: SizedBox(),
+        SizedBox(
+          height: screenWidth! * 21 / 375,
         ),
         TextField(
-          controller: _urlController,
+          controller: _userNameController,
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,
           cursorColor: const Color(0xFF474747),
@@ -46,7 +40,7 @@ class UserSocialMediaInformationWidget extends StatelessWidget {
             fontSize: screenWidth! * 22 / 375,
           ),
           decoration: InputDecoration(
-            hintText: '    www.vimeo.com/myvideo',
+            hintText: 'first last',
             hintStyle: TextStyle(
               color: const Color(0xFF474747),
               fontWeight: FontWeight.w400,

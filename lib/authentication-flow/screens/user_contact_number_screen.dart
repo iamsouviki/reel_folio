@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/util/size_config.dart';
-
+import '../../util/size_config.dart';
 import 'widget/screen_sub_title_widget.dart';
 import 'widget/screen_title_widget.dart';
 
-class UserNameWidget extends StatelessWidget {
-  UserNameWidget({Key? key}) : super(key: key);
+class UserContactNumberScreen extends StatelessWidget {
 
-  final TextEditingController _userNameController = TextEditingController();
+  UserContactNumberScreen({Key? key}) : super(key: key);
+
+  final _contactNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +18,19 @@ class UserNameWidget extends StatelessWidget {
           aspectRatio: 375 / 150,
           child: SizedBox(),
         ),
-        const ScreenTitleWidget(text: 'USERNAME'),
+        const ScreenTitleWidget(text: 'PHONE'),
         SizedBox(
           height: screenWidth! * 22 / 375,
         ),
         const ScreenSubTitleWidget(
           text:
-              'Create a username. You will be unable to change this. Choose wisely',
+              'Please list your cell phone number. It will only be used for authentication purposes.',
         ),
         SizedBox(
           height: screenWidth! * 21 / 375,
         ),
         TextField(
-          controller: _userNameController,
+          controller: _contactNumberController,
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,
           cursorColor: const Color(0xFF474747),

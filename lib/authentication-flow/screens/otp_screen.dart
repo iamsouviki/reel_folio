@@ -6,14 +6,14 @@ import '../../../../util/size_config.dart';
 import 'widget/screen_sub_title_widget.dart';
 import 'widget/screen_title_widget.dart';
 
-class UserPinWidget extends StatefulWidget {
-  UserPinWidget({Key? key}) : super(key: key);
+class OTPScreen extends StatefulWidget {
+  const OTPScreen({Key? key}) : super(key: key);
 
   @override
-  State<UserPinWidget> createState() => _UserPinWidgetState();
+  State<OTPScreen> createState() => _OTPScreenState();
 }
 
-class _UserPinWidgetState extends State<UserPinWidget> {
+class _OTPScreenState extends State<OTPScreen> {
   final _pinController = TextEditingController();
 
   LoginData get _loginData => GetIt.I<LoginData>();

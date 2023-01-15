@@ -5,38 +5,38 @@ import '../../util/floating_action_button_widget.dart';
 import '../../util/progress_stepper.dart';
 import '../../util/size_config.dart';
 import '../manager/onboarding_step_manager.dart';
-import 'user_bio_widget.dart';
-import 'user_contact_number_widget.dart';
-import 'user_cover_image_widget.dart';
+import 'user_bio_screen.dart';
+import 'user_contact_number_screen.dart';
+import 'user_cover_image_screen.dart';
 import 'user_dob_widget.dart';
-import 'user_name_widget.dart';
-import 'user_pin_widget.dart';
-import 'user_primary_role_widget.dart';
-import 'user_profile_picture_widget.dart';
-import 'user_secondary_role_widget.dart';
+import 'user_name_screen.dart';
+import 'otp_screen.dart';
+import 'user_primary_role_screen.dart';
+import 'user_primary_picture_screen.dart';
+import 'user_secondary_role_screen.dart';
 
 class OnBoardingDetailsScreen extends ConsumerWidget {
   OnBoardingDetailsScreen({Key? key}) : super(key: key);
 
   final List<Widget> _screens = [
     //name
-    UserNameWidget(),
+    UserNameScreen(),
     //phone
-    UserContactNumberWidget(),
+    UserContactNumberScreen(),
     //pin
-    UserPinWidget(),
+    OTPScreen(),
     //primary skill
-    UserPrimaryRoleWidget(),
+    UserPrimaryRoleScreen(),
     //other skill
-    UserSecondaryRoleWidget(),
+    UserSecondaryRoleScreen(),
     //profile picture
     UserProfilePictureWidget(),
     //cover picture
-    UserCoverImageWidget(),
+    UserCoverImageScreen(),
     //birthday
-    const UserDOBWidget(),
+    const UserDOBScreen(),
     //bio
-    UserBioWidget(),
+    UserBioScreen(),
   ];
 
   @override

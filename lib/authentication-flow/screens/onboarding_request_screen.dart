@@ -6,8 +6,8 @@ import 'package:reel_folio/util/size_config.dart';
 import '../../screens/route/route_path.dart';
 import '../../util/progress_stepper.dart';
 import '../manager/onboarding_step_manager.dart';
-import 'user_details_widget.dart';
-import 'user_social_media_information_widget.dart';
+import 'user_details_screen.dart';
+import 'user_social_media_information_screen.dart';
 
 class OnBoardingRequestScreen extends ConsumerWidget {
   OnBoardingRequestScreen({
@@ -15,8 +15,8 @@ class OnBoardingRequestScreen extends ConsumerWidget {
   }) : super(key: key);
 
   final List<Widget> _screens = [
-    UserDetailsWidget(),
-    UserSocialMediaInformationWidget(),
+    UserDetailsScreen(),
+    UserSocialMediaInformationScreen(),
   ];
 
   @override

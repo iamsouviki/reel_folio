@@ -7,8 +7,8 @@ import 'widget/screen_sub_title_widget.dart';
 import 'widget/screen_title_widget.dart';
 
 
-class UserCoverImageWidget extends StatelessWidget {
-  UserCoverImageWidget({Key? key}) : super(key: key);
+class UserCoverImageScreen extends StatelessWidget {
+  UserCoverImageScreen({Key? key}) : super(key: key);
 
   final ValueNotifier<File?> _imageNotifier = ValueNotifier<File?>(null);
 

@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
-import '../../util/size_config.dart';
+import 'package:reel_folio/util/size_config.dart';
+
 import 'widget/screen_sub_title_widget.dart';
 import 'widget/screen_title_widget.dart';
 
-class UserContactNumberWidget extends StatelessWidget {
+class UserSocialMediaInformationScreen extends StatelessWidget {
+  UserSocialMediaInformationScreen({Key? key}) : super(key: key);
 
-  UserContactNumberWidget({Key? key}) : super(key: key);
-
-  final _contactNumberController = TextEditingController();
+  final _urlController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const AspectRatio(
-          aspectRatio: 375 / 150,
+          aspectRatio: 375 / 60,
           child: SizedBox(),
         ),
-        const ScreenTitleWidget(text: 'PHONE'),
-        SizedBox(
-          height: screenWidth! * 22 / 375,
+        const ScreenTitleWidget(
+          text: 'Where can we find\nyour worK?',
+          textAlign: TextAlign.center,
+        ),
+        const AspectRatio(
+          aspectRatio: 375 / 15,
+          child: SizedBox(),
         ),
         const ScreenSubTitleWidget(
           text:
-              'Please list your cell phone number. It will only be used for authentication purposes.',
+              'Share a link so the reelfolio team can review your work (i.e. YouTube, Vimeo, Instagram, LinkedIn, etc.)',
+          textAlign: TextAlign.center,
         ),
-        SizedBox(
-          height: screenWidth! * 21 / 375,
+        const AspectRatio(
+          aspectRatio: 375 / 45,
+          child: SizedBox(),
         ),
         TextField(
-          controller: _contactNumberController,
+          controller: _urlController,
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,
           cursorColor: const Color(0xFF474747),
@@ -40,7 +46,7 @@ class UserContactNumberWidget extends StatelessWidget {
             fontSize: screenWidth! * 22 / 375,
           ),
           decoration: InputDecoration(
-            hintText: 'first last',
+            hintText: '    www.vimeo.com/myvideo',
             hintStyle: TextStyle(
               color: const Color(0xFF474747),
               fontWeight: FontWeight.w400,

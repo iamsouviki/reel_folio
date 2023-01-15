@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/util/size_config.dart';
 import 'widget/screen_title_widget.dart';
 
-class UserDOBWidget extends StatelessWidget {
-  const UserDOBWidget({Key? key}) : super(key: key);
+class UserDOBScreen extends StatelessWidget {
+  const UserDOBScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

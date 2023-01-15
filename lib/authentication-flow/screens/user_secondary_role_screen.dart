@@ -5,8 +5,8 @@ import 'widget/screen_title_widget.dart';
 import 'widget/secondary_list_widget.dart';
 import 'widget/text_cancel_button_widget.dart';
 
-class UserSecondaryRoleWidget extends StatelessWidget {
-  UserSecondaryRoleWidget({Key? key}) : super(key: key);
+class UserSecondaryRoleScreen extends StatelessWidget {
+  UserSecondaryRoleScreen({Key? key}) : super(key: key);
 
   final ValueNotifier<List<String>> primaryRoleNotifier =
       ValueNotifier<List<String>>(['']);
