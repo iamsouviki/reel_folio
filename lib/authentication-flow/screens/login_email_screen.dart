@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:reel_folio/screens/route/route_path.dart';
@@ -6,15 +7,16 @@ import '../services/auth_service.dart';
 
 import '../services/login_data.dart';
 import '../../util/size_config.dart';
+import 'login_password_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginEmailScreen extends StatefulWidget {
+  const LoginEmailScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginEmailScreen> createState() => _LoginEmailScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginEmailScreenState extends State<LoginEmailScreen> {
   LoginData get _loginData => GetIt.I<LoginData>();
 
   AuthService get _authService => GetIt.I<AuthService>();
@@ -42,27 +44,56 @@ class _LoginScreenState extends State<LoginScreen> {
                   aspectRatio: 375 / 50,
                   child: SizedBox(),
                 ),
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Spacer(
+                      flex: 5,
+                    ),
+                    Center(
+                      child: Text(
+                        'LOG IN',
+                        style: TextStyle(
+                          fontSize: screenWidth! * 32 / 375,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontFamily: 'GT-America-Compressed-Regular',
+                        ),
+                        maxLines: 3,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const Spacer(
+                      flex: 6,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: screenHeight! * 34 / 812,
+                ),
                 Center(
                   child: Text(
-                    'LOG IN',
+                    'Enter THE email or phone ASSOCIATED WITH YOUR ACCOUNT'
+                        .toUpperCase(),
                     style: TextStyle(
-                      fontSize: screenWidth! * 32 / 375,
+                      fontSize: screenWidth! * 35 / 375,
                       fontWeight: FontWeight.w500,
                       color: Colors.white,
-                      fontFamily: 'GT-America-Compressed-Regular',
                     ),
-                    maxLines: 3,
                     textAlign: TextAlign.center,
                   ),
                 ),
                 const AspectRatio(
                   aspectRatio: 375 / 100,
                   child: SizedBox(),
-                ),
-                Text(
-                  'Username',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: screenWidth! * 22 / 375),
                 ),
                 TextField(
                   onChanged: (val) => _loginData.phoneOrEmail = val,
@@ -91,64 +122,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: screenWidth! * 22 / 375,
                 ),
-                Text(
-                  'Password',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: screenWidth! * 22 / 375),
-                ),
-                TextField(
-                  obscureText: !shoWPassword,
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.done,
-                  cursorColor: const Color(0xFF474747),
-                  onChanged: (val) => _loginData.password = val,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    fontSize: screenWidth! * 22 / 375,
-                  ),
-                  decoration: InputDecoration(
-                    hintText: '*******',
-                    hintStyle: TextStyle(
-                      color: const Color(0xFF474747),
-                      fontWeight: FontWeight.w400,
-                      fontSize: screenWidth! * 22 / 375,
-                    ),
-                    suffixIcon: !shoWPassword
-                        ? GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                shoWPassword = !shoWPassword;
-                              });
-                            },
-                            child: const Icon(
-                              Icons.visibility_off,
-                              color: Colors.white,
-                            ))
-                        : GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                shoWPassword = !shoWPassword;
-                              });
-                            },
-                            child: const Icon(
-                              Icons.visibility,
-                              color: Colors.white,
-                            )),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFF474747),
-                      ),
-                    ),
-                  ),
-                ),
                 Flexible(
                   fit: FlexFit.loose,
                   child: SizedBox(
-                    height: screenWidth! * 250 / 375,
+                    height: screenWidth! * 150 / 375,
                   ),
                 ),
-                Center(
+                /*Center(
                   child: InkWell(
                     onTap: () {
                       Navigator.pushNamed(
@@ -164,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                ),
+                ),*/
                 SizedBox(
                   height: screenWidth! * 21 / 375,
                 ),
@@ -176,7 +156,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           ? const CircularProgressIndicator()
                           : InkWell(
                               onTap: () async {
-                                if (_loginData.phoneOrEmail != null &&
+                                Navigator.pushNamed(
+                                  context,
+                                  RoutePath.routeToPasswordOTPScreen,
+                                );
+                                /*if (_loginData.phoneOrEmail != null &&
                                     _loginData.password != null) {
                                   _loadingNotifier.value = true;
 
@@ -185,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   if (!response) {
                                     _loadingNotifier.value = false;
                                     showMessage(context,
-                                        'Please check your credentails');
+                                        'Please check your credentials');
                                   } else {
                                     _loadingNotifier.value = false;
                                     _loginData.clearData();
@@ -193,10 +177,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 } else {
                                   showMessage(
                                       context, 'Please add your credentials');
-                                }
+                                }*/
                               },
                               child: const ActionButtonWidget(
-                                buttonText: 'Login',
+                                buttonText: 'Get OTP',
                               ),
                             );
                     },

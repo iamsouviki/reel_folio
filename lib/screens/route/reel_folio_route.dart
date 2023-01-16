@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/authentication-flow/screens/authentication_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/forget_password_screen.dart';
-import 'package:reel_folio/authentication-flow/screens/login_screen.dart';
+import 'package:reel_folio/authentication-flow/screens/login_email_screen.dart';
+import 'package:reel_folio/authentication-flow/screens/login_password_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/registration_rules_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/reset_password_screen.dart';
 import 'package:reel_folio/screens/Home/homepage.dart';
@@ -31,7 +32,10 @@ abstract class ReelFolioRoute {
         currentWidget = const AuthenticationScreen();
         break;
       case RoutePath.routeToLoginScreen:
-        currentWidget = const LoginScreen();
+        currentWidget = const LoginEmailScreen();
+        break;
+      case RoutePath.routeToPasswordOTPScreen:
+        currentWidget = LoginPasswordScreen();
         break;
       case RoutePath.routeToForgetPasswordScreen:
         currentWidget = const ForgetPasswordScreen();
@@ -74,7 +78,6 @@ abstract class ReelFolioRoute {
         currentWidget = NewProjectWidget();
         break;
 
-
       default:
         currentWidget = Scaffold(
           body: Center(
@@ -108,8 +111,8 @@ class _ReelFolioRoute extends PageRouteBuilder {
             var tween =
                 Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-            return SlideTransition(
-              position: animation.drive(tween),
+            return FadeTransition(
+              opacity: animation,
               child: child,
             );
           },
