@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
+import 'package:reel_folio/authentication-flow/manager/authentication_manager.dart';
+import 'package:reel_folio/authentication-flow/model/otp_model.dart';
 import 'package:reel_folio/screens/route/route_path.dart';
 import '../screens/widget/action_button_widget.dart';
 import '../services/auth_service.dart';
@@ -154,34 +157,41 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
                     builder: (BuildContext context, bool value, Widget? child) {
                       return value
                           ? const CircularProgressIndicator()
-                          : InkWell(
-                              onTap: () async {
-                                Navigator.pushNamed(
-                                  context,
-                                  RoutePath.routeToPasswordOTPScreen,
+                          : Consumer(
+                              builder: (BuildContext context, WidgetRef ref,
+                                  Widget? child) {
+                                return InkWell(
+                                  onTap: () async {
+                                    if (_loginData.phoneOrEmail != null) {
+                                      _loadingNotifier.value = true;
+
+                                      OTPResponse? response =
+                                          await _authService.sendOTP();
+
+                                      if(response!=null){
+                                        if (!response.success!) {
+                                          _loadingNotifier.value = false;
+                                          ref.refresh(otpManager);
+                                          showMessage(
+                                              context, response.message!);
+                                        } else {
+                                          _loadingNotifier.value = false;
+                                          Navigator.pushNamed(
+                                            context,
+                                            RoutePath.routeToForgetPasswordScreen,
+                                          );
+                                        }
+                                      }
+                                    } else {
+                                      showMessage(context,
+                                          'Please add proper credentials');
+                                    }
+                                  },
+                                  child: const ActionButtonWidget(
+                                    buttonText: 'Get OTP',
+                                  ),
                                 );
-                                /*if (_loginData.phoneOrEmail != null &&
-                                    _loginData.password != null) {
-                                  _loadingNotifier.value = true;
-
-                                  bool response = await _authService.login();
-
-                                  if (!response) {
-                                    _loadingNotifier.value = false;
-                                    showMessage(context,
-                                        'Please check your credentials');
-                                  } else {
-                                    _loadingNotifier.value = false;
-                                    _loginData.clearData();
-                                  }
-                                } else {
-                                  showMessage(
-                                      context, 'Please add your credentials');
-                                }*/
                               },
-                              child: const ActionButtonWidget(
-                                buttonText: 'Get OTP',
-                              ),
                             );
                     },
                   ),

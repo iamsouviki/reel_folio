@@ -73,7 +73,7 @@ class LoginPasswordScreen extends StatelessWidget {
                 child: SizedBox(),
               ),
               TextField(
-                onChanged: (val) => _loginData.phoneOrEmail = val,
+                onChanged: (val) => _loginData.password = val,
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 cursorColor: const Color(0xFF474747),
@@ -154,6 +154,8 @@ class LoginPasswordScreen extends StatelessWidget {
                         ? const CircularProgressIndicator()
                         : InkWell(
                             onTap: () async {
+                              print(_loginData.phoneOrEmail);
+                              print(_loginData.password);
                               if (_loginData.phoneOrEmail != null &&
                                   _loginData.password != null) {
                                 _loadingNotifier.value = true;

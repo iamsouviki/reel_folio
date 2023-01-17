@@ -40,6 +40,7 @@ dependencies:
   dio:
   shared_preferences:
   get_it:
+  cron:
 
 dev_dependencies:
   flutter_test:

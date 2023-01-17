@@ -34,3 +34,4 @@ doc/api/
 /android/.idea/compiler.xml
 /android/.idea/
 /android/.idea/
+/lib/authentication-flow/services/client_secret.dart

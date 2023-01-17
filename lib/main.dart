@@ -1,13 +1,21 @@
+import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reel_folio/authentication-flow/services/auth_service.dart';
 import 'package:reel_folio/screens/route/reel_folio_route.dart';
 import 'core/service_locator.dart';
 import 'util/size_config.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();;
 
   setupServiceLocator();
+
+  final cron = Cron();
+  cron.schedule(Schedule.parse('*/10 * * * * '), () async {
+    await AuthService().getClientSecret();
+    print('Runs every 10 minutes');
+  });
 
   runApp(const ProviderScope(child: ReelFolioApp()));
 }
