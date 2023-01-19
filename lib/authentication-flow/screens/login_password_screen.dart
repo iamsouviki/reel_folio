@@ -10,7 +10,7 @@ import '../services/login_data.dart';
 import 'widget/action_button_widget.dart';
 
 class LoginPasswordScreen extends StatefulWidget {
-  LoginPasswordScreen({Key? key}) : super(key: key);
+  const LoginPasswordScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginPasswordScreen> createState() => _LoginPasswordScreenState();
@@ -104,44 +104,45 @@ class _LoginPasswordScreenState extends State<LoginPasswordScreen> {
               SizedBox(
                 height: screenWidth! * 350 / 375,
               ),
-              if (withPassword)
-                Align(
-                  alignment: Alignment.bottomCenter,
+              Center(
+                child: Offstage(
+                  offstage: !withPassword,
                   child: ValueListenableBuilder(
                     valueListenable: _loadingNotifier,
                     builder: (BuildContext context, bool value, Widget? child) {
                       return value
                           ? const CircularProgressIndicator()
                           : InkWell(
-                              onTap: () async {
-                                print(_loginData.phoneOrEmail);
-                                print(_loginData.password);
-                                if (_loginData.phoneOrEmail != null &&
-                                    _loginData.password != null) {
-                                  _loadingNotifier.value = true;
+                        onTap: () async {
+                          print(_loginData.phoneOrEmail);
+                          print(_loginData.password);
+                          if (_loginData.phoneOrEmail != null &&
+                              _loginData.password != null) {
+                            _loadingNotifier.value = true;
 
-                                  bool response = await _authService.login();
+                            bool response = await _authService.loginWithPassword();
 
-                                  if (!response) {
-                                    _loadingNotifier.value = false;
-                                    showMessage(context,
-                                        'Please check your credentials');
-                                  } else {
-                                    _loadingNotifier.value = false;
-                                    _loginData.clearData();
-                                  }
-                                } else {
-                                  showMessage(
-                                      context, 'Please add your credentials');
-                                }
-                              },
-                              child: const ActionButtonWidget(
-                                buttonText: 'Login',
-                              ),
-                            );
+                            if (!response) {
+                              _loadingNotifier.value = false;
+                              showMessage(context,
+                                  'Please check your credentials');
+                            } else {
+                              _loadingNotifier.value = false;
+                              _loginData.clearData();
+                            }
+                          } else {
+                            showMessage(
+                                context, 'Please add your credentials');
+                          }
+                        },
+                        child: const ActionButtonWidget(
+                          buttonText: 'Login',
+                        ),
+                      );
                     },
                   ),
                 ),
+              ),
             ],
           ),
         ),
@@ -164,8 +165,15 @@ class _LoginPasswordScreenState extends State<LoginPasswordScreen> {
   }
 }
 
-class OTPWidget extends StatelessWidget {
+class OTPWidget extends StatefulWidget {
   const OTPWidget({Key? key}) : super(key: key);
+
+  @override
+  State<OTPWidget> createState() => _OTPWidgetState();
+}
+
+class _OTPWidgetState extends State<OTPWidget> {
+  AuthService get _authService => GetIt.I<AuthService>();
 
   @override
   Widget build(BuildContext context) {
@@ -179,14 +187,13 @@ class OTPWidget extends StatelessWidget {
           color: Colors.white,
           fontSize: screenWidth! * 20 / 375,
         ),
-        //set to true to show as box or false to show as dash
         showFieldAsBox: true,
-        //runs when a code is typed in
-        onCodeChanged: (String code) {
-          //handle validation or checks here
-        },
-
-        onSubmit: (String verificationCode) {}, // end onSubmit
+        onSubmit: (String verificationCode) async {
+          print(verificationCode);
+          await _authService.loginWithOTP(
+            int.parse(verificationCode),
+          );
+        }, // end onSubmit
       ),
     );
   }

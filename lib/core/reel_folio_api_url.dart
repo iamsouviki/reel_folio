@@ -6,4 +6,6 @@ abstract class ReelFolioAPIURL {
   static const String loginURL = '$baseURL/login';
 
   static const String otpURL = '$baseURL/send-otp';
+
+  static const String loginWithOTPURL = '$baseURL/login-with-otp';
 }
