@@ -30,6 +30,14 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    moveToPasswordScreen(){
+      Navigator.pushNamed(
+        context,
+        RoutePath.routeToPasswordOTPScreen,
+      );
+    }
+
     return SafeArea(
       top: true,
       child: Scaffold(
@@ -172,14 +180,12 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
                                         if (!response.success!) {
                                           _loadingNotifier.value = false;
                                           ref.refresh(otpManager);
+                                          print(response.message);
                                           showMessage(
                                               context, response.message!);
                                         } else {
                                           _loadingNotifier.value = false;
-                                          Navigator.pushNamed(
-                                            context,
-                                            RoutePath.routeToForgetPasswordScreen,
-                                          );
+                                          moveToPasswordScreen();
                                         }
                                       }
                                     } else {
