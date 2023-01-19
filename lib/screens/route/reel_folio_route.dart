@@ -35,7 +35,7 @@ abstract class ReelFolioRoute {
         currentWidget = const LoginEmailScreen();
         break;
       case RoutePath.routeToPasswordOTPScreen:
-        currentWidget = LoginPasswordScreen();
+        currentWidget = const LoginPasswordScreen();
         break;
       case RoutePath.routeToForgetPasswordScreen:
         currentWidget = const ForgetPasswordScreen();

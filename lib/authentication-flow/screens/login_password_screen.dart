@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:reel_folio/util/colors.dart';
@@ -25,7 +24,7 @@ class _LoginPasswordScreenState extends State<LoginPasswordScreen> {
 
   final bool shoWPassword = false;
 
-  bool withPassword = true;
+  bool withPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,113 +36,111 @@ class _LoginPasswordScreenState extends State<LoginPasswordScreen> {
           padding: EdgeInsets.symmetric(
             horizontal: screenWidth! * 35 / 375,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const AspectRatio(
-                aspectRatio: 375 / 50,
-                child: SizedBox(),
-              ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const Spacer(
-                    flex: 5,
-                  ),
-                  Center(
-                    child: Text(
-                      'LOG IN',
-                      style: TextStyle(
-                        fontSize: screenWidth! * 32 / 375,
-                        fontWeight: FontWeight.w500,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const AspectRatio(
+                  aspectRatio: 375 / 50,
+                  child: SizedBox(),
+                ),
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(
+                        Icons.arrow_back_ios,
                         color: Colors.white,
-                        fontFamily: 'GT-America-Compressed-Regular',
                       ),
-                      maxLines: 3,
-                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  const Spacer(
-                    flex: 6,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: screenHeight! * 42 / 812,
-              ),
-              if (withPassword) const PasswordWidget(),
-              if (!withPassword) const OTPWidget(),
-              SizedBox(
-                height: screenHeight! * 60 / 812,
-              ),
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      withPassword = !withPassword;
-                    });
-                  },
-                  child: Text(
-                    'Login with ${withPassword ? 'OTP' : 'Password'}',
-                    style: const TextStyle(
-                      fontSize: 22,
-                      color: ReelfolioColor.buttonColor,
+                    const Spacer(
+                      flex: 5,
                     ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: screenWidth! * 350 / 375,
-              ),
-              Center(
-                child: Offstage(
-                  offstage: !withPassword,
-                  child: ValueListenableBuilder(
-                    valueListenable: _loadingNotifier,
-                    builder: (BuildContext context, bool value, Widget? child) {
-                      return value
-                          ? const CircularProgressIndicator()
-                          : InkWell(
-                        onTap: () async {
-                          print(_loginData.phoneOrEmail);
-                          print(_loginData.password);
-                          if (_loginData.phoneOrEmail != null &&
-                              _loginData.password != null) {
-                            _loadingNotifier.value = true;
-
-                            bool response = await _authService.loginWithPassword();
-
-                            if (!response) {
-                              _loadingNotifier.value = false;
-                              showMessage(context,
-                                  'Please check your credentials');
-                            } else {
-                              _loadingNotifier.value = false;
-                              _loginData.clearData();
-                            }
-                          } else {
-                            showMessage(
-                                context, 'Please add your credentials');
-                          }
-                        },
-                        child: const ActionButtonWidget(
-                          buttonText: 'Login',
+                    Center(
+                      child: Text(
+                        'LOG IN',
+                        style: TextStyle(
+                          fontSize: screenWidth! * 32 / 375,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontFamily: 'GT-America-Compressed-Regular',
                         ),
-                      );
+                        maxLines: 3,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const Spacer(
+                      flex: 6,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: screenHeight! * 42 / 812,
+                ),
+                if (withPassword) const PasswordWidget(),
+                if (!withPassword) const OTPWidget(),
+                SizedBox(
+                  height: screenHeight! * 60 / 812,
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        withPassword = !withPassword;
+                      });
                     },
+                    child: Text(
+                      'Login with ${withPassword ? 'OTP' : 'Password'}',
+                      style: const TextStyle(
+                        fontSize: 22,
+                        color: ReelfolioColor.buttonColor,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: screenWidth! * 350 / 375,
+                ),
+                Center(
+                  child: Offstage(
+                    offstage: !withPassword,
+                    child: ValueListenableBuilder(
+                      valueListenable: _loadingNotifier,
+                      builder: (BuildContext context, bool value, Widget? child) {
+                        return value
+                            ? const CircularProgressIndicator()
+                            : InkWell(
+                          onTap: () async {
+                            if (_loginData.phoneOrEmail != null &&
+                                _loginData.password != null) {
+                              _loadingNotifier.value = true;
+
+                              bool response = await _authService.loginWithPassword();
+                              if (!response) {
+                                showMessage(context,
+                                    'Please check your credentials');
+                                _loadingNotifier.value = false;
+                              } else {
+                                _loadingNotifier.value = false;
+                              }
+                            } else {
+                              showMessage(
+                                  context, 'Please add your credentials');
+                            }
+                          },
+                          child: const ActionButtonWidget(
+                            buttonText: 'Login',
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -175,6 +172,28 @@ class OTPWidget extends StatefulWidget {
 class _OTPWidgetState extends State<OTPWidget> {
   AuthService get _authService => GetIt.I<AuthService>();
 
+  bool? correctOTP;
+
+  Color boxColor(){
+    if(correctOTP == null){
+      return Colors.white;
+    }else if(correctOTP == true){
+      return Colors.green;
+    }else{
+      return Colors.red;
+    }
+  }
+
+  Color fillColor(){
+    if(correctOTP == null){
+      return Colors.transparent;
+    }else if(correctOTP == true){
+      return Colors.green.withOpacity(0.2);
+    }else{
+      return Colors.red.withOpacity(0.2);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -182,6 +201,11 @@ class _OTPWidgetState extends State<OTPWidget> {
       child: OtpField(
         numberOfFields: 4,
         obscureText: true,
+        borderColor: boxColor(),
+        disabledBorderColor: boxColor(),
+        enabledBorderColor: boxColor(),
+        filled: true,
+        fillColor: fillColor(),
         cursorColor: Colors.grey,
         textStyle: TextStyle(
           color: Colors.white,
@@ -189,10 +213,12 @@ class _OTPWidgetState extends State<OTPWidget> {
         ),
         showFieldAsBox: true,
         onSubmit: (String verificationCode) async {
-          print(verificationCode);
-          await _authService.loginWithOTP(
+          bool resp = await _authService.loginWithOTP(
             int.parse(verificationCode),
           );
+          setState(() {
+            correctOTP = resp;
+          });
         }, // end onSubmit
       ),
     );

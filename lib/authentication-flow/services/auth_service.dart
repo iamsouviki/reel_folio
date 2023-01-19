@@ -97,6 +97,8 @@ class AuthService {
 
       print(data);
 
+      _loginData.clearData();
+
       return response.statusCode.toString().startsWith('2');
     } catch (e) {
       print(e.toString());
@@ -121,6 +123,8 @@ class AuthService {
       );
 
       print(response.toString());
+
+      _loginData.clearData();
 
       return response.statusCode!.toString().startsWith('2');
     } catch (e, stackTrace) {
