@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
+import 'package:reel_folio/authentication-flow/model/otp_model.dart';
+import 'package:reel_folio/authentication-flow/screens/user_pin_widget.dart';
+import 'package:reel_folio/authentication-flow/services/auth_service.dart';
 import 'package:reel_folio/util/floating_action_button_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
 import '../../screens/route/route_path.dart';
@@ -9,6 +13,9 @@ import '../manager/onboarding_step_manager.dart';
 import 'user_details_screen.dart';
 import 'user_social_media_information_screen.dart';
 
+
+StateProvider loadingNotifier = StateProvider<bool>((ref) => false);
+
 class OnBoardingRequestScreen extends ConsumerWidget {
   OnBoardingRequestScreen({
     Key? key,
@@ -16,12 +23,21 @@ class OnBoardingRequestScreen extends ConsumerWidget {
 
   final List<Widget> _screens = [
     UserDetailsScreen(),
-    UserSocialMediaInformationScreen(),
+    UserPinWidget(),
+
+    ///UserSocialMediaInformationScreen(),
   ];
+
+  OnBoardingUserDetailsModel get _userDetails =>
+      GetIt.I<OnBoardingUserDetailsModel>();
+
+  AuthService get _authService => GetIt.I<AuthService>();
 
   @override
   Widget build(BuildContext context, WidgetRef widgetRef) {
     final stepValue = widgetRef.watch(onBoardingStepManger);
+
+    var loading = widgetRef.watch(loadingNotifier);
 
     return SafeArea(
       top: true,
@@ -40,7 +56,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        if(stepValue != 1){
+                        if (stepValue != 1) {
                           widgetRef.read(onBoardingStepManger.notifier).state =
                               stepValue - 1;
                         }
@@ -75,11 +91,24 @@ class OnBoardingRequestScreen extends ConsumerWidget {
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButtonWidget(
-          onTap: () {
+        floatingActionButton: loading ? const CupertinoActivityIndicator() :FloatingActionButtonWidget(
+          onTap: () async {
             if (stepValue != 2) {
-              widgetRef.read(onBoardingStepManger.notifier).state =
-                  stepValue + 1;
+              if (_userDetails.isValid()) {
+                widgetRef.read(loadingNotifier.notifier).state = true;
+                OTPResponse resp = await _authService.onBoardingStepOne();
+                widgetRef.read(loadingNotifier.notifier).state = false;
+                if (resp!.success!) {
+                  widgetRef.read(onBoardingStepManger.notifier).state =
+                      stepValue + 1;
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(resp!.message!),
+                    ),
+                  );
+                }
+              }
             } else {
               Navigator.pushReplacementNamed(
                   context, RoutePath.routeToOnBoardingConfirmationScreen);

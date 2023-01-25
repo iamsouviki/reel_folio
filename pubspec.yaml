@@ -41,6 +41,7 @@ dependencies:
   shared_preferences:
   get_it:
   cron:
+  flutter_multi_formatter:
 
 dev_dependencies:
   flutter_test:
