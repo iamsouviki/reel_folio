@@ -109,32 +109,39 @@ class _LoginPasswordScreenState extends State<LoginPasswordScreen> {
                     offstage: !withPassword,
                     child: ValueListenableBuilder(
                       valueListenable: _loadingNotifier,
-                      builder: (BuildContext context, bool value, Widget? child) {
+                      builder:
+                          (BuildContext context, bool value, Widget? child) {
                         return value
                             ? const CircularProgressIndicator()
                             : InkWell(
-                          onTap: () async {
-                            if (_loginData.phoneOrEmail != null &&
-                                _loginData.password != null) {
-                              _loadingNotifier.value = true;
+                                onTap: () async {
+                                  if (_loginData.phoneOrEmail != null &&
+                                      _loginData.password != null) {
+                                    _loadingNotifier.value = true;
 
-                              bool response = await _authService.loginWithPassword();
-                              if (!response) {
-                                showMessage(context,
-                                    'Please check your credentials');
-                                _loadingNotifier.value = false;
-                              } else {
-                                _loadingNotifier.value = false;
-                              }
-                            } else {
-                              showMessage(
-                                  context, 'Please add your credentials');
-                            }
-                          },
-                          child: const ActionButtonWidget(
-                            buttonText: 'Login',
-                          ),
-                        );
+                                    bool response =
+                                        await _authService.loginWithPassword();
+                                    if (!response) {
+                                      showMessage(context,
+                                          'Please check your credentials');
+                                      _loadingNotifier.value = false;
+                                    } else {
+                                      showDialog(context: context, builder: (_){
+                                        return const AlertDialog(
+                                          content: Text('Logged In Successfully'),
+                                        );
+                                      });
+                                      _loadingNotifier.value = false;
+                                    }
+                                  } else {
+                                    showMessage(
+                                        context, 'Please add your credentials');
+                                  }
+                                },
+                                child: const ActionButtonWidget(
+                                  buttonText: 'Login',
+                                ),
+                              );
                       },
                     ),
                   ),
@@ -174,22 +181,22 @@ class _OTPWidgetState extends State<OTPWidget> {
 
   bool? correctOTP;
 
-  Color boxColor(){
-    if(correctOTP == null){
+  Color boxColor() {
+    if (correctOTP == null) {
       return Colors.white;
-    }else if(correctOTP == true){
+    } else if (correctOTP == true) {
       return Colors.green;
-    }else{
+    } else {
       return Colors.red;
     }
   }
 
-  Color fillColor(){
-    if(correctOTP == null){
+  Color fillColor() {
+    if (correctOTP == null) {
       return Colors.transparent;
-    }else if(correctOTP == true){
+    } else if (correctOTP == true) {
       return Colors.green.withOpacity(0.2);
-    }else{
+    } else {
       return Colors.red.withOpacity(0.2);
     }
   }
@@ -219,6 +226,13 @@ class _OTPWidgetState extends State<OTPWidget> {
           setState(() {
             correctOTP = resp;
           });
+          if(resp){
+            showDialog(context: context, builder: (_){
+              return const AlertDialog(
+                content: Text('Logged In Successfully'),
+              );
+            });
+          }
         }, // end onSubmit
       ),
     );
@@ -234,14 +248,15 @@ class PasswordWidget extends StatefulWidget {
 
 class _PasswordWidgetState extends State<PasswordWidget> {
   LoginData get _loginData => GetIt.I<LoginData>();
-  final bool shoWPassword = false;
+  bool shoWPassword = false;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText: !shoWPassword,
       onChanged: (val) => _loginData.password = val,
       keyboardType: TextInputType.emailAddress,
-      textInputAction: TextInputAction.next,
+      textInputAction: TextInputAction.done,
       cursorColor: const Color(0xFF474747),
       style: TextStyle(
         color: Colors.white,
@@ -250,6 +265,22 @@ class _PasswordWidgetState extends State<PasswordWidget> {
       ),
       decoration: InputDecoration(
         hintText: 'Enter password',
+        suffix: InkWell(
+          onTap: () {
+            setState(() {
+              shoWPassword = !shoWPassword;
+            });
+          },
+          child: shoWPassword
+              ? const Icon(
+                  Icons.visibility,
+                  color: Colors.white,
+                )
+              : const Icon(
+                  Icons.visibility_off,
+                  color: Colors.white,
+                ),
+        ),
         hintStyle: TextStyle(
           color: const Color(0xFF474747),
           fontWeight: FontWeight.w400,

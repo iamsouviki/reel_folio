@@ -59,6 +59,8 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                         if (stepValue != 1) {
                           widgetRef.read(onBoardingStepManger.notifier).state =
                               stepValue - 1;
+                        }else{
+                          Navigator.pop(context);
                         }
                       },
                       icon: const Icon(

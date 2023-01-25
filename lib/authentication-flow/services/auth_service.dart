@@ -101,7 +101,7 @@ class AuthService {
 
       print(data);
 
-      _loginData.clearData();
+      //_loginData.clearData();
 
       return response.statusCode.toString().startsWith('2');
     } catch (e) {

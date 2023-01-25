@@ -109,7 +109,7 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
                 TextField(
                   onChanged: (val) => _loginData.phoneOrEmail = val,
                   keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
+                  textInputAction: TextInputAction.done,
                   cursorColor: const Color(0xFF474747),
                   style: TextStyle(
                     color: Colors.white,
