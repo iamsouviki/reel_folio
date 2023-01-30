@@ -25,7 +25,8 @@ class OnBoardingRequestScreen extends ConsumerWidget {
     UserDetailsScreen(),
     UserPinWidget(),
 
-    ///UserSocialMediaInformationScreen(),
+
+    UserSocialMediaInformationScreen(),
   ];
 
   OnBoardingUserDetailsModel get _userDetails =>
@@ -70,7 +71,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                     ),
                     ProgressStepper(
                       width: 100,
-                      stepCount: 2,
+                      stepCount: 3,
                       currentStep: stepValue,
                     ),
                     Text(
@@ -95,7 +96,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
         ),
         floatingActionButton: loading ? const CupertinoActivityIndicator() :FloatingActionButtonWidget(
           onTap: () async {
-            if (stepValue != 2) {
+            if (stepValue == 1) {
               if (_userDetails.isValid()) {
                 widgetRef.read(loadingNotifier.notifier).state = true;
                 OTPResponse resp = await _authService.onBoardingStepOne();
@@ -111,6 +112,8 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                   );
                 }
               }
+            }else if(stepValue > 1 && stepValue < 3){
+              widgetRef.read(onBoardingStepManger.notifier).state++;
             } else {
               Navigator.pushReplacementNamed(
                   context, RoutePath.routeToOnBoardingConfirmationScreen);
