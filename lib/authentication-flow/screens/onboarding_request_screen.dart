@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:reel_folio/authentication-flow/model/otp_model.dart';
 import 'package:reel_folio/authentication-flow/screens/user_pin_widget.dart';
+import 'package:reel_folio/authentication-flow/screens/user_primary_role_screen.dart';
 import 'package:reel_folio/authentication-flow/services/auth_service.dart';
 import 'package:reel_folio/util/floating_action_button_widget.dart';
 import 'package:reel_folio/util/size_config.dart';
@@ -11,6 +12,7 @@ import '../../screens/route/route_path.dart';
 import '../../util/progress_stepper.dart';
 import '../manager/onboarding_step_manager.dart';
 import 'user_details_screen.dart';
+import 'user_secondary_role_screen.dart';
 import 'user_social_media_information_screen.dart';
 
 
@@ -24,9 +26,9 @@ class OnBoardingRequestScreen extends ConsumerWidget {
   final List<Widget> _screens = [
     UserDetailsScreen(),
     UserPinWidget(),
-
-
     UserSocialMediaInformationScreen(),
+    UserPrimaryRoleScreen(),
+    UserSecondaryRoleScreen(),
   ];
 
   OnBoardingUserDetailsModel get _userDetails =>
@@ -71,7 +73,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                     ),
                     ProgressStepper(
                       width: 100,
-                      stepCount: 3,
+                      stepCount: 5,
                       currentStep: stepValue,
                     ),
                     Text(
@@ -112,7 +114,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                   );
                 }
               }
-            }else if(stepValue > 1 && stepValue < 3){
+            }else if(stepValue > 1 && stepValue < 6){
               widgetRef.read(onBoardingStepManger.notifier).state++;
             } else {
               Navigator.pushReplacementNamed(

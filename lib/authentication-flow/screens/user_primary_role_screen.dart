@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reel_folio/authentication-flow/services/auth_service.dart';
 import 'package:reel_folio/util/size_config.dart';
 import '../../util/reel_folio_input_decoration.dart';
 import '../manager/role_selection_manager.dart';
@@ -35,7 +37,7 @@ class UserPrimaryRoleScreen extends StatelessWidget {
           ),
           const ScreenSubTitleWidget(
             text:
-            'Choose your main title. You only get to pick one, so what are you known for?',
+                'Choose your main title. You only get to pick one, so what are you known for?',
             textAlign: TextAlign.center,
           ),
           const AspectRatio(
@@ -109,7 +111,3 @@ class UserPrimaryRoleScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-

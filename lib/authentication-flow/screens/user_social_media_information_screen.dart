@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:reel_folio/util/size_config.dart';
 
+import 'user_details_screen.dart';
 import 'widget/screen_sub_title_widget.dart';
 import 'widget/screen_title_widget.dart';
 
@@ -8,6 +10,9 @@ class UserSocialMediaInformationScreen extends StatelessWidget {
   UserSocialMediaInformationScreen({Key? key}) : super(key: key);
 
   final _urlController = TextEditingController();
+
+  OnBoardingUserDetailsModel get _userDetails =>
+      GetIt.I<OnBoardingUserDetailsModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +42,10 @@ class UserSocialMediaInformationScreen extends StatelessWidget {
         ),
         TextField(
           controller: _urlController,
-          keyboardType: TextInputType.name,
+          keyboardType: TextInputType.url,
           textInputAction: TextInputAction.next,
           cursorColor: const Color(0xFF474747),
+          onChanged: (val) => _userDetails.socialMediaLink = val,
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w400,

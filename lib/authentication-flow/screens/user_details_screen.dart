@@ -146,11 +146,26 @@ class OnBoardingUserDetailsModel {
   String? username;
   String? userEmail;
   String? userPhoneNumber;
+  String? userPin;
+  int? id;
+  String? otpCode;
+  String? socialMediaLink;
+  String? password;
+  String? confirmPassword;
+  List<int>? otherSkills;
+  int? primarySkill;
 
   OnBoardingUserDetailsModel({
     this.username,
     this.userEmail,
     this.userPhoneNumber,
+    this.id,
+    this.otpCode,
+    this.socialMediaLink,
+    this.password,
+    this.confirmPassword,
+    this.otherSkills,
+    this.primarySkill,
   });
 
   bool isValid(){

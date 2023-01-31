@@ -1,14 +1,26 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:reel_folio/authentication-flow/model/otp_model.dart';
+import 'package:reel_folio/authentication-flow/model/user_role_model.dart';
 import 'package:reel_folio/authentication-flow/screens/user_details_screen.dart';
 import 'package:reel_folio/authentication-flow/services/client_secret.dart';
 import 'package:reel_folio/core/reel_folio_api_url.dart';
 import 'package:reel_folio/user_preferences.dart';
 
 import 'login_data.dart';
+
+
+final authProvider = Provider<AuthService>(
+      (ref) => AuthService(),
+);
+
+final userRoleProvider = FutureProvider.autoDispose<UserRoleModel?>(
+      (ref) => ref.read(authProvider).getUserRole(),
+);
+
 
 class AuthService {
   UserPreferences get _preferences => GetIt.I<UserPreferences>();
@@ -174,6 +186,74 @@ class AuthService {
         return OTPResponse.fromJson(e.response!.data!);
       }
       return OTPResponse.fromJson({"success":false,"message":"Please try again","data":null});
+    }
+  }
+
+
+  Future<OTPResponse> onBoardingStepTwo() async {
+    try {
+      String url = ReelFolioAPIURL.onBoardingStepTwo;
+
+      String clientAccessToken = await getClientSecret();
+
+      _dio.options.headers['content-Type'] = 'application/json';
+      _dio.options.headers['authorization'] = 'Bearer $clientAccessToken';
+
+      print(url);
+
+      String number = _userDetails.userPhoneNumber!.replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replaceAll(' ', '').trim();
+
+
+      print(number);
+
+      Response response = await _dio.post(
+        url,
+        data: {
+          "id": _userDetails.id!,
+          "otp": _userDetails.otpCode,
+          "work_link": _userDetails.socialMediaLink,
+          "name": _userDetails.username,
+          "email": _userDetails.userEmail,
+          "primary_role_id": _userDetails.primarySkill,
+          "password": _userDetails.password,
+          "password_confirmation": _userDetails.confirmPassword,
+          "other_skills_id": _userDetails.otherSkills,
+        },
+      );
+
+      print(response.toString());
+
+
+      return OTPResponse.fromJson({"success":true,"message":"",});
+    } catch (e, stackTrace) {
+      if (e is DioError) {
+        print(e.response);
+        return OTPResponse.fromJson(e.response!.data!);
+      }
+      return OTPResponse.fromJson({"success":false,"message":"Please try again","data":null});
+    }
+  }
+
+
+  Future<UserRoleModel?> getUserRole()async{
+    try{
+
+      String url = ReelFolioAPIURL.userRole;
+
+      String clientAccessToken = await getClientSecret();
+
+      _dio.options.headers['content-Type'] = 'application/json';
+      _dio.options.headers['authorization'] = 'Bearer $clientAccessToken';
+
+      Response response = await _dio.get(url);
+
+      print(response.data.toString());
+      
+      return UserRoleModel.fromJson(response.data);
+
+    }catch(e){
+      print(e.toString());
+      return null;
     }
   }
 }
