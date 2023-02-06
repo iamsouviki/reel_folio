@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/util/size_config.dart';
 
 import '../../screens/route/route_path.dart';
+import 'widget/action_button_widget.dart';
 import 'widget/screen_title_widget.dart';
 
 
@@ -58,31 +59,14 @@ class OnBoardingRequestConfirmationScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const AspectRatio(
-                  aspectRatio: 373 / 80,
+                  aspectRatio: 373 / 360,
                   child: SizedBox(),
                 ),
-                GestureDetector(
+                InkWell(
                   onTap: () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      RoutePath.routeToOnBoardingDetailsScreen,
-                    );
+
                   },
-                  child: Container(
-                    color: Colors.white,
-                    child: const Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: Center(
-                        child: Text(
-                          'For testing Purpose',
-                          style: TextStyle(
-                            fontSize: 22,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: const ActionButtonWidget(buttonText: "Continue"),
                 ),
               ],
             ),

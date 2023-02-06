@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../../util/size_config.dart';
 import '../../services/auth_service.dart';
+import '../user_details_screen.dart';
 
 class SecondaryListWidget extends StatefulWidget {
   final ValueChanged<List<String>> onValueChanged;
@@ -33,6 +35,14 @@ class _SecondaryListWidgetState extends State<SecondaryListWidget> {
       ValueNotifier<List<String>>(['']);
 
   final ValueNotifier _selectedIndex = ValueNotifier<int>(10);
+
+  OnBoardingUserDetailsModel get _userDetails => GetIt.I<OnBoardingUserDetailsModel>();
+
+  @override
+  void initState() {
+    _userDetails.otherSkills = [];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,13 +130,15 @@ class _SecondaryListWidgetState extends State<SecondaryListWidget> {
                                         if (_selectedItem.value
                                             .contains(e.name)) {
                                           _selectedItem.value =
-                                          List.from(_selectedItem.value)
-                                            ..remove(e);
+                                          List.from(_selectedItem.value)..remove(e);
+
+                                          _userDetails.otherSkills!.remove(e.id!);
 
                                         } else {
                                           _selectedItem.value =
                                           List.from(_selectedItem.value)
                                             ..add(e.name!);
+                                          _userDetails.otherSkills!.add(e.id!);
                                           widget.onValueChanged(
                                         _selectedItem.value);
                                         }
@@ -170,7 +182,7 @@ class _SecondaryListWidgetState extends State<SecondaryListWidget> {
                                 ],
                               ),
                             )
-                                : SizedBox(),
+                                : const SizedBox(),
                             SizedBox(
                               height: screenWidth! * 15 / 375,
                             ),

@@ -178,6 +178,9 @@ class AuthService {
 
       print(response.toString());
 
+      _userDetails.otpCode = response.data['data']['code'].toString();
+      _userDetails.id = response.data['data']['id'];
+
 
       return OTPResponse.fromJson({"success":true,"message":"",});
     } catch (e, stackTrace) {
@@ -201,17 +204,32 @@ class AuthService {
 
       print(url);
 
-      String number = _userDetails.userPhoneNumber!.replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replaceAll(' ', '').trim();
+      Map data = {
+        "id": _userDetails.id!,
+        "otp": _userDetails.otpCode,
+        "work_link": _userDetails.socialMediaLink,
+        "name": _userDetails.username,
+        "email": _userDetails.userEmail,
+        "primary_role_id": _userDetails.primarySkill,
+        "password": _userDetails.password,
+        "password_confirmation": _userDetails.confirmPassword,
+        "other_skills_id": _userDetails.otherSkills!,
+      };
+
+      print(data);
 
 
-      print(number);
+      /*String number = _userDetails.userPhoneNumber!.replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replaceAll(' ', '').trim();
+
+
+      print(number);*/
 
       Response response = await _dio.post(
         url,
         data: {
           "id": _userDetails.id!,
           "otp": _userDetails.otpCode,
-          "work_link": _userDetails.socialMediaLink,
+          "work_link": 'https://facebook.com',
           "name": _userDetails.username,
           "email": _userDetails.userEmail,
           "primary_role_id": _userDetails.primarySkill,
@@ -224,7 +242,7 @@ class AuthService {
       print(response.toString());
 
 
-      return OTPResponse.fromJson({"success":true,"message":"",});
+      return OTPResponse.fromJson({"success":true,"message":response.data["message"],});
     } catch (e, stackTrace) {
       if (e is DioError) {
         print(e.response);

@@ -15,7 +15,6 @@ import 'user_details_screen.dart';
 import 'user_secondary_role_screen.dart';
 import 'user_social_media_information_screen.dart';
 
-
 StateProvider loadingNotifier = StateProvider<bool>((ref) => false);
 
 class OnBoardingRequestScreen extends ConsumerWidget {
@@ -26,6 +25,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
   final List<Widget> _screens = [
     UserDetailsScreen(),
     UserPinWidget(),
+    UserPasswordWidget(),
     UserSocialMediaInformationScreen(),
     UserPrimaryRoleScreen(),
     UserSecondaryRoleScreen(),
@@ -62,7 +62,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                         if (stepValue != 1) {
                           widgetRef.read(onBoardingStepManger.notifier).state =
                               stepValue - 1;
-                        }else{
+                        } else {
                           Navigator.pop(context);
                         }
                       },
@@ -73,7 +73,7 @@ class OnBoardingRequestScreen extends ConsumerWidget {
                     ),
                     ProgressStepper(
                       width: 100,
-                      stepCount: 5,
+                      stepCount: 6,
                       currentStep: stepValue,
                     ),
                     Text(
@@ -96,33 +96,55 @@ class OnBoardingRequestScreen extends ConsumerWidget {
             ),
           ),
         ),
-        floatingActionButton: loading ? const CupertinoActivityIndicator() :FloatingActionButtonWidget(
-          onTap: () async {
-            if (stepValue == 1) {
-              if (_userDetails.isValid()) {
-                widgetRef.read(loadingNotifier.notifier).state = true;
-                OTPResponse resp = await _authService.onBoardingStepOne();
-                widgetRef.read(loadingNotifier.notifier).state = false;
-                if (resp!.success!) {
-                  widgetRef.read(onBoardingStepManger.notifier).state =
-                      stepValue + 1;
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(resp!.message!),
-                    ),
-                  );
-                }
-              }
-            }else if(stepValue > 1 && stepValue < 6){
-              widgetRef.read(onBoardingStepManger.notifier).state++;
-            } else {
-              Navigator.pushReplacementNamed(
-                  context, RoutePath.routeToOnBoardingConfirmationScreen);
-              widgetRef.read(onBoardingStepManger.notifier).state = 1;
-            }
-          },
-        ),
+        floatingActionButton: loading
+            ? const CupertinoActivityIndicator()
+            : FloatingActionButtonWidget(
+                onTap: () async {
+                  print(stepValue.toString());
+                  if (stepValue == 1) {
+                    if (_userDetails.isValid()) {
+                      widgetRef.read(loadingNotifier.notifier).state = true;
+                      OTPResponse resp = await _authService.onBoardingStepOne();
+                      widgetRef.read(loadingNotifier.notifier).state = false;
+                      if (resp!.success!) {
+                        widgetRef.read(onBoardingStepManger.notifier).state =
+                            stepValue + 1;
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(resp!.message!),
+                          ),
+                        );
+                      }
+                    }
+                  } else if (stepValue == 2) {
+                    if (_userDetails.otpAdded!.trim() ==
+                        _userDetails.otpCode!.trim()) {
+                      widgetRef.read(onBoardingStepManger.notifier).state++;
+                    }
+                  } else if (stepValue == 3) {
+                    if (_userDetails.password!.trim() ==
+                        _userDetails.confirmPassword!.trim()) {
+                      widgetRef.read(onBoardingStepManger.notifier).state++;
+                    }
+                  } else if (stepValue > 3 && stepValue < 6) {
+                    widgetRef.read(onBoardingStepManger.notifier).state++;
+                  } else if (stepValue == 6) {
+                    print(_userDetails.primarySkill);
+                    print(_userDetails.otherSkills!);
+                    var resp = await _authService.onBoardingStepTwo();
+                    if (resp.success!) {
+                      Navigator.pushReplacementNamed(context,
+                          RoutePath.routeToOnBoardingConfirmationScreen);
+                      widgetRef.read(onBoardingStepManger.notifier).state = 1;
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(resp.message!),
+                      ));
+                    }
+                  }
+                },
+              ),
       ),
     );
   }

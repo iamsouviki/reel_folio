@@ -82,6 +82,7 @@ class UserSecondaryRoleScreen extends StatelessWidget {
           ),
           SecondaryListWidget(
             onValueChanged: (val) {
+              print('Here: $val');
               primaryRoleNotifier.value = val;
             },
           ),

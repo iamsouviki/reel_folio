@@ -154,6 +154,7 @@ class OnBoardingUserDetailsModel {
   String? confirmPassword;
   List<int>? otherSkills;
   int? primarySkill;
+  String? otpAdded;
 
   OnBoardingUserDetailsModel({
     this.username,
@@ -166,6 +167,7 @@ class OnBoardingUserDetailsModel {
     this.confirmPassword,
     this.otherSkills,
     this.primarySkill,
+    this.otpAdded,
   });
 
   bool isValid(){
@@ -179,5 +181,19 @@ class OnBoardingUserDetailsModel {
     RegExp regExp = RegExp(p);
 
     return regExp.hasMatch(em);
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['otp'] = '';
+    data['work_link'] = '';
+    data['name'] = username;
+    data['email'] = userEmail;
+    data['primary_role_id'] = primarySkill;
+    data['password'] = 'password';
+    data['password_confirmation'] = 'password';
+    data['other_skills_id'] = otherSkills;
+    return data;
   }
 }
