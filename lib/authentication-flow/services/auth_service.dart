@@ -12,15 +12,13 @@ import 'package:reel_folio/user_preferences.dart';
 
 import 'login_data.dart';
 
-
 final authProvider = Provider<AuthService>(
-      (ref) => AuthService(),
+  (ref) => AuthService(),
 );
 
 final userRoleProvider = FutureProvider.autoDispose<UserRoleModel?>(
-      (ref) => ref.read(authProvider).getUserRole(),
+  (ref) => ref.read(authProvider).getUserRole(),
 );
-
 
 class AuthService {
   UserPreferences get _preferences => GetIt.I<UserPreferences>();
@@ -122,7 +120,7 @@ class AuthService {
     }
   }
 
-  Future<bool> loginWithOTP(int otp) async {
+  Future<LoginResponse?> loginWithOTP(int otp) async {
     try {
       String url = ReelFolioAPIURL.loginWithOTPURL;
 
@@ -142,12 +140,12 @@ class AuthService {
 
       _loginData.clearData();
 
-      return response.statusCode!.toString().startsWith('2');
+      return LoginResponse.fromJson(response.data);
     } catch (e, stackTrace) {
       if (e is DioError) {
         print(e.response);
       }
-      return false;
+      return null;
     }
   }
 
@@ -162,8 +160,12 @@ class AuthService {
 
       print(url);
 
-      String number = _userDetails.userPhoneNumber!.replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replaceAll(' ', '').trim();
-
+      String number = _userDetails.userPhoneNumber!
+          .replaceAll('(', '')
+          .replaceAll(')', '')
+          .replaceAll('-', '')
+          .replaceAll(' ', '')
+          .trim();
 
       print(number);
 
@@ -181,17 +183,19 @@ class AuthService {
       _userDetails.otpCode = response.data['data']['code'].toString();
       _userDetails.id = response.data['data']['id'];
 
-
-      return OTPResponse.fromJson({"success":true,"message":"",});
+      return OTPResponse.fromJson({
+        "success": true,
+        "message": "",
+      });
     } catch (e, stackTrace) {
       if (e is DioError) {
         print(e.response);
         return OTPResponse.fromJson(e.response!.data!);
       }
-      return OTPResponse.fromJson({"success":false,"message":"Please try again","data":null});
+      return OTPResponse.fromJson(
+          {"success": false, "message": "Please try again", "data": null});
     }
   }
-
 
   Future<OTPResponse> onBoardingStepTwo() async {
     try {
@@ -218,7 +222,6 @@ class AuthService {
 
       print(data);
 
-
       /*String number = _userDetails.userPhoneNumber!.replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replaceAll(' ', '').trim();
 
 
@@ -241,21 +244,22 @@ class AuthService {
 
       print(response.toString());
 
-
-      return OTPResponse.fromJson({"success":true,"message":response.data["message"],});
+      return OTPResponse.fromJson({
+        "success": true,
+        "message": response.data["message"],
+      });
     } catch (e, stackTrace) {
       if (e is DioError) {
         print(e.response);
         return OTPResponse.fromJson(e.response!.data!);
       }
-      return OTPResponse.fromJson({"success":false,"message":"Please try again","data":null});
+      return OTPResponse.fromJson(
+          {"success": false, "message": "Please try again", "data": null});
     }
   }
 
-
-  Future<UserRoleModel?> getUserRole()async{
-    try{
-
+  Future<UserRoleModel?> getUserRole() async {
+    try {
       String url = ReelFolioAPIURL.userRole;
 
       String clientAccessToken = await getClientSecret();
@@ -266,12 +270,52 @@ class AuthService {
       Response response = await _dio.get(url);
 
       print(response.data.toString());
-      
-      return UserRoleModel.fromJson(response.data);
 
-    }catch(e){
+      return UserRoleModel.fromJson(response.data);
+    } catch (e) {
       print(e.toString());
       return null;
     }
+  }
+}
+
+class LoginResponse {
+  bool? success;
+  String? message;
+  Data? data;
+
+  LoginResponse({this.success, this.message, this.data});
+
+  LoginResponse.fromJson(Map<String, dynamic> json) {
+    success = json['success'];
+    message = json['message'];
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+  }
+}
+
+class Data {
+  String? name;
+  String? email;
+  int? id;
+  int? approved;
+  int? isNew;
+  String? token;
+
+  Data({
+    this.name,
+    this.email,
+    this.id,
+    this.approved,
+    this.isNew,
+    this.token,
+  });
+
+  Data.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    email = json['email'];
+    id = json['id'];
+    approved = json['approved'];
+    isNew = json['isNew'];
+    token = json['token'];
   }
 }

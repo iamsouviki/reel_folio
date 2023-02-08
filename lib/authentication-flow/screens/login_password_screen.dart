@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:reel_folio/screens/route/route_path.dart';
 import 'package:reel_folio/util/colors.dart';
 
 import '../../screens/widget/otp_field.dart';
@@ -126,11 +127,14 @@ class _LoginPasswordScreenState extends State<LoginPasswordScreen> {
                                           'Please check your credentials');
                                       _loadingNotifier.value = false;
                                     } else {
-                                      showDialog(context: context, builder: (_){
-                                        return const AlertDialog(
-                                          content: Text('Logged In Successfully'),
-                                        );
-                                      });
+                                      showDialog(
+                                          context: context,
+                                          builder: (_) {
+                                            return const AlertDialog(
+                                              content: Text(
+                                                  'Logged In Successfully'),
+                                            );
+                                          });
                                       _loadingNotifier.value = false;
                                     }
                                   } else {
@@ -220,18 +224,30 @@ class _OTPWidgetState extends State<OTPWidget> {
         ),
         showFieldAsBox: true,
         onSubmit: (String verificationCode) async {
-          bool resp = await _authService.loginWithOTP(
+          LoginResponse? resp = await _authService.loginWithOTP(
             int.parse(verificationCode),
           );
           setState(() {
-            correctOTP = resp;
+            correctOTP = resp!.success!;
           });
-          if(resp){
-            showDialog(context: context, builder: (_){
-              return const AlertDialog(
-                content: Text('Logged In Successfully'),
-              );
-            });
+          if (resp!.success!) {
+            if (resp.data!.approved! != 0) {
+              if (resp.data!.isNew == 1) {
+                Navigator.pushReplacementNamed(
+                  context,
+                  RoutePath.routeToWelcomeScreen,
+                );
+              } else {
+                Navigator.popUntil(context, ModalRoute.withName('/'));
+                Navigator.pushNamed(
+                  context,
+                  RoutePath.routeToHomeScreen,
+                );
+              }
+            } else {
+              Navigator.pushNamed(
+                  context, RoutePath.routeToOnBoardingConfirmationScreen);
+            }
           }
         }, // end onSubmit
       ),
