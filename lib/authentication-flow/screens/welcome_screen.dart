@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reel_folio/authentication-flow/screens/onboarding_portfolio_screen.dart';
 import '../../screens/Portfolio/portfolio_home.dart';
 import '../../screens/route/route_path.dart';
 import '../../util/size_config.dart';
@@ -60,10 +61,11 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, RoutePath.routeToHomeScreen);
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => const PortfolioHomePage()));
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const OnBoardingPortfolioScreen(),
+                      ),
+                    );
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(
