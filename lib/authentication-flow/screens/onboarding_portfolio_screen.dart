@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
+import 'package:reel_folio/authentication-flow/model/otp_model.dart';
 import 'package:reel_folio/authentication-flow/screens/user_bio_screen.dart';
+import 'package:reel_folio/authentication-flow/screens/user_details_screen.dart';
+import 'package:reel_folio/authentication-flow/services/auth_service.dart';
+import 'package:reel_folio/screens/route/route_path.dart';
 
 import '../../util/floating_action_button_widget.dart';
 import '../../util/progress_stepper.dart';
@@ -15,17 +20,20 @@ class OnBoardingPortfolioScreen extends ConsumerStatefulWidget {
   const OnBoardingPortfolioScreen({Key? key}) : super(key: key);
 
   @override
-  _OnBoardingPortfolioScreenState createState() => _OnBoardingPortfolioScreenState();
+  OnBoardingPortfolioScreenState createState() => OnBoardingPortfolioScreenState();
 }
 
-class _OnBoardingPortfolioScreenState extends ConsumerState {
-
+class OnBoardingPortfolioScreenState extends ConsumerState {
 
   final List<Widget> _screens = [
     UserBioScreen(),
     UserProfilePictureWidget(),
     UserCoverImageScreen(),
   ];
+
+  OnBoardingUserDetailsModel get userDetails => GetIt.I<OnBoardingUserDetailsModel>();
+
+  AuthService get _authService => GetIt.I<AuthService>();
 
   @override
   Widget build(BuildContext context) {
@@ -90,52 +98,24 @@ class _OnBoardingPortfolioScreenState extends ConsumerState {
         floatingActionButton: loading
             ? const CupertinoActivityIndicator()
             : FloatingActionButtonWidget(
-          onTap: (){},
-          /*onTap: () async {
-            print(stepValue.toString());
-            if (stepValue == 1) {
-              if (_userDetails.isValid()) {
-                widgetRef.read(loadingNotifier.notifier).state = true;
-                OTPResponse resp = await _authService.onBoardingStepOne();
-                widgetRef.read(loadingNotifier.notifier).state = false;
-                if (resp!.success!) {
-                  widgetRef.read(onBoardingStepManger.notifier).state =
-                      stepValue + 1;
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(resp!.message!),
-                    ),
-                  );
-                }
-              }
-            } else if (stepValue == 2) {
-              if (_userDetails.otpAdded!.trim() ==
-                  _userDetails.otpCode!.trim()) {
-                widgetRef.read(onBoardingStepManger.notifier).state++;
-              }
-            } else if (stepValue == 3) {
-              if (_userDetails.password!.trim() ==
-                  _userDetails.confirmPassword!.trim()) {
-                widgetRef.read(onBoardingStepManger.notifier).state++;
-              }
-            } else if (stepValue > 3 && stepValue < 6) {
-              widgetRef.read(onBoardingStepManger.notifier).state++;
-            } else if (stepValue == 6) {
-              print(_userDetails.primarySkill);
-              print(_userDetails.otherSkills!);
-              var resp = await _authService.onBoardingStepTwo();
-              if (resp.success!) {
-                Navigator.pushReplacementNamed(context,
-                    RoutePath.routeToOnBoardingConfirmationScreen);
-                widgetRef.read(onBoardingStepManger.notifier).state = 1;
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(resp.message!),
-                ));
+          //onTap: (){},
+          onTap: () async {
+
+
+            if(stepValue == 1 && userDetails.bio!.isNotEmpty){
+              ref.read(onBoardingStepManger.notifier).state =
+                  stepValue + 1;
+            }else if(stepValue == 2 && userDetails.profileImage!.path.isNotEmpty){
+              ref.read(onBoardingStepManger.notifier).state =
+                  stepValue + 1;
+            }else if(stepValue == 3 && userDetails.coverPic!.path.isNotEmpty){
+              OTPResponse response = await _authService.onBoardingFinalStep();
+              if(response.success!){
+                Navigator.popUntil(context,  ModalRoute.withName('/'));
+                Navigator.pushNamed(context, RoutePath.routeToHomeScreen);
               }
             }
-          },*/
+          },
         ),
       ),
     );

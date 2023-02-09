@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -243,6 +244,48 @@ class AuthService {
       );
 
       print(response.toString());
+
+      return OTPResponse.fromJson({
+        "success": true,
+        "message": response.data["message"],
+      });
+    } catch (e, stackTrace) {
+      if (e is DioError) {
+        print(e.response);
+        return OTPResponse.fromJson(e.response!.data!);
+      }
+      return OTPResponse.fromJson(
+          {"success": false, "message": "Please try again", "data": null});
+    }
+  }
+
+  Future<OTPResponse> onBoardingFinalStep() async {
+    try {
+      String url = ReelFolioAPIURL.onBoardingFinalStep;
+
+      String clientAccessToken = await getClientSecret();
+
+      _dio.options.headers['content-Type'] = 'application/json';
+      _dio.options.headers['authorization'] = 'Bearer $clientAccessToken';
+
+      /*String number = _userDetails.userPhoneNumber!.replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replaceAll(' ', '').trim();
+
+
+      print(number);*/
+
+      var formData = FormData.fromMap({
+        'id': 1,
+        'bio': _userDetails.bio,
+        'profile_picture': await MultipartFile.fromFile(
+            _userDetails!.coverPic!.path,
+            filename: _userDetails.coverPic!.toString()),
+        'cover_picture': await MultipartFile.fromFile(
+            _userDetails!.coverPic!.path,
+            filename: _userDetails.coverPic!.toString()),
+      });
+      Response response = await _dio.post(url, data: formData);
+
+      print('Response: '+response.toString());
 
       return OTPResponse.fromJson({
         "success": true,

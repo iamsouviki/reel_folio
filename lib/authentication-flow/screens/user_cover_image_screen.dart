@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:reel_folio/authentication-flow/screens/user_details_screen.dart';
 import '../../util/size_config.dart';
 import 'widget/add_profile_asset_widget.dart';
 import 'widget/screen_sub_title_widget.dart';
@@ -11,6 +13,8 @@ class UserCoverImageScreen extends StatelessWidget {
   UserCoverImageScreen({Key? key}) : super(key: key);
 
   final ValueNotifier<File?> _imageNotifier = ValueNotifier<File?>(null);
+
+  OnBoardingUserDetailsModel get _userDetails => GetIt.I<OnBoardingUserDetailsModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +61,7 @@ class UserCoverImageScreen extends StatelessWidget {
         AddProfileAssetWidget(
           onUploadImage: (file) {
             _imageNotifier.value = file;
+            _userDetails.coverPic = file;
           },
         ),
       ],

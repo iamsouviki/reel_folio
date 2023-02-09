@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:get_it/get_it.dart';
+
 import 'package:reel_folio/util/size_config.dart';
 
 import 'widget/screen_sub_title_widget.dart';
@@ -156,6 +159,12 @@ class OnBoardingUserDetailsModel {
   int? primarySkill;
   String? otpAdded;
 
+
+  String? userId;
+  String? bio;
+  File? profileImage;
+  File? coverPic;
+
   OnBoardingUserDetailsModel({
     this.username,
     this.userEmail,
@@ -168,6 +177,11 @@ class OnBoardingUserDetailsModel {
     this.otherSkills,
     this.primarySkill,
     this.otpAdded,
+
+    this.userId,
+    this.bio,
+    this.profileImage,
+    this.coverPic,
   });
 
   bool isValid(){
