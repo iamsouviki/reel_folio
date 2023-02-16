@@ -174,12 +174,12 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
                                       _loadingNotifier.value = true;
 
                                       OTPResponse? response =
-                                          await _authService.sendOTP();
+                                          await _authService.sendOTP(_loginData.phoneOrEmail!);
 
                                       if(response!=null){
                                         if (!response.success!) {
                                           _loadingNotifier.value = false;
-                                          ref.refresh(otpManager);
+                                          ref.refresh(otpManager(''));
                                           print(response.message);
                                           showMessage(
                                               context, response.message!);

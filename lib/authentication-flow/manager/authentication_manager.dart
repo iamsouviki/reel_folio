@@ -9,8 +9,8 @@ final authProvider = Provider<AuthService>(
   (ref) => AuthService(),
 );
 
-final otpManager = FutureProvider.autoDispose<OTPResponse?>(
-  (ref) => ref.read(authProvider).sendOTP(),
+final otpManager = FutureProvider.family.autoDispose<OTPResponse?,String>(
+  (ref,req) => ref.read(authProvider).sendOTP(req),
 );
 
 final reelFolioUserPortfolioManager = FutureProvider.autoDispose<ReelFolioUserModel?>(

@@ -55,7 +55,7 @@ class AuthService {
     }
   }
 
-  Future<OTPResponse?> sendOTP() async {
+  Future<OTPResponse?> sendOTP(String emailOrPhone) async {
     try {
       String url = ReelFolioAPIURL.otpURL;
 
@@ -73,7 +73,7 @@ class AuthService {
       Response response = await _dio.post(
         url,
         data: {
-          "email": "subhankard@qworkz.com",
+          "email": emailOrPhone,
         },
       );
 
@@ -124,7 +124,7 @@ class AuthService {
     }
   }
 
-  Future<LoginResponse?> loginWithOTP(int otp) async {
+  Future<LoginResponse?> loginWithOTP(String emailOrPhone,int otp) async {
     try {
       String url = ReelFolioAPIURL.loginWithOTPURL;
 
@@ -138,7 +138,7 @@ class AuthService {
 
       Response response = await _dio.post(
         url,
-        data: { "email" : "subhankard@qworkz.com", "otp": 2367}
+        data: { "email" : emailOrPhone, "otp": otp.toString()}
       );
 
       print(response.toString());

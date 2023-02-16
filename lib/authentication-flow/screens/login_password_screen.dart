@@ -205,6 +205,8 @@ class _OTPWidgetState extends State<OTPWidget> {
     }
   }
 
+  LoginData get _loginData => GetIt.I<LoginData>();
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -225,6 +227,7 @@ class _OTPWidgetState extends State<OTPWidget> {
         showFieldAsBox: true,
         onSubmit: (String verificationCode) async {
           LoginResponse? resp = await _authService.loginWithOTP(
+            _loginData.phoneOrEmail ?? '',
             int.parse(verificationCode),
           );
           setState(() {
