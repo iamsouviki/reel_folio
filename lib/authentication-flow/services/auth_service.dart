@@ -11,6 +11,7 @@ import 'package:reel_folio/authentication-flow/services/client_secret.dart';
 import 'package:reel_folio/core/reel_folio_api_url.dart';
 import 'package:reel_folio/user_preferences.dart';
 
+import '../model/reel_folio_user_model.dart';
 import 'login_data.dart';
 
 final authProvider = Provider<AuthService>(
@@ -43,7 +44,7 @@ class AuthService {
 
       print('Client Secret: ${data['access_token']}');
 
-      await _preferences.saveAccessToken(data['access_token']);
+      await _preferences.saveClientToken(data['access_token']);
 
       return data['access_token'];
     } catch (e) {
@@ -112,6 +113,8 @@ class AuthService {
 
       print(data);
 
+      await _preferences.saveAccessToken(data['data']['token']);
+
       //_loginData.clearData();
 
       return response.statusCode.toString().startsWith('2');
@@ -131,13 +134,18 @@ class AuthService {
       _dio.options.headers['authorization'] = 'Bearer $clientAccessToken';
 
       print(url);
+      print({"email": _loginData.phoneOrEmail, "otp": otp});
 
       Response response = await _dio.post(
         url,
-        data: {"email": _loginData.phoneOrEmail, "otp": otp},
+        data: { "email" : "subhankard@qworkz.com", "otp": 2367}
       );
 
       print(response.toString());
+
+      Map<String, dynamic> data = json.decode(response.toString());
+
+      await _preferences.saveAccessToken(data['data']['token']);
 
       _loginData.clearData();
 
@@ -285,7 +293,7 @@ class AuthService {
       });
       Response response = await _dio.post(url, data: formData);
 
-      print('Response: '+response.toString());
+      print('Response: ' + response.toString());
 
       return OTPResponse.fromJson({
         "success": true,
@@ -317,6 +325,28 @@ class AuthService {
       return UserRoleModel.fromJson(response.data);
     } catch (e) {
       print(e.toString());
+      return null;
+    }
+  }
+
+  Future<ReelFolioUserModel?> getReelFolioUserPortfolio() async {
+    try {
+      String url = ReelFolioAPIURL.userPortfolio;
+
+      String? accessToken = await _preferences.getAccessToken();
+
+      _dio.options.headers['content-Type'] = 'application/json';
+      _dio.options.headers['authorization'] = 'Bearer $accessToken';
+
+      Response response = await _dio.get(url);
+
+      print(response.toString());
+
+
+      return ReelFolioUserModel.fromJson(response.data);
+    } catch (e,stackTrace) {
+      print('Portfolio Error: $e');
+      print(stackTrace.toString());
       return null;
     }
   }

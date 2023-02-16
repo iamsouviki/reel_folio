@@ -13,7 +13,10 @@ abstract class ReelFolioAPIURL {
 
   static const String onBoardingStepTwo = '$baseURL/onboarding-step-two';
 
-  static const String onBoardingFinalStep = '$baseURL/onboarding-final-step-after-approve';
+  static const String onBoardingFinalStep =
+      '$baseURL/onboarding-final-step-after-approve';
 
   static const String userRole = '$baseURL/get-skills';
+
+  static const String userPortfolio = '$baseURL/my-portfolio';
 }
