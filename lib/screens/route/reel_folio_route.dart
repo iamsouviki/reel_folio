@@ -5,7 +5,7 @@ import 'package:reel_folio/authentication-flow/screens/login_email_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/login_password_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/registration_rules_screen.dart';
 import 'package:reel_folio/authentication-flow/screens/reset_password_screen.dart';
-import 'package:reel_folio/screens/Home/homepage.dart';
+import 'package:reel_folio/discover-flow/screen/discover_screen.dart';
 import 'package:reel_folio/screens/Portfolio/portfolio_home.dart';
 import 'package:reel_folio/screens/route/route_path.dart';
 import '../../authentication-flow/screens/onboarding_details_screen.dart';
@@ -63,7 +63,7 @@ abstract class ReelFolioRoute {
         break;
 
       case RoutePath.routeToHomeScreen:
-        currentWidget = const Homepage();
+        currentWidget = const DiscoverScreen();
         break;
 
       case RoutePath.routeToChatScreen:

@@ -3,7 +3,7 @@ import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-import 'widget/project_category_detail_navbar.dart';
+import '../../discover-flow/widget/project_category_detail_navbar.dart';
 
 class Detail extends StatefulWidget {
   Detail({Key? key}) : super(key: key);

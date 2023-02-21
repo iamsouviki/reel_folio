@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-import '../../project_page/widgets/filter_field_widget.dart';
+import '../../screens/project_page/widgets/filter_field_widget.dart';
 
 Widget FilterModalProjects(BuildContext context) {
   return Container(

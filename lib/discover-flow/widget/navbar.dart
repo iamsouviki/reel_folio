@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/screens/Home/widget/filter_modal_projects_widget.dart';
+import 'package:reel_folio/discover-flow/widget/filter_modal_projects_widget.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 

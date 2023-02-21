@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:reel_folio/screens/Home/widget/people.dart';
-import 'package:reel_folio/screens/Home/widget/projects.dart';
+import 'package:reel_folio/discover-flow/screen/people_screen.dart';
+import 'package:reel_folio/discover-flow/services/discover_service.dart';
+import 'package:reel_folio/discover-flow/widget/people.dart';
+import 'package:reel_folio/discover-flow/widget/projects.dart';
 import 'package:reel_folio/util/colors.dart';
 import 'package:reel_folio/util/size_config.dart';
 import 'package:reel_folio/screens/widget/bottom_navbar.dart';
 
-import 'widget/navbar.dart';
+import '../widget/navbar.dart';
+
 var id=0;
 
-class Homepage extends StatefulWidget {
-  const Homepage({Key? key}) : super(key: key);
+class DiscoverScreen extends StatefulWidget {
+  const DiscoverScreen({Key? key}) : super(key: key);
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<DiscoverScreen> createState() => _DiscoverScreenState();
 }
 
-class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
+class _DiscoverScreenState extends State<DiscoverScreen> with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -47,7 +50,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                         controller: _tabController,
                         children: [
                           Container(child: HomeProjects(context)),
-                          Container(child: HomePeople()),
+                          const PeopleScreen(),
                         ],
                       ),
                     ))

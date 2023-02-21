@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:reel_folio/screens/Home/details.dart';
-import 'package:reel_folio/screens/Home/homepage.dart';
-import 'package:reel_folio/screens/Home/widget/projects_bottom_card.dart';
-import 'package:reel_folio/screens/Home/widget/projects_top_card.dart';
+import 'package:reel_folio/discover-flow/widget/projects_bottom_card.dart';
+import 'package:reel_folio/discover-flow/widget/projects_top_card.dart';
 import 'package:reel_folio/util/asset.dart';
 import 'package:reel_folio/util/size_config.dart';
 
-import '../../../util/colors.dart';
+import '../../util/colors.dart';
 
 Widget HomeProjects(BuildContext context) {
-  id=1;
+  int id=1;
   return Container(
     padding: EdgeInsets.symmetric(vertical: screenHeight! * 0.02,), 
       child: Column(

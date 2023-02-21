@@ -19,4 +19,8 @@ abstract class ReelFolioAPIURL {
   static const String userRole = '$baseURL/get-skills';
 
   static const String userPortfolio = '$baseURL/my-portfolio';
+
+  static const String reelFolioUserList = '$baseURL/people';
+
+  static const String reelFolioUserPortfolio = '$baseURL/people-portfolio/';
 }
