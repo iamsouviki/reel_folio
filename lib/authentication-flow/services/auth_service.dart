@@ -70,6 +70,10 @@ class AuthService {
 
       print(url);
 
+      print({
+        "email": emailOrPhone,
+      },);
+
       Response response = await _dio.post(
         url,
         data: {
@@ -83,11 +87,14 @@ class AuthService {
     } catch (e, stackTrace) {
       if (e is DioError) {
         print(e.response);
+        return  OTPResponse.fromJson(
+          {"success": false, "message": e.response!.data['message'], "data": null},
+        );
       }
       print(e.toString());
       print(stackTrace.toString());
       return OTPResponse.fromJson(
-        {"success": true, "message": "Can not authorize", "data": null},
+        {"success": false, "message": "Can not authorize", "data": null},
       );
     }
   }

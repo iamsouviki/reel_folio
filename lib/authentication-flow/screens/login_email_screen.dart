@@ -28,19 +28,26 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
 
   bool shoWPassword = false;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
-
-    moveToPasswordScreen(){
+    moveToPasswordScreen() {
       Navigator.pushNamed(
         context,
         RoutePath.routeToPasswordOTPScreen,
       );
     }
 
+    message(String message){
+      showMessage(
+          context, message);
+    }
+
     return SafeArea(
       top: true,
       child: Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Colors.black,
         body: SingleChildScrollView(
           child: Padding(
@@ -173,16 +180,19 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
                                     if (_loginData.phoneOrEmail != null) {
                                       _loadingNotifier.value = true;
 
-                                      OTPResponse? response =
-                                          await _authService.sendOTP(_loginData.phoneOrEmail!);
+                                      OTPResponse? response = await _authService
+                                          .sendOTP(_loginData.phoneOrEmail!);
 
-                                      if(response!=null){
+                                      print('Email Response: ${response!.success!}');
+
+                                      if (response != null) {
                                         if (!response.success!) {
                                           _loadingNotifier.value = false;
-                                          ref.refresh(otpManager(''));
                                           print(response.message);
-                                          showMessage(
-                                              context, response.message!);
+                                          if(mounted){
+                                            message(response.message!);
+                                          }
+                                          ref.refresh(otpManager(''));
                                         } else {
                                           _loadingNotifier.value = false;
                                           moveToPasswordScreen();
