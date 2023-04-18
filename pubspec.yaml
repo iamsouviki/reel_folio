@@ -17,7 +17,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 2.0.0+4
+version: 1.0.0+1
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
@@ -36,12 +36,14 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_riverpod:
+  get_storage: ^2.0.3
   image_picker:
+  graphql: ^5.1.2
   dio:
   shared_preferences:
   get_it:
-  cron:
-  flutter_multi_formatter:
+  http: ^0.13.5
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -54,14 +56,6 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_slidable:
-  flutter_launcher_icons: "^0.11.0"
-
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/reelfolio_icon.png"
-  min_sdk_android: 21
-  remove_alpha_ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -77,6 +71,7 @@ flutter:
   assets:
     - icons/
     - assets/
+    - assets/blank-profile-picture.png
   #   - images/a_dot_ham.jpeg
 
   fonts:

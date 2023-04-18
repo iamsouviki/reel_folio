@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../util/size_config.dart';
 
+
+
 class AddProfileAssetWidget extends StatefulWidget {
 
   final ValueChanged<File> onUploadImage;

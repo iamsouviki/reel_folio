@@ -1,4 +1,4 @@
-import 'package:cron/cron.dart';
+//import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reel_folio/authentication-flow/services/auth_service.dart';
@@ -11,11 +11,11 @@ void main() async{
 
   setupServiceLocator();
 
-  final cron = Cron();
-  cron.schedule(Schedule.parse('*/10 * * * * '), () async {
-    await AuthService().getClientSecret();
-    print('Runs every 10 minutes');
-  });
+  // final cron = Cron();
+  // cron.schedule(Schedule.parse('*/10 * * * * '), () async {
+  //   await AuthService().getClientSecret();
+  //   print('Runs every 10 minutes');
+  // });
 
   runApp(const ProviderScope(child: ReelFolioApp()));
 }

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+//import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:reel_folio/util/size_config.dart';
@@ -111,7 +111,7 @@ class UserDetailsScreen extends StatelessWidget {
           textInputAction: TextInputAction.done,
           cursorColor: const Color(0xFF474747),
           inputFormatters: [
-            MaskedInputFormatter('(###) ###- ####')
+            //MaskedInputFormatter('(###) ###- ####')
           ],
           style: TextStyle(
             color: Colors.white,
